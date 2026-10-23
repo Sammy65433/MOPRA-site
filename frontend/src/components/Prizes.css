@@ -1,0 +1,35 @@
+.prize-card {
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(72, 145, 255, 0.15),
+      transparent 53%
+    ),
+    linear-gradient(145deg, #171b24, #0a0c11 72%);
+  transition: border-color 250ms ease, transform 250ms ease;
+}
+
+.prize-card:hover {
+  border-color: rgba(72, 145, 255, 0.6);
+  transform: translateY(-5px);
+}
+
+.prize-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -30% -90% -30%;
+  height: 100%;
+  background: rgba(187, 43, 59, 0.1);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prize-card {
+    transition: none;
+  }
+
+  .prize-card:hover {
+    transform: none;
+  }
+}
