@@ -50,6 +50,9 @@ export default function App() {
       <ScrollToSection />
       <Header language={language} setLanguage={setLanguage} t={t} />
 
+
+
+
       <Routes>
         <Route
           path="/"
