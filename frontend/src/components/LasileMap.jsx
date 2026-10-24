@@ -6,6 +6,7 @@ const maps = [
   { src: "/L'AsileGoogleMaps3.png", alt: "Third map view of L’Asile" },
   { src: "/L'AsileGoogleMaps4.png", alt: "Fourth map view of L’Asile" },
   { src: "/L'AsileGoogleMaps5.png", alt: "Fifth map view of L’Asile" },
+  { src: "/L'AsileGoogleMaps6.png", alt: "Sixth map view of L’Asile" },
 ];
 
 export default function LasileMap() {
