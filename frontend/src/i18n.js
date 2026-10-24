@@ -8,7 +8,7 @@ export const translations = {
     heroOne: "WELCOME TO",
     heroTwo: "L’ASILE",
     heroText:
-      "Welcome to L’Asile, Haiti. This developing nonprofit initiative is focused on supporting the L’Asile community. Learn about the vision taking shape and ways to get involved.",
+      "Welcome to L’Asile, Haiti. Mouvement Patriotique pour la Renaissance de L’Asile is focused on supporting the L’Asile community. Learn about the vision taking shape and ways to get involved.",
     discover: "Learn about the initiative",
     heroTickets: "Tickets and raffle",
     heroSide: "L’Asile, Haiti",
