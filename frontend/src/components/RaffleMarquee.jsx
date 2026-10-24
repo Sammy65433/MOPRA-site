@@ -25,7 +25,7 @@ export default function RaffleMarquee({ language = "en" }) {
 
   return (
     <div
-      className="overflow-hidden border-y border-[#79b7ff]/25 bg-[#090e19] py-5"
+      className="overflow-hidden border-t-2 border-t-[#1d4ed8] border-b-2 border-b-[#c6283e] bg-[#090e19] py-5"
       aria-label={label}
     >
       <div className="marquee-track flex w-max items-center">
@@ -39,9 +39,14 @@ export default function RaffleMarquee({ language = "en" }) {
               items.map(({ Icon, text }) => (
                 <span
                   key={`${repeat}-${text}`}
-                  className="inline-flex shrink-0 items-center gap-3 whitespace-nowrap font-display text-2xl font-bold uppercase tracking-wide text-[#79b7ff] sm:text-4xl"
+                  className="inline-flex shrink-0 items-center gap-3 whitespace-nowrap font-display text-2xl font-bold uppercase tracking-wide text-[#f7f4e9] sm:text-4xl"
                 >
-                  <Icon size={22} className="shrink-0" aria-hidden="true" />
+                  <Icon
+                    size={22}
+                    className="shrink-0 text-[#c6283e]"
+                    aria-hidden="true"
+                  />
+
                   {text}
                 </span>
               ))
