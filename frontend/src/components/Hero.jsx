@@ -11,6 +11,7 @@ const photos = [
   "/LasileMap47.jpg",
   "/Lasilepic48.jpg",
   "/Lasilepic49.jpg",
+  
 ];
 
 function Line({ children, delay, className = "" }) {
