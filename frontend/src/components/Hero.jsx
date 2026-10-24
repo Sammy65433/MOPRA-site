@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight, BookOpen, MapPin, Ticket } from "lucide-react";
+import {
+  ArrowDownRight,
+  BookOpen,
+  HeartHandshake,
+  MapPin,
+  Ticket,
+} from "lucide-react";
+
 import { Link } from "react-router-dom";
 import "./Hero.css";
 
@@ -73,24 +80,32 @@ export default function Hero({ t }) {
 </p>
 
 
-          <h1 className="font-display max-w-5xl text-[clamp(3rem,7vw,7rem)] font-bold leading-[0.95] tracking-[-0.07em]">
-            <Line delay={0.15}>{t.heroOne}</Line>
-            <Line delay={0.31} className="gold-type">
-              {t.heroTwo}
-            </Line>
-          </h1>
+          <h1 className="hero-title max-w-5xl">
+  <Line delay={0.15} className="hero-title-blue">
+    {t.heroOne}
+  </Line>
+  <Line delay={0.31} className="hero-title-red">
+    {t.heroTwo}
+  </Line>
+</h1>
 
-          <motion.p
-            className="mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: reduceMotion ? 0 : 0.55,
-              duration: reduceMotion ? 0 : 0.7,
-            }}
-          >
-            {t.heroText}
-          </motion.p>
+<motion.div
+  className="hero-intro"
+  initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    delay: reduceMotion ? 0 : 0.55,
+    duration: reduceMotion ? 0 : 0.7,
+  }}
+>
+  <HeartHandshake
+    size={22}
+    className="hero-intro-icon"
+    aria-hidden="true"
+  />
+  <p>{t.heroText}</p>
+</motion.div>
+
 
           <motion.div
             className="mt-6 flex flex-wrap gap-3"
