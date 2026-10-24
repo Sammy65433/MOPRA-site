@@ -1,10 +1,32 @@
+#about {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(37, 99, 199, 0.18), transparent 35%),
+    linear-gradient(120deg, #080d17, #101723 60%, #080d17);
+}
+
+#about::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 45%;
+  background:
+    linear-gradient(90deg, #101723, rgba(8, 13, 23, 0.72)),
+    url("/Lasilepic48.jpg") center / cover no-repeat;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+#about > * {
+  position: relative;
+  z-index: 1;
+}
+
 .anniversary-art {
   background:
-    radial-gradient(
-      circle,
-      rgba(72, 145, 255, 0.13),
-      transparent 40%
-    ),
+    radial-gradient(circle, rgba(72, 145, 255, 0.13), transparent 40%),
     repeating-linear-gradient(
       135deg,
       transparent,
@@ -17,4 +39,11 @@
 
 .anniversary-ring {
   box-shadow: 0 0 30px rgba(72, 145, 255, 0.12);
+}
+
+@media (max-width: 767px) {
+  #about::before {
+    inset: 0;
+    opacity: 0.16;
+  }
 }
