@@ -3,9 +3,15 @@ import { X } from "lucide-react";
 import "./LasileMap.css";
 
 const maps = [
-  { src: "/L'AsileGoogleMaps1.png", alt: "Map showing L’Asile in Haiti" },
-  // Keep your existing image 2–7 entries here with their exact extensions.
+  { src: "/L'AsileGoogleMaps1.png", alt: "Map view 1 of L’Asile" },
+  { src: "/L'AsileGoogleMaps2.png", alt: "Map view 2 of L’Asile" },
+  { src: "/L'AsileGoogleMaps3.png", alt: "Map view 3 of L’Asile" },
+  { src: "/L'AsileGoogleMaps4.png", alt: "Map view 4 of L’Asile" },
+  { src: "/L'AsileGoogleMaps5.png", alt: "Map view 5 of L’Asile" },
+  { src: "/L'AsileGoogleMaps6.png", alt: "Map view 6 of L’Asile" },
+  { src: "/L'AsileGoogleMaps7.png", alt: "Map view 7 of L’Asile" },
 ];
+
 
 export default function LasileMap() {
   const [selected, setSelected] = useState(null);
