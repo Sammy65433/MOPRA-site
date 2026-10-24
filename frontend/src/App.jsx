@@ -3,16 +3,14 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import RaffleMarquee from "./components/RaffleMarquee";
 import Countdown from "./Countdown";
+import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
 import Footer from "./components/Footer";
 import "./App.css";
-import Tickets from "./Tickets";
-import RaffleMarquee from "./components/RaffleMarquee";
-
-
 
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
@@ -52,30 +50,27 @@ export default function App() {
       <ScrollToSection />
       <Header language={language} setLanguage={setLanguage} t={t} />
 
-
-
-
       <Routes>
-  <Route
-    path="/"
-    element={
-      <main id="top">
-        <Hero t={t} />
-        <RaffleMarquee language={language} />
-        <Countdown language={language} />
-        <Tickets t={t} />
-      </main>
-    }
-  />
-  <Route path="/about" element={<AboutPage t={t} />} />
-  <Route path="/prizes" element={<PrizesPage t={t} />} />
-  <Route
-    path="/tickets"
-    element={<TicketsPage t={t} language={language} />}
-  />
-</Routes>
-<Footer t={t} />
+        <Route
+          path="/"
+          element={
+            <main id="top">
+              <Hero t={t} />
+              <RaffleMarquee language={language} />
+              <Countdown language={language} />
+              <Tickets t={t} />
+            </main>
+          }
+        />
+        <Route path="/about" element={<AboutPage t={t} />} />
+        <Route path="/prizes" element={<PrizesPage t={t} />} />
+        <Route
+          path="/tickets"
+          element={<TicketsPage t={t} language={language} />}
+        />
+      </Routes>
 
+      <Footer t={t} />
     </div>
   );
 }

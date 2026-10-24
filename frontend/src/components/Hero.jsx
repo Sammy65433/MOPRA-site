@@ -14,11 +14,16 @@ import "./Hero.css";
 const photos = [
   "/Lasilepic50.jpg",
   "/LasileMap45.jpg",
-  "/LasileMap46.png",
-  "/LasileMap47.jpg",
   "/Lasilepic48.jpg",
+  "/LasileMap46.png",
   "/Lasilepic49.jpg",
+  "/L'AsileGoogleMaps1.png",
+  "/Lasilepic49.jpg",
+  "/L'AsileGoogleMaps3.png",
+  "/haitian-gallery7.jpg",
+  "/L'AsileGoogleMaps5.png",
   
+
 ];
 
 function Line({ children, delay, className = "" }) {
@@ -75,36 +80,36 @@ export default function Hero({ t }) {
           />
 
           <p className="hero-organization-name mb-6 text-center text-xs font-semibold uppercase leading-relaxed tracking-[0.12em] sm:text-sm">
-  {t.organizationFullName ??
-    "Mouvement Patriotique pour la Renaissance de L’Asile"}
-</p>
+            {t.organizationFullName ??
+              "Mouvement Patriotique pour la Renaissance de L’Asile"}
+          </p>
 
 
           <h1 className="hero-title max-w-5xl">
-  <Line delay={0.15} className="hero-title-blue">
-    {t.heroOne}
-  </Line>
-  <Line delay={0.31} className="hero-title-red">
-    {t.heroTwo}
-  </Line>
-</h1>
+            <Line delay={0.15} className="hero-title-blue">
+              {t.heroOne}
+            </Line>
+            <Line delay={0.31} className="hero-title-red">
+              {t.heroTwo}
+            </Line>
+          </h1>
 
-<motion.div
-  className="hero-intro"
-  initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    delay: reduceMotion ? 0 : 0.55,
-    duration: reduceMotion ? 0 : 0.7,
-  }}
->
-  <HeartHandshake
-    size={22}
-    className="hero-intro-icon"
-    aria-hidden="true"
-  />
-  <p>{t.heroText}</p>
-</motion.div>
+          <motion.div
+            className="hero-intro"
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: reduceMotion ? 0 : 0.55,
+              duration: reduceMotion ? 0 : 0.7,
+            }}
+          >
+            <HeartHandshake
+              size={22}
+              className="hero-intro-icon"
+              aria-hidden="true"
+            />
+            <p>{t.heroText}</p>
+          </motion.div>
 
 
           <motion.div
@@ -152,9 +157,8 @@ export default function Hero({ t }) {
                 src={src}
                 alt={index === photoIndex ? t.heroPhotoAlt : ""}
                 aria-hidden={index !== photoIndex}
-                className={`hero-photo-slide ${
-                  index === photoIndex ? "hero-photo-slide--active" : ""
-                }`}
+                className={`hero-photo-slide ${index === photoIndex ? "hero-photo-slide--active" : ""
+                  }`}
               />
             ))}
           </div>
