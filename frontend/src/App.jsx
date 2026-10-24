@@ -62,6 +62,8 @@ export default function App() {
           }
         />
 
+        
+
         <Route path="/about" element={<AboutPage t={t} />} />
         <Route path="/prizes" element={<PrizesPage t={t} />} />
         <Route
