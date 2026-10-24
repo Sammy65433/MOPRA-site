@@ -2,22 +2,16 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import "./LasileMap.css";
 
-const maps = [
-  { src: "/L'AsileGoogleMaps1.png", alt: "Map view 1 of L’Asile" },
-  { src: "/L'AsileGoogleMaps2.png", alt: "Map view 2 of L’Asile" },
-  { src: "/L'AsileGoogleMaps3.png", alt: "Map view 3 of L’Asile" },
-  { src: "/L'AsileGoogleMaps4.png", alt: "Map view 4 of L’Asile" },
-  { src: "/L'AsileGoogleMaps5.png", alt: "Map view 5 of L’Asile" },
-  { src: "/L'AsileGoogleMaps6.png", alt: "Map view 6 of L’Asile" },
-  { src: "/L'AsileGoogleMaps7.png", alt: "Map view 7 of L’Asile" },
-];
+const maps = Array.from({ length: 7 }, (_, index) => ({
+  src: `/L'AsileGoogleMaps${index + 1}.png`,
+  number: index + 1,
+}));
 
-
-export default function LasileMap() {
+export default function LasileMap({ t }) {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    if (selected === null) return;
+    if (selected === null) return undefined;
 
     function onKeyDown(event) {
       if (event.key === "Escape") setSelected(null);
@@ -30,36 +24,34 @@ export default function LasileMap() {
   return (
     <>
       <figure className="lasile-map">
-  <div className="lasile-map__heading">
-    <span className="lasile-map__eyebrow">Explore the area</span>
-    <h2>Map views of L’Asile</h2>
-    <p>Explore where L’Asile is located in Haiti.</p>
-  </div>
+        <figcaption className="lasile-map__heading">
+          <span className="lasile-map__eyebrow">{t.mapEyebrow}</span>
+          <h2>{t.mapTitle}</h2>
+          <p>{t.mapDescription}</p>
+        </figcaption>
 
-  <div className="lasile-map__panels">
-
-          {maps.map(({ src, alt }, index) => (
+        <div className="lasile-map__panels">
+          {maps.map(({ src, number }, index) => (
             <button
               key={src}
               type="button"
               className="lasile-map__thumbnail"
               onClick={() => setSelected(index)}
-              aria-label={`Expand ${alt}`}
+              aria-label={`${t.mapExpand} ${number}`}
             >
               <img src={src} alt="" loading="lazy" />
             </button>
           ))}
         </div>
-        <figcaption>Map views of L’Asile, Haiti</figcaption>
-        <a
-  href="https://www.google.com/maps/search/?api=1&query=L%27Asile%2C%20Haiti"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="lasile-map__location-link"
->
-  View L’Asile on Google Maps ↗
-</a>
 
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=L%27Asile%2C%20Haiti"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="lasile-map__location-link"
+        >
+          {t.mapLink}
+        </a>
       </figure>
 
       {selected !== null && (
@@ -73,18 +65,18 @@ export default function LasileMap() {
             className="lasile-map__dialog"
             role="dialog"
             aria-modal="true"
-            aria-label={maps[selected].alt}
+            aria-label={`${t.mapTitle} ${maps[selected].number}`}
           >
             <button
               type="button"
               className="lasile-map__close"
               onClick={() => setSelected(null)}
-              aria-label="Close expanded map"
+              aria-label={t.mapClose}
               autoFocus
             >
               <X size={22} aria-hidden="true" />
             </button>
-            <img src={maps[selected].src} alt={maps[selected].alt} />
+            <img src={maps[selected].src} alt="" />
           </div>
         </div>
       )}

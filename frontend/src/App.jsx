@@ -63,7 +63,7 @@ export default function App() {
   <Tickets t={t} />
 
   <section className="lasile-map-section" aria-label="L’Asile map gallery">
-    <LasileMap />
+    <LasileMap t={t} />
   </section>
 </main>
 

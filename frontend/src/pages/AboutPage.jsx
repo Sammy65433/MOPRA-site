@@ -9,7 +9,8 @@ export default function AboutPage({ t, language }) {
       <About t={t} />
 
       <section className="lasile-map-section">
-        <LasileMap />
+        <LasileMap t={t} />
+
       </section>
 
       <RaffleMarquee language={language} />
