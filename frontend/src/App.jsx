@@ -10,6 +10,8 @@ import TicketsPage from "./pages/TicketsPage";
 import Footer from "./components/Footer";
 import "./App.css";
 import Tickets from "./Tickets";
+import RaffleMarquee from "./components/RaffleMarquee";
+
 
 
 function ScrollToSection() {
@@ -54,29 +56,26 @@ export default function App() {
 
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <main id="top">
-              <Hero t={t} />
-              <Countdown language={language} />
-              <Tickets t={t} />
-            </main>
-          }
-        />
+  <Route
+    path="/"
+    element={
+      <main id="top">
+        <Hero t={t} />
+        <RaffleMarquee language={language} />
+        <Countdown language={language} />
+        <Tickets t={t} />
+      </main>
+    }
+  />
+  <Route path="/about" element={<AboutPage t={t} />} />
+  <Route path="/prizes" element={<PrizesPage t={t} />} />
+  <Route
+    path="/tickets"
+    element={<TicketsPage t={t} language={language} />}
+  />
+</Routes>
+<Footer t={t} />
 
-        
-
-        <Route path="/about" element={<AboutPage t={t} />} />
-        <Route path="/prizes" element={<PrizesPage t={t} />} />
-        <Route
-          path="/tickets"
-          element={<TicketsPage t={t} language={language} />}
-        />
-
-      </Routes>
-
-      <Footer t={t} />
     </div>
   );
 }
