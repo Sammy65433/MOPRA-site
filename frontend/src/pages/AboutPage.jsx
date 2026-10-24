@@ -1,11 +1,18 @@
 import About from "../components/About";
 import LasileMap from "../components/LasileMap";
+import RaffleMarquee from "../components/RaffleMarquee";
+import "./AboutPage.css";
 
-export default function AboutPage({ t }) {
+export default function AboutPage({ t, language }) {
   return (
     <main id="top" className="pt-20">
       <About t={t} />
-      <LasileMap />
+
+      <section className="lasile-map-section">
+        <LasileMap />
+      </section>
+
+      <RaffleMarquee language={language} />
     </main>
   );
 }

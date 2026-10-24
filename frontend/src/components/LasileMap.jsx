@@ -30,7 +30,14 @@ export default function LasileMap() {
   return (
     <>
       <figure className="lasile-map">
-        <div className="lasile-map__panels">
+  <div className="lasile-map__heading">
+    <span className="lasile-map__eyebrow">Explore the area</span>
+    <h2>Map views of L’Asile</h2>
+    <p>Explore where L’Asile is located in Haiti.</p>
+  </div>
+
+  <div className="lasile-map__panels">
+
           {maps.map(({ src, alt }, index) => (
             <button
               key={src}
@@ -44,6 +51,15 @@ export default function LasileMap() {
           ))}
         </div>
         <figcaption>Map views of L’Asile, Haiti</figcaption>
+        <a
+  href="https://www.google.com/maps/search/?api=1&query=L%27Asile%2C%20Haiti"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="lasile-map__location-link"
+>
+  View L’Asile on Google Maps ↗
+</a>
+
       </figure>
 
       {selected !== null && (

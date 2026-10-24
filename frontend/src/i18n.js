@@ -1,9 +1,13 @@
+const officialName = "Mouvement Patriotique pour la Renaissance de L’Asile";
+
 export const translations = {
   en: {
     navHome: "Home",
     navAbout: "Our story",
     navPrizes: "The raffle",
     navTickets: "Tickets",
+
+    organizationFullName: officialName,
     heroEyebrow: "L’ASILE COMMUNITY · HAITI",
     heroOne: "WELCOME TO",
     heroTwo: "L’ASILE",
@@ -13,21 +17,20 @@ export const translations = {
     heroTickets: "Tickets and raffle",
     heroSide: "L’Asile, Haiti",
     heroPhotoAlt: "Illustrative photograph for the L’Asile community website",
-organizationFullName:
-  "Mouvement Patriotique pour la Renaissance de L’Asile",
 
     raffleTag: "THE RAFFLE",
-    raffleHeading: "Something to look forward to.",
+    raffleHeading: "Together for L’Asile.",
     raffleText:
-      "A raffle is being planned. Prizes, entry details, and official rules will be shared once confirmed.",
+      "A raffle is being planned to bring people together in support of the initiative. Prizes, entry details, the drawing date, and official rules will be shared once confirmed.",
+
     prize: "Prize",
     prizePending: "Details coming soon",
     prizes_eyebrow: "The Prizes",
     prizes_title: "Prizes to be announced",
     prizes_sub: "Prize details and drawing information are being finalized.",
-    prize_place: ["Prize 1", "Prize 2", "Prize 3", "Prize 4"],
-    prize_name: Array(4).fill("Details coming soon"),
-    prize_note: ["", "", "", ""],
+    prize_place: ["Prize 1", "Prize 2", "Prize 3", "Prize 4", "Prize 5"],
+    prize_name: Array(5).fill("Details coming soon"),
+    prize_note: Array(5).fill(""),
 
     aboutTag: "OUR COMMUNITY",
     aboutHeading: "Rooted in L’Asile. Looking ahead.",
@@ -65,6 +68,7 @@ organizationFullName:
       notSent: "Demo only. Your reservation was not sent.",
       gallery: "Illustrative photo gallery",
     },
+
     footer: "Connected by community. Looking ahead together.",
     footerSlogan: "Community at heart. Haiti in our future.",
   },
@@ -74,32 +78,33 @@ organizationFullName:
     navAbout: "Notre histoire",
     navPrizes: "La tombola",
     navTickets: "Billets",
+
+    organizationFullName: officialName,
     heroEyebrow: "COMMUNAUTÉ DE L’ASILE · HAÏTI",
     heroOne: "BIENVENUE À",
     heroTwo: "L’ASILE",
     heroText:
-      "Bienvenue à L’Asile, en Haïti. Cette nouvelle initiative à but non lucratif vise à soutenir la communauté de L’Asile. Découvrez la vision en cours d’élaboration et les façons de participer.",
+      "Bienvenue à L’Asile, en Haïti. Le Mouvement Patriotique pour la Renaissance de L’Asile souhaite soutenir la communauté de L’Asile. Découvrez la vision en cours d’élaboration et les façons de participer.",
     discover: "Découvrir l’initiative",
     heroTickets: "Billets et tombola",
     heroSide: "L’Asile, Haïti",
     heroPhotoAlt:
       "Photo d’illustration pour le site de la communauté de L’Asile",
-organizationFullName:
-  "Mouvement Patriotique pour la Renaissance de L’Asile",
 
     raffleTag: "LA TOMBOLA",
-    raffleHeading: "Une initiative à suivre.",
+    raffleHeading: "Ensemble pour L’Asile.",
     raffleText:
-      "Une tombola est en préparation. Les prix, les modalités de participation et le règlement officiel seront communiqués après confirmation.",
+      "Une tombola est en préparation pour rassembler les personnes qui souhaitent soutenir l’initiative. Les prix, les modalités de participation, la date du tirage et le règlement officiel seront communiqués après confirmation.",
+
     prize: "Prix",
     prizePending: "Détails à venir",
     prizes_eyebrow: "Les prix",
     prizes_title: "Prix à annoncer",
     prizes_sub:
       "Les prix et les détails du tirage sont en cours de préparation.",
-    prize_place: ["Prix 1", "Prix 2", "Prix 3", "Prix 4"],
-    prize_name: Array(4).fill("Détails à venir"),
-    prize_note: ["", "", "", ""],
+    prize_place: ["Prix 1", "Prix 2", "Prix 3", "Prix 4", "Prix 5"],
+    prize_name: Array(5).fill("Détails à venir"),
+    prize_note: Array(5).fill(""),
 
     aboutTag: "NOTRE COMMUNAUTÉ",
     aboutHeading: "Ancrés à L’Asile. Tournés vers l’avenir.",
@@ -136,9 +141,11 @@ organizationFullName:
       quantity: "Nombre de billets",
       message: "Message (facultatif)",
       submit: "Prévisualiser l’envoi du formulaire",
-      notSent: "Démonstration seulement. Votre réservation n’a pas été envoyée.",
+      notSent:
+        "Démonstration seulement. Votre réservation n’a pas été envoyée.",
       gallery: "Galerie de photos d’illustration",
     },
+
     footer: "Unis par la communauté. Tournés ensemble vers l’avenir.",
     footerSlogan: "La communauté au cœur. Haïti dans notre avenir.",
   },
@@ -148,30 +155,31 @@ organizationFullName:
     navAbout: "Istwa nou",
     navPrizes: "Tombola a",
     navTickets: "Tikè",
+
+    organizationFullName: officialName,
     heroEyebrow: "KOMINOTE LAZIL · AYITI",
     heroOne: "BYENVENI",
     heroTwo: "LAZIL",
     heroText:
-      "Byenveni Lazil, Ayiti. Nouvo inisyativ san bi likratif sa a ap pran fòm pou soutni kominote Lazil la. Dekouvri vizyon k ap devlope a ak fason pou patisipe.",
+      "Byenveni Lazil, Ayiti. Mouvement Patriotique pour la Renaissance de L’Asile konsantre sou soutni kominote Lazil la. Dekouvri vizyon k ap pran fòm nan ak fason pou patisipe.",
     discover: "Dekouvri inisyativ la",
     heroTickets: "Tikè ak tombola",
     heroSide: "Lazil, Ayiti",
     heroPhotoAlt: "Foto ilistrasyon pou sit kominote Lazil la",
-organizationFullName:
-  "Mouvement Patriotique pour la Renaissance de L’Asile",
 
     raffleTag: "TOMBOLA A",
-    raffleHeading: "Gen yon bagay k ap prepare.",
+    raffleHeading: "Ansanm pou Lazil.",
     raffleText:
-      "Y ap prepare yon tombola. Y ap pataje prim yo, fason pou patisipe, ak règ ofisyèl yo lè yo konfime.",
+      "Y ap prepare yon tombola pou rasanble moun ki vle soutni inisyativ la. Y ap pataje prim yo, fason pou patisipe, dat tiraj la ak règ ofisyèl yo lè yo konfime yo.",
+
     prize: "Prim",
     prizePending: "Detay yo ap vini",
     prizes_eyebrow: "Prim yo",
     prizes_title: "Y ap anonse prim yo",
     prizes_sub: "Y ap finalize detay sou prim yo ak tiraj la.",
-    prize_place: ["Prim 1", "Prim 2", "Prim 3", "Prim 4"],
-    prize_name: Array(4).fill("Detay yo ap vini"),
-    prize_note: ["", "", "", ""],
+    prize_place: ["Prim 1", "Prim 2", "Prim 3", "Prim 4", "Prim 5"],
+    prize_name: Array(5).fill("Detay yo ap vini"),
+    prize_note: Array(5).fill(""),
 
     aboutTag: "KOMINOTE NOU",
     aboutHeading: "Rasin nou Lazil. Je nou sou lavni.",
@@ -210,6 +218,7 @@ organizationFullName:
       notSent: "Se yon demonstrasyon sèlman. Rezèvasyon w lan pa ale.",
       gallery: "Galri foto ilistrasyon",
     },
+
     footer: "Kominote a ini nou. N ap gade devan ansanm.",
     footerSlogan: "Kominote a nan kè nou. Ayiti nan lavni nou.",
   },
@@ -240,4 +249,13 @@ export function startingLanguage() {
 
 
 
+
+
+// en
+
+
+// fr
+
+
+// ht
 

@@ -19,7 +19,7 @@
   background:
     linear-gradient(rgba(5, 7, 11, 0.76), rgba(5, 7, 11, 0.88)),
     url("/Lasilepic49.jpg") center / cover no-repeat;
-  opacity: 0.5;
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -162,5 +162,77 @@
   .lasile-map__thumbnail:hover img {
     transform: none;
     filter: none;
+  }
+}
+.lasile-map__location-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #79b7ff;
+  border-radius: 999px;
+  color: #a6d0ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.lasile-map__location-link:hover {
+  background: rgba(121, 183, 255, 0.12);
+}
+
+.lasile-map__location-link:focus-visible {
+  outline: 3px solid #a6d0ff;
+  outline-offset: 3px;
+}
+.lasile-map__heading {
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(166, 208, 255, 0.35);
+  border-radius: 1rem;
+  background: rgba(12, 25, 44, 0.72);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  animation: map-heading-in 800ms ease-out both;
+}
+
+.lasile-map__eyebrow {
+  color: #a6d0ff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.lasile-map__heading h2 {
+  margin: 0.4rem 0 0;
+  color: #f7f4e9;
+  font-family: "Outfit", "Space Grotesk", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.lasile-map__heading p {
+  margin: 0.6rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+@keyframes map-heading-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lasile-map__heading {
+    animation: none;
   }
 }

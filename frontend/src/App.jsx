@@ -11,6 +11,8 @@ import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
 import Footer from "./components/Footer";
 import "./App.css";
+import LasileMap from "./components/LasileMap";
+
 
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
@@ -55,20 +57,32 @@ export default function App() {
           path="/"
           element={
             <main id="top">
-              <Hero t={t} />
-              <RaffleMarquee language={language} />
-              <Countdown language={language} />
-              <Tickets t={t} />
-            </main>
+  <Hero t={t} />
+  <RaffleMarquee language={language} />
+  <Countdown language={language} />
+  <Tickets t={t} />
+
+  <section className="lasile-map-section" aria-label="L’Asile map gallery">
+    <LasileMap />
+  </section>
+</main>
+
           }
         />
-        <Route path="/about" element={<AboutPage t={t} />} />
-        <Route path="/prizes" element={<PrizesPage t={t} />} />
+        <Route
+          path="/about"
+          element={<AboutPage t={t} language={language} />}
+        />
+        <Route
+          path="/prizes"
+          element={<PrizesPage t={t} language={language} />}
+        />
         <Route
           path="/tickets"
           element={<TicketsPage t={t} language={language} />}
         />
       </Routes>
+      
 
       <Footer t={t} />
     </div>
