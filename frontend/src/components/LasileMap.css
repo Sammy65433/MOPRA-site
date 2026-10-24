@@ -1,11 +1,26 @@
 .lasile-map {
+  position: relative;
+  isolation: isolate;
   max-width: 72rem;
   margin: 2rem auto;
   padding: 1rem;
+  overflow: hidden;
   border: 1px solid rgba(121, 183, 255, 0.3);
   border-radius: 1.5rem;
   background: #0b0f17;
   color: #f7f4e9;
+}
+
+.lasile-map::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(rgba(5, 7, 11, 0.76), rgba(5, 7, 11, 0.88)),
+    url("/Lasilepic49.jpg") center / cover no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .lasile-map__panels {
