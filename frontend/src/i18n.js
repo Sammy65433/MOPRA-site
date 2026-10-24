@@ -32,6 +32,13 @@ export const translations = {
     prize_name: Array(5).fill("Details coming soon"),
     prize_note: Array(5).fill(""),
 
+    mapEyebrow: "Explore the area",
+mapTitle: "Map views of L’Asile",
+mapDescription: "Explore where L’Asile is located in Haiti.",
+mapLink: "View L’Asile on Google Maps ↗",
+mapExpand: "Expand map view",
+mapClose: "Close expanded map",
+
     aboutTag: "OUR COMMUNITY",
     aboutHeading: "Rooted in L’Asile. Looking ahead.",
     aboutText:
@@ -105,6 +112,13 @@ export const translations = {
     prize_place: ["Prix 1", "Prix 2", "Prix 3", "Prix 4", "Prix 5"],
     prize_name: Array(5).fill("Détails à venir"),
     prize_note: Array(5).fill(""),
+
+    mapEyebrow: "Découvrir la région",
+mapTitle: "Vues cartographiques de L’Asile",
+mapDescription: "Découvrez où se trouve L’Asile en Haïti.",
+mapLink: "Voir L’Asile sur Google Maps ↗",
+mapExpand: "Agrandir la vue de la carte",
+mapClose: "Fermer la carte agrandie",
 
     aboutTag: "NOTRE COMMUNAUTÉ",
     aboutHeading: "Ancrés à L’Asile. Tournés vers l’avenir.",
@@ -181,6 +195,13 @@ export const translations = {
     prize_name: Array(5).fill("Detay yo ap vini"),
     prize_note: Array(5).fill(""),
 
+    mapEyebrow: "Dekouvri zòn nan",
+mapTitle: "Kat ki montre Lazil",
+mapDescription: "Dekouvri kote Lazil ye ann Ayiti.",
+mapLink: "Gade Lazil sou Google Maps ↗",
+mapExpand: "Agrandisman kat la",
+mapClose: "Fèmen kat agrandi",
+
     aboutTag: "KOMINOTE NOU",
     aboutHeading: "Rasin nou Lazil. Je nou sou lavni.",
     aboutText:
@@ -245,8 +266,6 @@ export function startingLanguage() {
   if (browser.startsWith("ht")) return "ht";
   return "en";
 }
-
-
 
 
 
