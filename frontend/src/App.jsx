@@ -4,11 +4,13 @@ import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Countdown from "./Countdown";
-import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
+import TicketsPage from "./pages/TicketsPage";
 import Footer from "./components/Footer";
 import "./App.css";
+import Tickets from "./Tickets";
+
 
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
@@ -59,8 +61,14 @@ export default function App() {
             </main>
           }
         />
+
         <Route path="/about" element={<AboutPage t={t} />} />
         <Route path="/prizes" element={<PrizesPage t={t} />} />
+        <Route
+          path="/tickets"
+          element={<TicketsPage t={t} language={language} />}
+        />
+
       </Routes>
 
       <Footer t={t} />

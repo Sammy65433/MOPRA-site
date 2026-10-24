@@ -1,3 +1,4 @@
+import { HeartHandshake, MapPin } from "lucide-react";
 import Reveal from "./Reveal";
 import "./About.css";
 
@@ -17,18 +18,24 @@ export default function About({ t }) {
                 className="aspect-square w-full rounded-2xl object-cover"
               />
             </div>
-            <figcaption className="mt-3 text-sm text-white/60">
+            <figcaption className="mt-3 inline-flex items-center gap-2 text-sm text-white/60">
+              <MapPin size={16} aria-hidden="true" />
               {t.aboutPhotoCaption}
             </figcaption>
           </figure>
         </Reveal>
 
         <Reveal>
-          <p className="section-tag">{t.aboutTag}</p>
+          <p className="section-tag">
+            <HeartHandshake size={17} aria-hidden="true" />
+            {t.aboutTag}
+          </p>
+
           <h2 className="font-display mt-5 max-w-xl text-4xl font-bold leading-[1.07] tracking-tight sm:text-6xl">
             {t.aboutHeading}
           </h2>
-          <p className="mt-7 max-w-xl text-base leading-8 text-white/60 sm:text-lg">
+
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
             {t.aboutText}
           </p>
         </Reveal>

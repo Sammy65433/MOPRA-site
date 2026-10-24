@@ -1,0 +1,59 @@
+.tickets-page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background: #05070b;
+}
+
+.tickets-page__banner {
+  display: flex;
+  align-items: end;
+  min-height: clamp(320px, 42vw, 480px);
+  background:
+    linear-gradient(90deg, rgba(5, 7, 11, 0.93), rgba(5, 7, 11, 0.4)),
+    url("/tickets-gallery1.jpg") center / cover no-repeat;
+}
+
+.tickets-page__banner-content {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  padding: 4rem 1.25rem;
+}
+
+.tickets-page__eyebrow {
+  color: #a6d0ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.tickets-page__title {
+  margin-top: 1rem;
+  color: #f7f4e9;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tickets-page__description {
+  max-width: 40rem;
+  margin-top: 1.25rem;
+  color: #fff;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.tickets-page__disclaimer {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: #f7df9f;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .tickets-page__banner-content {
+    padding-inline: 2rem;
+  }
+}

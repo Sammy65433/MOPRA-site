@@ -1,48 +1,60 @@
 import { useState } from "react";
-import { Globe2, Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import {
+  BookOpen,
+  Gift,
+  Globe2,
+  House,
+  Menu,
+  Ticket,
+  X,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import { languages } from "../i18n";
 
 export default function Header({ language, setLanguage, t }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
 
   const links = [
-    { to: "/", label: t.navHome ?? "Home" },
-    { to: "/about", label: t.navAbout },
-    { to: "/prizes", label: t.navPrizes },
-    { to: "/#tickets", label: t.navTickets },
+    { to: "/", label: t.navHome, Icon: House },
+    { to: "/about", label: t.navAbout, Icon: BookOpen },
+    { to: "/prizes", label: t.navPrizes, Icon: Gift },
+    { to: "/tickets", label: t.navTickets, Icon: Ticket },
   ];
 
   function closeMenu() {
     setMenuOpen(false);
-
-    if (location.pathname === "/" && location.hash === "#tickets") {
-      document.getElementById("tickets")?.scrollIntoView();
-    }
   }
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#05070b]/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
+      <div className="mx-auto flex h-[80px] max-w-7xl items-center justify-between gap-2 px-3 sm:px-8">
         <Link
           to="/"
           onClick={closeMenu}
-          className="flex shrink-0 items-center gap-2"
+          className="flex shrink-0 items-center gap-2 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#79b7ff]"
           aria-label="MOPRA home"
         >
-          <img src="/MOPRA-logo.png" alt="" className="h-11 w-11 object-contain" />
-          <span className="font-display text-base font-bold tracking-[0.18em] text-white sm:text-xl">
+          <img
+            src="/MOPRA-logo.png"
+            alt=""
+            className="h-14 w-14 object-contain sm:h-16 sm:w-16"
+          />
+          <span className="font-display hidden text-base font-bold tracking-[0.12em] text-white min-[390px]:inline sm:text-xl">
             MOPRA
           </span>
         </Link>
 
         <nav
-          className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.19em] text-white/75 md:flex"
+          className="hidden items-center gap-6 text-xs font-semibold uppercase tracking-[0.12em] text-white/75 md:flex"
           aria-label="Main navigation"
         >
-          {links.map(({ to, label }) => (
-            <Link key={to} to={to} className="hover:text-[#a6d0ff]">
+          {links.map(({ to, label, Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              className="inline-flex items-center gap-2 rounded-sm hover:text-[#a6d0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#79b7ff]"
+            >
+              <Icon size={16} aria-hidden="true" />
               {label}
             </Link>
           ))}
@@ -95,13 +107,14 @@ export default function Header({ language, setLanguage, t }) {
           aria-label="Mobile navigation"
           className="border-t border-white/10 bg-[#090e19] px-5 py-3 md:hidden"
         >
-          {links.map(({ to, label }) => (
+          {links.map(({ to, label, Icon }) => (
             <Link
               key={to}
               to={to}
               onClick={closeMenu}
-              className="block border-b border-white/10 px-2 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white/85 last:border-0 hover:text-[#a6d0ff]"
+              className="flex items-center gap-3 border-b border-white/10 px-2 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white/85 last:border-0 hover:text-[#a6d0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#79b7ff]"
             >
+              <Icon size={18} aria-hidden="true" />
               {label}
             </Link>
           ))}

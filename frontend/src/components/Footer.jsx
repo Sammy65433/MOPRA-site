@@ -1,3 +1,4 @@
+import { HeartHandshake, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Footer({ t }) {
@@ -25,8 +26,9 @@ export default function Footer({ t }) {
           <span>{t.footer}</span>
           <a
             href={`mailto:${email}`}
-            className="w-fit text-[#a6d0ff] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#79b7ff]"
+            className="inline-flex w-fit items-center gap-2 text-[#a6d0ff] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#79b7ff]"
           >
+            <Mail size={16} aria-hidden="true" />
             {email}
           </a>
         </div>
@@ -34,8 +36,9 @@ export default function Footer({ t }) {
         <span>© {new Date().getFullYear()}</span>
       </div>
 
-      <p className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-center text-sm text-white/60">
-        Community at heart. Haiti in our future.
+      <p className="mx-auto mt-8 flex max-w-7xl items-center justify-center gap-2 border-t border-white/10 pt-5 text-center text-sm text-white/60">
+        <HeartHandshake size={17} aria-hidden="true" />
+        {t.footerSlogan ?? "Community at heart. Haiti in our future."}
       </p>
     </footer>
   );

@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { CalendarDays, Ticket } from "lucide-react";
+import {
+  CalendarDays,
+  CreditCard,
+  Gift,
+  Mail,
+  Send,
+  Ticket,
+} from "lucide-react";
 import "./components/Tickets.css";
 
 const gallery = Array.from(
@@ -7,18 +14,19 @@ const gallery = Array.from(
   (_, index) => `/tickets-gallery${index + 1}.jpg`
 );
 
-const paymentMethods = [
-  ["Zelle", "payments@mopra.org"],
-  ["Cash App", "$MOPRA300"],
-  ["Bank transfer", "Account details on request"],
-];
-
 export default function Tickets({ t }) {
   const [status, setStatus] = useState("");
+  const copy = t.ticketPage;
+
+  const paymentMethods = [
+    ["Zelle", "payments@mopra.org"],
+    ["Cash App", "$MOPRA300"],
+    [copy.bankTransfer, copy.bankDetails],
+  ];
 
   function handleSubmit(event) {
     event.preventDefault();
-    setStatus("Demo only. Your reservation was not sent.");
+    setStatus(copy.notSent);
   }
 
   return (
@@ -52,44 +60,35 @@ export default function Tickets({ t }) {
               <p className="mt-5 text-sm text-white/70">{t.dateNote}</p>
             </div>
 
-            <div
-              className="tickets-gallery"
-              aria-label="Illustrative photo gallery"
-            >
-              {gallery.map((src, index) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt={`Illustrative gallery photo ${index + 1}`}
-                  loading="lazy"
-                />
+            <div className="tickets-gallery" aria-label={copy.gallery}>
+              {gallery.map((src) => (
+                <img key={src} src={src} alt="" loading="lazy" />
               ))}
             </div>
           </div>
 
           <div className="mt-16 grid gap-12 border-t border-white/15 pt-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e5c77e]">
-                Get Your Ticket
+              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#e5c77e]">
+                <Gift size={16} aria-hidden="true" />
+                {copy.getTicket}
               </p>
 
               <h3 className="font-display mt-5 text-4xl font-bold text-[#f8f6f0] sm:text-5xl">
-                One ticket. <span className="text-[#e5c77e]">$100.</span>
+                {copy.price}
               </h3>
 
               <p className="mt-6 max-w-md leading-8 text-white/70">
-                Pay by Zelle, Cash App, or bank transfer, then send us your
-                details with the form so we can reserve your numbers and confirm
-                your entry.
+                {copy.paymentIntro}
               </p>
 
               <p className="mt-4 rounded-lg border border-[#e5c77e]/40 bg-[#e5c77e]/10 p-4 text-sm font-semibold leading-6 text-[#f7df9f]">
-                Meeting preview only. Price, payment accounts, and ticket
-                process require client confirmation. Do not send payment.
+                {copy.warning}
               </p>
 
-              <h4 className="mt-10 text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-                Ways to pay
+              <h4 className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
+                <CreditCard size={16} aria-hidden="true" />
+                {copy.waysToPay}
               </h4>
 
               <dl className="mt-5 space-y-3">
@@ -98,49 +97,52 @@ export default function Tickets({ t }) {
                     key={method}
                     className="flex flex-wrap justify-between gap-2 rounded-xl border border-white/15 bg-black/20 px-5 py-4"
                   >
-                    <dt className="font-semibold text-[#f8f6f0]">
-                      {method}
-                    </dt>
+                    <dt className="font-semibold text-[#f8f6f0]">{method}</dt>
                     <dd className="break-all text-white/70">{details}</dd>
                   </div>
                 ))}
               </dl>
 
-              <p className="mt-6 text-sm leading-6 text-white/75">
-                Questions? Email{" "}
+              <p className="mt-6 flex flex-wrap items-center gap-2 text-sm leading-6 text-white/75">
+                <Mail size={16} aria-hidden="true" />
+                {copy.questions}
                 <a
                   href="mailto:Cahctca@gmail.com"
                   className="font-semibold text-[#a6d0ff] underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#79b7ff]"
                 >
                   Cahctca@gmail.com
                 </a>
-                .
               </p>
             </div>
 
             <div className="rounded-2xl border border-white/15 bg-black/20 p-6 sm:p-8">
-              <h3 className="font-display text-3xl font-bold text-[#f8f6f0]">
-                Reserve your spot
+              <h3 className="font-display flex items-center gap-3 text-3xl font-bold text-[#f8f6f0]">
+                <Ticket
+                  size={26}
+                  className="shrink-0 text-[#e5c77e]"
+                  aria-hidden="true"
+                />
+                {copy.reserve}
               </h3>
 
               <p className="mt-3 text-sm text-white/70">
-                Demo form only. Do not enter real personal information.
+                {copy.formWarning}
               </p>
 
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
-                  <Field label="First name" name="firstName" required />
-                  <Field label="Last name" name="lastName" required />
+                  <Field label={copy.firstName} name="firstName" required />
+                  <Field label={copy.lastName} name="lastName" required />
                 </div>
 
-                <Field label="Email or phone" name="contact" required />
+                <Field label={copy.contact} name="contact" required />
 
                 <div>
                   <label
                     htmlFor="ticket-quantity"
                     className="block text-sm text-white/80"
                   >
-                    Number of tickets
+                    {copy.quantity}
                   </label>
                   <input
                     id="ticket-quantity"
@@ -158,7 +160,7 @@ export default function Tickets({ t }) {
                     htmlFor="ticket-message"
                     className="block text-sm text-white/80"
                   >
-                    Message (optional)
+                    {copy.message}
                   </label>
                   <textarea
                     id="ticket-message"
@@ -170,9 +172,10 @@ export default function Tickets({ t }) {
 
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-[#e5c77e] px-6 py-4 font-bold text-[#151515] hover:bg-[#f3d994] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5c77e]"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#e5c77e] px-6 py-4 font-bold text-[#151515] hover:bg-[#f3d994] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5c77e]"
                 >
-                  Preview form submission
+                  <Send size={17} aria-hidden="true" />
+                  {copy.submit}
                 </button>
 
                 {status && (

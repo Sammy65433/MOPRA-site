@@ -1,8 +1,26 @@
 .hero-stage {
+  isolation: isolate;
   background:
     radial-gradient(circle at 72% 42%, rgba(28, 91, 190, 0.24), transparent 29rem),
     radial-gradient(circle at 12% 78%, rgba(190, 42, 61, 0.13), transparent 22rem),
     linear-gradient(120deg, #05070b 15%, #0b0f18 60%, #05070b);
+}
+
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0 48% 0 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 7, 11, 0.72) 0%,
+      rgba(11, 15, 24, 0.75) 65%,
+      #0b0f18 100%
+    ),
+    url("/Lasilepic49.jpg") center / cover no-repeat;
+  opacity: 0.36;
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -14,6 +32,7 @@
   mask-image: linear-gradient(90deg, transparent, black 45%, black 75%, transparent);
   transform: perspective(500px) rotateX(28deg) scale(1.35);
   transform-origin: bottom;
+  pointer-events: none;
 }
 
 .hero-orb {
@@ -25,14 +44,15 @@
   box-shadow:
     0 0 110px rgba(28, 91, 190, 0.13),
     inset 0 0 90px rgba(72, 145, 255, 0.12);
+  pointer-events: none;
 }
 
 .hero-beam {
   position: absolute;
-  width: 1px;
-  height: 130vh;
   top: -20%;
   right: 22%;
+  width: 1px;
+  height: 130vh;
   transform: rotate(38deg);
   background: linear-gradient(
     to bottom,
@@ -60,11 +80,15 @@
 
 .hero-photo-wrap {
   width: 100%;
-  max-width: 480px;
+  max-width: 600px;
+  min-width: 0;
   justify-self: end;
 }
 
 .hero-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
   overflow: hidden;
   padding: 8px;
   border: 1px solid rgba(121, 183, 255, 0.45);
@@ -73,12 +97,22 @@
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
 }
 
-.hero-photo {
+.hero-photo-slide {
+  position: absolute;
+  inset: 8px;
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
   border-radius: 12px;
   object-fit: cover;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.2s ease-in-out, transform 5s linear;
+}
+
+.hero-photo-slide--active {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 .hero-photo-caption {
@@ -93,8 +127,7 @@
 
 @keyframes hero-flyby {
   from { translate: 220px -150px; opacity: 0; }
-  25% { opacity: 0.7; }
-  75% { opacity: 0.7; }
+  25%, 75% { opacity: 0.7; }
   to { translate: -220px 150px; opacity: 0; }
 }
 
@@ -102,13 +135,54 @@
   .hero-photo-wrap {
     justify-self: start;
   }
+
+  .hero-stage::before {
+    inset: 0;
+    opacity: 0.15;
+  }
 }
 
 @media (max-width: 640px) {
-  .hero-grid { background-size: 48px 48px; }
-  .hero-orb { opacity: 0.65; }
+  .hero-grid {
+    background-size: 48px 48px;
+  }
+
+  .hero-orb {
+    opacity: 0.65;
+  }
+
+  .hero-photo-frame {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-beam { animation: none; opacity: 0.15; }
+  .hero-beam {
+    animation: none;
+    opacity: 0.15;
+  }
+
+  .hero-photo-slide,
+  .hero-photo-slide--active {
+    transition: none;
+    transform: none;
+  }
+}
+.hero-organization-name {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0.6rem 1rem;
+  border-top: 2px solid #2563c7;
+  border-bottom: 2px solid #c6283e;
+  background: rgba(5, 7, 11, 0.72);
+  color: #f7f4e9;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 640px) {
+  .hero-organization-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
 }

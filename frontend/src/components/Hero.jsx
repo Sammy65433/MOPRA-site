@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, BookOpen, MapPin, Ticket } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./Hero.css";
 
-const photos = Array.from(
-  { length: 8 },
-  (_, index) => `/haitian-gallery${index + 1}.jpg`
-);
+const photos = [
+  "/Lasilepic50.jpg",
+  "/LasileMap45.jpg",
+  "/LasileMap46.png",
+  "/LasileMap47.jpg",
+  "/Lasilepic48.jpg",
+  "/Lasilepic49.jpg",
+];
 
 function Line({ children, delay, className = "" }) {
   const reduceMotion = useReducedMotion();
@@ -45,7 +49,7 @@ export default function Hero({ t }) {
   }, [reduceMotion]);
 
   return (
-    <section className="hero-stage relative flex min-h-[780px] items-center overflow-hidden pt-28 sm:min-h-screen">
+    <section className="hero-stage relative flex items-center overflow-hidden pt-20 sm:min-h-screen">
       <div className="hero-grid absolute inset-0" aria-hidden="true" />
       <div
         className="hero-orb absolute right-[-19rem] top-[8rem] h-[42rem] w-[42rem] rounded-full sm:right-[-12rem]"
@@ -54,19 +58,21 @@ export default function Hero({ t }) {
       <div className="hero-beam hero-beam-one" aria-hidden="true" />
       <div className="hero-beam hero-beam-two" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(340px,480px)] lg:items-center">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-5 pb-12 pt-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(400px,600px)] lg:items-center">
         <div>
-          <motion.p
-            className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-[#79b7ff] sm:text-xs"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.65 }}
-          >
-            <span className="h-px w-9 bg-[#79b7ff]" aria-hidden="true" />
-            {t.heroEyebrow}
-          </motion.p>
+          <img
+            src="/MOPRA-logo.png"
+            alt=""
+            className="mx-auto mb-4 h-24 w-24 object-contain sm:h-32 sm:w-32"
+          />
 
-          <h1 className="font-display max-w-5xl text-[clamp(3.8rem,9vw,8rem)] font-bold leading-[0.9] tracking-[-0.075em]">
+          <p className="hero-organization-name mb-6 text-center text-xs font-semibold uppercase leading-relaxed tracking-[0.12em] sm:text-sm">
+  {t.organizationFullName ??
+    "Mouvement Patriotique pour la Renaissance de L’Asile"}
+</p>
+
+
+          <h1 className="font-display max-w-5xl text-[clamp(3rem,7vw,7rem)] font-bold leading-[0.95] tracking-[-0.07em]">
             <Line delay={0.15}>{t.heroOne}</Line>
             <Line delay={0.31} className="gold-type">
               {t.heroTwo}
@@ -74,7 +80,7 @@ export default function Hero({ t }) {
           </h1>
 
           <motion.p
-            className="mt-5 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg"
+            className="mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -86,7 +92,7 @@ export default function Hero({ t }) {
           </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-wrap gap-3"
+            className="mt-6 flex flex-wrap gap-3"
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -96,16 +102,18 @@ export default function Hero({ t }) {
           >
             <Link
               to="/about"
-              className="inline-flex min-h-13 items-center gap-4 rounded-full bg-[#79b7ff] px-6 py-3 text-sm font-bold text-[#05070b] hover:bg-[#a6d0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full bg-[#79b7ff] px-6 py-3 text-sm font-bold text-[#05070b] hover:bg-[#a6d0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
             >
+              <BookOpen size={18} aria-hidden="true" />
               {t.discover}
               <ArrowDownRight size={18} aria-hidden="true" />
             </Link>
 
             <Link
-              to="/#tickets"
-              className="inline-flex min-h-13 items-center gap-4 rounded-full border border-[#79b7ff]/60 px-6 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-[#79b7ff]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+              to="/tickets"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#79b7ff]/60 px-6 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-[#79b7ff]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
             >
+              <Ticket size={18} aria-hidden="true" />
               {t.heroTickets}
               <ArrowDownRight size={18} aria-hidden="true" />
             </Link>
@@ -122,13 +130,23 @@ export default function Hero({ t }) {
           }}
         >
           <div className="hero-photo-frame">
-            <img
-              src={photos[photoIndex]}
-              alt={t.heroPhotoAlt}
-              className="hero-photo"
-            />
+            {photos.map((src, index) => (
+              <img
+                key={src}
+                src={src}
+                alt={index === photoIndex ? t.heroPhotoAlt : ""}
+                aria-hidden={index !== photoIndex}
+                className={`hero-photo-slide ${
+                  index === photoIndex ? "hero-photo-slide--active" : ""
+                }`}
+              />
+            ))}
           </div>
-          <p className="hero-photo-caption">{t.heroSide}</p>
+
+          <p className="hero-photo-caption flex items-center gap-2">
+            <MapPin size={16} aria-hidden="true" />
+            {t.heroEyebrow}
+          </p>
         </motion.div>
       </div>
 
