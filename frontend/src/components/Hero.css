@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Chakra+Petch:wght@500;600;700&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap");
 
 
@@ -189,23 +191,26 @@
 
 .hero-title {
   margin: 0;
-  font-family: "Chakra Petch", "Space Grotesk", sans-serif;
-  font-size: clamp(2.75rem, 6.5vw, 6.5rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.055em;
-  text-transform: uppercase;
+  line-height: 1.1;
 }
 
 .hero-title-blue {
   color: #8fc3ff;
-  text-shadow: 0 0 36px rgba(37, 99, 199, 0.4);
+  font-family: "Chakra Petch", "Space Grotesk", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
 .hero-title-red {
   color: #f27789;
-  text-shadow: 0 0 36px rgba(198, 40, 62, 0.4);
+  font-family: "Beau Rivage", cursive;
+  font-size: clamp(4.5rem, 9vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-shadow: 0 0 36px rgba(198, 40, 62, 0.35);
 }
+
 
 .hero-intro {
   display: flex;
