@@ -16,7 +16,9 @@ const gallery = Array.from(
 
 export default function Tickets({ t }) {
   const [status, setStatus] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const copy = t.ticketPage;
+  const API_URL = import.meta.env.VITE_API_URL || "";
 
   const paymentMethods = [
     ["Zelle", "payments@mopra.org"],
@@ -24,9 +26,38 @@ export default function Tickets({ t }) {
     [copy.bankTransfer, copy.bankDetails],
   ];
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setStatus(copy.notSent);
+    setSubmitting(true);
+    setStatus("");
+
+    const formData = new FormData(event.currentTarget);
+
+    const payload = {
+      firstName: String(formData.get("firstName") || ""),
+      lastName: String(formData.get("lastName") || ""),
+      contact: String(formData.get("contact") || ""),
+      quantity: Number(formData.get("quantity")) || 1,
+      message: String(formData.get("message") || ""),
+    };
+
+    try {
+      const response = await fetch(`${API_URL}/api/tickets/reserve`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setStatus(copy.reservationCreated);
+      } else {
+        setStatus(copy.reservationError);
+      }
+    } catch {
+      setStatus(copy.reservationError);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -172,11 +203,18 @@ export default function Tickets({ t }) {
 
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#e5c77e] px-6 py-4 font-bold text-[#151515] hover:bg-[#f3d994] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5c77e]"
+                  disabled={submitting}
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#e5c77e] px-6 py-4 font-bold text-[#151515] hover:bg-[#f3d994] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5c77e] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <Send size={17} aria-hidden="true" />
                   {copy.submit}
                 </button>
+
+                {submitting && (
+                  <p role="status" className="text-sm text-white/80">
+                    {copy.processing}
+                  </p>
+                )}
 
                 {status && (
                   <p role="status" className="text-sm text-white/80">

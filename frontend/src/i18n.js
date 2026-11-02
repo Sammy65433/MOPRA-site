@@ -65,14 +65,19 @@ mapClose: "Close expanded map",
       bankDetails: "Account details on request",
       questions: "Questions? Email",
       reserve: "Reserve your spot",
-      formWarning: "Demo form only. Do not enter real personal information.",
+      formWarning:
+        "Reservations are saved to the MOPRA ticket system. Please enter real contact details.",
       firstName: "First name",
       lastName: "Last name",
       contact: "Email or phone",
       quantity: "Number of tickets",
       message: "Message (optional)",
-      submit: "Preview form submission",
-      notSent: "Demo only. Your reservation was not sent.",
+      submit: "Reserve your spot",
+      processing: "Saving your reservation...",
+      reservationCreated:
+        "Reservation received. Complete your payment using the methods above; once payment is confirmed, your raffle ticket will be emailed or ready for in-person pickup.",
+      reservationError:
+        "We could not save the reservation. Please try again or email Cahctca@gmail.com.",
       gallery: "Illustrative photo gallery",
     },
 
@@ -148,15 +153,18 @@ mapClose: "Fermer la carte agrandie",
       questions: "Des questions ? Écrivez à",
       reserve: "Réserver votre place",
       formWarning:
-        "Formulaire de démonstration seulement. Ne saisissez pas de renseignements personnels réels.",
+        "Les réservations sont enregistrées dans le système de billets MOPRA. Veuillez saisir vos coordonnées réelles.",
       firstName: "Prénom",
       lastName: "Nom",
       contact: "Adresse courriel ou téléphone",
       quantity: "Nombre de billets",
       message: "Message (facultatif)",
-      submit: "Prévisualiser l’envoi du formulaire",
-      notSent:
-        "Démonstration seulement. Votre réservation n’a pas été envoyée.",
+      submit: "Réserver votre place",
+      processing: "Enregistrement de votre réservation…",
+      reservationCreated:
+        "Réservation reçue. Finalisez votre paiement selon les méthodes ci-dessus; une fois le paiement confirmé, votre billet de tombola sera envoyé par courriel ou délivré en personne.",
+      reservationError:
+        "Nous n’avons pas pu enregistrer la réservation. Veuillez réessayer ou écrire à Cahctca@gmail.com.",
       gallery: "Galerie de photos d’illustration",
     },
 
@@ -229,14 +237,18 @@ mapClose: "Fèmen kat agrandi",
       questions: "Ou gen kesyon? Ekri",
       reserve: "Rezève plas ou",
       formWarning:
-        "Se yon fòm demonstrasyon sèlman. Pa mete vrè enfòmasyon pèsonèl ou.",
+        "Rezèvasyon yo anrejistre nan sistèm tikè MOPRA a. Tanpri mete enfòmasyon kontak w reyal.",
       firstName: "Prenon",
       lastName: "Siyati",
       contact: "Imèl oswa telefòn",
       quantity: "Kantite tikè",
       message: "Mesaj (si ou vle)",
-      submit: "Teste voye fòm nan",
-      notSent: "Se yon demonstrasyon sèlman. Rezèvasyon w lan pa ale.",
+      submit: "Rezève plas ou",
+      processing: "N ap anrejistre rezèvasyon ou...",
+      reservationCreated:
+        "Rezèvasyon ou anrejistre. Konfime payman ou lè ki a; tikè ou tou ap eli tikè digital oswa tikè an pèsonèl.",
+      reservationError:
+        "Nou pa kapab anrejistre rezèvasyon ou. Rele bèt nan oswa kontakti nou nan Cahctca@gmail.com.",
       gallery: "Galri foto ilistrasyon",
     },
 

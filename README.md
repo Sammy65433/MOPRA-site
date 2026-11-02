@@ -22,6 +22,21 @@ A responsive, multilingual React website prototype for a developing nonprofit in
 - Framer Motion
 - Lucide React
 
+## Backend
+
+The ticket reservation and raffle ticket flow is backed by an Express + MongoDB API in `backend/`:
+
+- `POST /api/tickets/reserve` saves a "Reserve your spot" reservation to MongoDB (status: `pending`).
+- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number (e.g. `MOPRA-XXXXXX`) when payment is received (status: `paid`).
+- `PATCH /api/tickets/:id/delivery` marks the ticket as `digital` (email with QR ticket) or `in-person` (handoff) after payment.
+- `POST /api/tickets/:id/resend` resends the digital ticket email.
+
+See `backend/README.md` for setup and full API details.
+
+During local development the Vite dev server proxies `/api` to the backend at `http://localhost:5050` (see `frontend/vite.config.js`).
+
+For production, set the frontend build variable `VITE_API_URL` to the backend URL (e.g. `https://mopra-backend.onrender.com`). Vite only inlines variables prefixed with `VITE_` into the build, so it must be set before `npm run build`. The frontend then calls `${VITE_API_URL}/api/tickets/reserve`.
+
 ## Run locally
 
 From the `frontend` directory:
@@ -69,7 +84,7 @@ MOPRA-Website/
 
 - The countdown restarts as a **120-day demo** when the component loads. It does **not** show the official drawing date.
 - The displayed **$100 ticket price**, Zelle account, Cash App account, and bank-transfer option have **not been verified**. Do not send payment based on this preview.
-- The reservation form **does not send or save submissions**. Visitors should not enter real personal information.
+- The reservation form saves submissions to the MongoDB backend (`backend/`) when the API is running. Until payment is confirmed, reservations stay in `pending` status. Real personal information should only be entered once details are approved.
 - The displayed prize images are examples, not confirmed prizes. The current layout has **five demo cards**, while some translation arrays contain only four placeholder entries.
 - Gallery photos need review before being described as images of the organization’s activities.
 - The map gallery uses Google map imagery. Check usage rights and preserve required attribution before public use.
@@ -81,6 +96,6 @@ MOPRA-Website/
 1. Approve the organization name, mission, story, and all three language versions.
 2. Confirm the raffle prizes, number of draws, drawing date, eligibility, and official rules.
 3. Verify ticket pricing, payment accounts, and physical or digital ticket delivery.
-4. Connect the form to an approved submission destination and test the full workflow.
+4. Confirm the reservation, payment, and ticket delivery workflow with the backend and test the full flow.
 5. Review photo permissions, map attribution, accessibility, and mobile performance.
 6. Replace all meeting-preview notices and placeholder content only after details are approved.
