@@ -129,3 +129,6 @@ Environment variables to set on the backend service:
 3. Staff confirms payment via `PATCH /api/tickets/:id/payment` → ticket number issued, status `paid`.
 4. Staff sends ticket: `digital` (email with QR code) or `in-person` (handoff).
 5. If email fails, staff can retry with `POST /api/tickets/:id/resend`.
+
+
+
