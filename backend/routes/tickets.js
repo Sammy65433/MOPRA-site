@@ -170,7 +170,14 @@ router.patch("/:id/delivery", async (req, res) => {
     const ticket = await buildTicketPayload(reservation);
 
     if (deliveryMethod === "digital") {
-      const emailResult = await sendDigitalTicketEmail(reservation, ticket);
+      let emailResult = { sent: false, skipped: true, ticketNumber: reservation.ticketNumber };
+
+      try {
+        emailResult = await sendDigitalTicketEmail(reservation, ticket);
+      } catch (emailError) {
+        console.error("Digital ticket email failed:", emailError);
+        emailResult = { sent: false, error: "email_failed" };
+      }
 
       return res.status(200).json({ reservation, ticket, email: emailResult });
     }
