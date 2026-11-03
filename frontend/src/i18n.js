@@ -20,7 +20,7 @@ export const translations = {
     heroPhotoAlt: "Views of L’Asile and community-inspired imagery",
 
     raffleTag: "THE GRAND RAFFLE · 3RD CENTENARY OF L’ASILE",
-    raffleHeading: "A celebration with a purpose.",
+    raffleHeading: "A Celebration With A Purpose",
     raffleText:
       "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
     raffleDate: "December 31, 2027",

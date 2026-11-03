@@ -15,10 +15,12 @@ export default function PrizesPage({ t, language }) {
         aria-labelledby="raffle-intro-heading"
       >
         <div className="prizes-page__banner-content">
-          <p className="prizes-page__eyebrow">{t.raffleTag}</p>
-          <h1 id="raffle-intro-heading" className="prizes-page__title">
-            {t.raffleHeading}
-          </h1>
+          <div className="prizes-page__bubble">
+            <p className="prizes-page__eyebrow">{t.raffleTag}</p>
+            <h1 id="raffle-intro-heading" className="prizes-page__title">
+              {t.raffleHeading}
+            </h1>
+          </div>
           <p className="prizes-page__description">{t.raffleText}</p>
           <div className="mt-7 flex flex-wrap gap-4">
             <a href="#reserve-spot" className="prizes-top-cta">

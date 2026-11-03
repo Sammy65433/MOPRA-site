@@ -20,7 +20,6 @@ const maps = [
   { src: "/L'AsileGoogleMaps7.png", number: 7 },
   { src: "/LasileMap45.jpg", number: 8 },
   { src: "/LasileMap46.png", number: 9 },
-  { src: "/LasileMap47.jpg", number: 10 },
 ];
 
 export default function LasileMap({ t }) {
@@ -33,7 +32,7 @@ export default function LasileMap({ t }) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % maps.length);
-    }, 4500);
+    }, 5000);
 
     return () => window.clearInterval(timer);
   }, [paused, selected]);
