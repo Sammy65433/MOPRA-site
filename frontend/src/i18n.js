@@ -15,6 +15,7 @@ export const translations = {
       "MOPRA brings together people who love L’Asile and believe in its future. Through community, celebration, and shared responsibility, we are raising support for a stronger tomorrow—starting with our Grand Raffle for the 3rd Centenary of L’Asile.",
     discover: "Read our story",
     heroTickets: "Raffle and tickets",
+    heroPrizes: "The raffle and prizes",
     heroSide: "L’Asile, Haiti",
     heroPhotoAlt: "Views of L’Asile and community-inspired imagery",
 
@@ -42,6 +43,13 @@ export const translations = {
       "The drawing will take place on December 31, 2027, in L’Asile and via Zoom. Drawing time and Zoom access information will be shared by the organizers.",
     ],
     raffleDetailsCta: "See ticket information",
+    rafflePrizesCta: "See the prizes",
+    cashTag: "Cash alternatives",
+    cashTitle: "Take the prize—or take the cash.",
+    cashText:
+      "Every prize includes a cash alternative. The choice belongs to the winner.",
+    cashImageAlt: "U.S. currency representing the raffle’s cash alternatives",
+    cashAmounts: ["$60,000", "$10,000", "$2,500", "$1,500"],
     prizeImageDisclaimer:
       "Prize photographs are illustrative. Refer to the official flyer and final raffle rules for the awarded prize specifications.",
 
@@ -164,6 +172,7 @@ export const translations = {
       "Le MOPRA rassemble des personnes qui aiment L’Asile et croient en son avenir. Par la communauté, la célébration et la responsabilité partagée, nous mobilisons du soutien pour bâtir un avenir plus solide, à commencer par notre grande tombola du 3e centenaire de L’Asile.",
     discover: "Lire notre histoire",
     heroTickets: "Tombola et billets",
+    heroPrizes: "La tombola et les prix",
     heroSide: "L’Asile, Haïti",
     heroPhotoAlt: "Vues de L’Asile et images inspirées de la communauté",
 
@@ -191,6 +200,13 @@ export const translations = {
       "Le tirage aura lieu le 31 décembre 2027 à L’Asile et sur Zoom. L’heure du tirage et les informations d’accès à Zoom seront communiquées par les organisateurs.",
     ],
     raffleDetailsCta: "Voir les informations sur les billets",
+    rafflePrizesCta: "Voir les prix",
+    cashTag: "Options en espèces",
+    cashTitle: "Prenez le prix — ou l’argent.",
+    cashText:
+      "Chaque prix comprend une option en espèces. Le choix appartient au gagnant.",
+    cashImageAlt: "Dollars américains représentant les options en espèces de la tombola",
+    cashAmounts: ["60 000 $", "10 000 $", "2 500 $", "1 500 $"],
     prizeImageDisclaimer:
       "Les photos des prix sont fournies à titre indicatif. Consultez l’affiche officielle et le règlement définitif pour connaître les caractéristiques des prix remis.",
 
@@ -313,6 +329,7 @@ export const translations = {
       "MOPRA rasanble moun ki renmen Lazil epi ki kwè nan lavni li. Atravè kominote, selebrasyon ak responsablite nou pataje, n ap mobilize sipò pou yon demen pi solid—ann kòmanse ak Gran Tombola pou 3yèm Santnè Lazil la.",
     discover: "Li istwa nou",
     heroTickets: "Tombola ak tikè",
+    heroPrizes: "Tombola a ak prim yo",
     heroSide: "Lazil, Ayiti",
     heroPhotoAlt: "Vi Lazil ak imaj ki reprezante lespri kominote a",
 
@@ -340,6 +357,12 @@ export const translations = {
       "Tiraj la ap fèt 31 desanm 2027 Lazil ak sou Zoom. Òganizatè yo ap pataje lè tiraj la ak enfòmasyon pou antre sou Zoom.",
     ],
     raffleDetailsCta: "Gade enfòmasyon sou tikè yo",
+    rafflePrizesCta: "Gade prim yo",
+    cashTag: "Opsyon lajan kach",
+    cashTitle: "Pran prim lan—oswa pran lajan kach la.",
+    cashText: "Chak prim gen yon opsyon lajan kach. Se ganyan an ki chwazi.",
+    cashImageAlt: "Lajan dola ameriken ki reprezante opsyon lajan kach tombola a",
+    cashAmounts: ["60 000 dola", "10 000 dola", "2 500 dola", "1 500 dola"],
     prizeImageDisclaimer:
       "Foto prim yo se ilistrasyon. Gade afy ofisyèl la ak règ definitif tombola a pou konnen karakteristik prim yo ap remèt.",
 

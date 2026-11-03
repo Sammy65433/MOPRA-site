@@ -10,7 +10,11 @@ import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import "./RaffleDetails.css";
 
-export default function RaffleDetails({ t, showCta = true }) {
+export default function RaffleDetails({
+  t,
+  showCta = true,
+  showPrizeCta = false,
+}) {
   const facts = [
     {
       Icon: CalendarDays,
@@ -82,11 +86,25 @@ export default function RaffleDetails({ t, showCta = true }) {
           </ul>
         </div>
 
-        {showCta && (
-          <Link to="/tickets" className="raffle-details__cta">
-            {t.raffleDetailsCta}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+        {(showCta || showPrizeCta) && (
+          <div className="raffle-details__actions">
+            {showCta && (
+              <Link to="/tickets" className="raffle-details__cta">
+                {t.raffleDetailsCta}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            )}
+
+            {showPrizeCta && (
+              <Link
+                to="/prizes#raffle"
+                className="raffle-details__cta raffle-details__cta--secondary"
+              >
+                {t.rafflePrizesCta}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            )}
+          </div>
         )}
       </Reveal>
     </section>

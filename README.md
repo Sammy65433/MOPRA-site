@@ -6,9 +6,9 @@ A responsive, multilingual React website for the Mouvement Patriotique pour la R
 
 ## Pages and features
 
-- **Home (`/`):** Animated community hero, raffle ticker, countdown to December 31, 2027, official raffle flyer and rules, four prize cards, story introduction, ticket reservation preview, and L’Asile map gallery.
+- **Home (`/`):** Animated community hero with links to Our Story, Raffle/Prizes, and Tickets; raffle ticker; countdown to December 31, 2027; official raffle flyer and rules; ticket payment and reservation; and L’Asile map gallery. Full story and prize cards are not duplicated on this page.
 - **Our Story (`/about`):** An expanded MOPRA community narrative in all three site languages, community values, official raffle details, and an interactive seven-image L’Asile map gallery.
-- **The Raffle (`/prizes`):** Grand Raffle introduction, real-date countdown, official flyer, drawing information, prize rules, and four illustrated prize cards with cash alternatives.
+- **The Raffle (`/prizes`):** Grand Raffle introduction, real-date countdown, official flyer, drawing information, prize rules, four illustrated prize cards, and a dedicated cash-alternative section with a currency photo.
 - **Tickets (`/tickets`):** Official raffle information, confirmed $100.00 USD ticket price, official MOPRA payment QR code, clickable online payment button, six-image gallery, and reservation form.
 - **Navigation:** Desktop navigation with icons, a mobile dropdown, language controls, and a clickable logo that returns to Home.
 - **Languages:** English, French, and Haitian Creole. The selected language is saved in the browser.

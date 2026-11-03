@@ -160,14 +160,22 @@
   background: #e5c77e;
 }
 
+.raffle-details__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
 .raffle-details__cta {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
   width: fit-content;
-  margin: 2rem auto 0;
   padding: 0.95rem 1.5rem;
+  border: 1px solid #79b7ff;
   border-radius: 999px;
   background: #79b7ff;
   color: #05070b;
@@ -178,6 +186,16 @@
 
 .raffle-details__cta:hover {
   background: #a6d0ff;
+}
+
+.raffle-details__cta--secondary {
+  background: transparent;
+  color: #a6d0ff;
+}
+
+.raffle-details__cta--secondary:hover {
+  background: rgba(121, 183, 255, 0.12);
+  color: #fff;
 }
 
 .raffle-details__cta:focus-visible {

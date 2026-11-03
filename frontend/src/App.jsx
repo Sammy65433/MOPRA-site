@@ -5,8 +5,6 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import RaffleMarquee from "./components/RaffleMarquee";
 import RaffleDetails from "./components/RaffleDetails";
-import Prizes from "./components/Prizes";
-import About from "./components/About";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
@@ -62,9 +60,7 @@ export default function App() {
               <Hero t={t} />
               <RaffleMarquee language={language} />
               <Countdown language={language} />
-              <RaffleDetails t={t} />
-              <Prizes t={t} />
-              <About t={t} />
+              <RaffleDetails t={t} showPrizeCta />
               <Tickets t={t} />
               <section
                 className="lasile-map-section"

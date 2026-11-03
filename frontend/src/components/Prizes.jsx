@@ -1,4 +1,4 @@
-import { Gift, Sparkles } from "lucide-react";
+import { BadgeDollarSign, Gift, Sparkles } from "lucide-react";
 import Reveal from "./Reveal";
 import "./Prizes.css";
 
@@ -92,6 +92,32 @@ export default function Prizes({ t = {} }) {
             );
           })}
         </div>
+
+        <Reveal className="cash-alternative">
+          <div className="cash-alternative__image">
+            <img
+              src="/cash-in-hand.jpg"
+              alt={t.cashImageAlt}
+              loading="lazy"
+            />
+          </div>
+          <div className="cash-alternative__content">
+            <p className="cash-alternative__tag">
+              <BadgeDollarSign size={20} aria-hidden="true" />
+              {t.cashTag}
+            </p>
+            <h3>{t.cashTitle}</h3>
+            <p>{t.cashText}</p>
+            <ul>
+              {t.prize_place.map((place, index) => (
+                <li key={place}>
+                  <span>{place}</span>
+                  <strong>{t.cashAmounts[index]}</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

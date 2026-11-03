@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDownRight,
   BookOpen,
+  Gift,
   HeartHandshake,
   MapPin,
   Ticket,
@@ -127,6 +128,15 @@ export default function Hero({ t }) {
             >
               <BookOpen size={18} aria-hidden="true" />
               {t.discover}
+              <ArrowDownRight size={18} aria-hidden="true" />
+            </Link>
+
+            <Link
+              to="/prizes"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#79b7ff]/60 px-6 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-[#79b7ff]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+            >
+              <Gift size={18} aria-hidden="true" />
+              {t.heroPrizes}
               <ArrowDownRight size={18} aria-hidden="true" />
             </Link>
 
