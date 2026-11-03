@@ -141,25 +141,30 @@
   position: relative;
   display: block;
   width: 100%;
-  height: clamp(320px, 52vw, 600px);
-  padding: 0;
+  height: clamp(340px, 52vw, 600px);
+  padding: 8px;
   border: 0;
   background: #0d1629;
   cursor: zoom-in;
   overflow: hidden;
 }
 
-.lasile-map__stage-img {
+.lasile-map__slide {
+  position: absolute;
+  inset: 8px;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  border-radius: 1rem;
   object-fit: cover;
-  animation: map-slide-fade 550ms ease both;
-  transition: transform 600ms ease;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.2s ease-in-out, transform 5s linear;
 }
 
-.lasile-map__stage:hover .lasile-map__stage-img {
-  transform: scale(1.02);
+.lasile-map__slide--active {
+  opacity: 1;
+  transform: scale(1.06);
 }
 
 .lasile-map__badge {

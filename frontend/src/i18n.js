@@ -25,7 +25,7 @@ export const translations = {
       "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
     raffleDate: "December 31, 2027",
     raffleLocation: "L’Asile, Haiti, and live via Zoom",
-    raffleDetailsTitle: "One community. Four prizes. A lasting impact.",
+    raffleDetailsTitle: "One Community! * Four Prizes! * A Lasting Impact!",
     raffleDetailsText:
       "The Grand Raffle connects the excitement of L’Asile’s 300th anniversary with an opportunity to invest in the community’s future. Every prize includes the option of the listed item or its cash alternative.",
     raffleFlyerAlt:
@@ -74,14 +74,14 @@ export const translations = {
     ],
 
     mapEyebrow: "Explore the area",
-    mapTitle: "Map views of L’Asile",
-    mapDescription: "Explore where L’Asile is located in Haiti.",
+    mapTitle: "Map Views Of L’Asile",
+    mapDescription: "Explore Where L’Asile Is Located in Haiti.",
     mapLink: "View L’Asile on Google Maps ↗",
-    mapExpand: "Expand map view",
-    mapClose: "Close expanded map",
+    mapExpand: "Expand Map View",
+    mapClose: "Close Expanded Map",
 
     aboutTag: "OUR COMMUNITY · OUR SHARED STORY",
-    aboutHeading: "Rooted in L’Asile. Building its renaissance together.",
+    aboutHeading: "Rooted in L’Asile. Building its Renaissance Together.",
     aboutText:
       "MOPRA—the Mouvement Patriotique pour la Renaissance de L’Asile—is a community of people connected by a common love for L’Asile. Whether we live in the town, elsewhere in Haiti, or throughout the diaspora, we carry its memories, its promise, and its future with us. Our story is about turning that connection into collective action.",
     aboutPhotoAlt: "Community-inspired imagery representing the spirit of L’Asile",
@@ -102,18 +102,18 @@ export const translations = {
       "This anniversary also calls us to patience. Real community development is rarely the result of one event, one donation, or one moment of attention. It is built through consistency: returning to the conversation, learning from mistakes, strengthening partnerships, and continuing even when progress feels slow. The Grand Raffle is an important milestone, but it is not the whole mission. Its deepest value will be measured by the relationships it helps build and the momentum it creates for responsible action long after the final winning number is called.",
       "Our story is still being written, and that is what makes this moment so meaningful. MOPRA does not ask people to observe L’Asile’s future from a distance. We invite them to participate in it—with generosity, with ideas, with time, with honest questions, and with pride in a place that connects us. Three hundred years of history have brought us here. What comes next depends on what we are willing to build together. For L’Asile, for its people, and for the generations still to come, we choose to begin with unity, hope, and shared responsibility.",
     ],
-    aboutPillarsTitle: "What carries our story forward",
+    aboutPillarsTitle: "What Carries Our Story Forward",
     aboutPillars: [
       {
-        title: "Community before distance",
+        title: "Community Before Distance",
         text: "We bring people in L’Asile and throughout the diaspora into one shared conversation, grounded in listening, dignity, and local knowledge.",
       },
       {
-        title: "Celebration with purpose",
+        title: "Celebration With Purpose",
         text: "The 3rd Centenary Grand Raffle turns a historic celebration into an opportunity to gather support and renew our commitment to L’Asile.",
       },
       {
-        title: "Trust through action",
+        title: "Trust Through Action",
         text: "We value clear communication, responsible fundraising, honest expectations, and community-centered planning as the foundation for lasting progress.",
       },
     ],
@@ -125,18 +125,18 @@ export const translations = {
     prizeReserveCta: "Reserve Your Spot · $99.99",
 
     ticketTag: "SUPPORT THE RAFFLE · SUPPORT L’ASILE",
-    ticketHeading: "Your participation can reach beyond the prize.",
+    ticketHeading: "Your Participation Can Reach Beyond The Prize.",
     ticketText:
-      "The Grand Raffle celebrates 300 years of L’Asile and brings people together around its future. Tickets are confirmed at $99.99 USD each. Scan the official MOPRA QR code or click the payment button, and complete the reservation form below so we have your details.",
+      "The Grand Raffle Celebrates 300 years of L’Asile and brings people together around its future. Tickets are confirmed at $99.99 USD each. Scan the official MOPRA QR code or click the payment button, and complete the reservation form below so we have your details.",
     ticketButton: "Grand Raffle · December 31, 2027",
     dateNote: "Drawing in L’Asile and via Zoom · Tickets: $99.99 USD each.",
     ticketPage: {
       getTicket: "Get Your Ticket",
-      price: "Raffle ticket · $99.99 USD",
+      price: "Raffle Ticket · $99.99 USD",
       paymentIntro:
         "The official MOPRA QR code is the main way to pay for raffle tickets. Scan it with your phone camera or click it to open the payment page. After paying (or right before), complete the reservation form so we match your name and contact to your payment.",
       warning:
-        "Ticket price confirmed: $99.99 USD each. Complete both your reservation and your QR/Clover payment so your official raffle ticket can be issued.",
+        "Ticket Price Confirmed: $99.99 USD each. Complete both your reservation and your QR/Clover payment so your official raffle ticket can be issued.",
       waysToPay: "Main payment method · MOPRA QR code",
       cloverNote: "Click the QR code or payment button to open the secure checkout in a new tab.",
       scanQr: "Scan or click the official MOPRA QR code to pay $99.99",
@@ -146,8 +146,8 @@ export const translations = {
       reserve: "Reserve Your Spot",
       formWarning:
         "Enter the same name and contact details you use when paying so we can immediately match your reservation to your QR payment.",
-      firstName: "First name",
-      lastName: "Last name",
+      firstName: "First Name",
+      lastName: "Last Name",
       contact: "Email or Phone",
       quantity: "Number of tickets ($99.99 each)",
       totalLabel: "Total to Pay",
@@ -165,7 +165,7 @@ export const translations = {
     },
 
     footer: "Connected by L’Asile. Raising support together.",
-    footerSlogan: "Community at heart. Haiti in our future.",
+    footerSlogan: "Community at Heart. Haiti in Our Future.",
   },
 
   fr: {

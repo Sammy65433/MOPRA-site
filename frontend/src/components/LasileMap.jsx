@@ -25,17 +25,14 @@ const maps = [
 export default function LasileMap({ t }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selected, setSelected] = useState(null);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused || selected !== null) return undefined;
-
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % maps.length);
     }, 5000);
 
     return () => window.clearInterval(timer);
-  }, [paused, selected]);
+  }, []);
 
   useEffect(() => {
     if (selected === null) return undefined;
@@ -66,11 +63,7 @@ export default function LasileMap({ t }) {
 
   return (
     <>
-      <figure
-        className="lasile-map"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+      <figure className="lasile-map">
         <figcaption className="lasile-map__header">
           <div className="lasile-map__heading">
             <span className="lasile-map__eyebrow">
@@ -105,12 +98,17 @@ export default function LasileMap({ t }) {
             onClick={() => setSelected(activeIndex)}
             aria-label={`${t.mapExpand} ${currentMap.number}`}
           >
-            <img
-              key={currentMap.src}
-              src={currentMap.src}
-              alt={`${t.mapTitle} ${currentMap.number}`}
-              className="lasile-map__stage-img"
-            />
+            {maps.map(({ src, number }, index) => (
+              <img
+                key={src}
+                src={src}
+                alt={index === activeIndex ? `${t.mapTitle} ${number}` : ""}
+                aria-hidden={index !== activeIndex}
+                className={`lasile-map__slide ${
+                  index === activeIndex ? "lasile-map__slide--active" : ""
+                }`}
+              />
+            ))}
             <span className="lasile-map__badge">
               {currentMap.number} / {maps.length}
             </span>
