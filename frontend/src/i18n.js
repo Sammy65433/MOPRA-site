@@ -125,7 +125,7 @@ export const translations = {
     prizeReserveCta: "Reserve Your Spot · $99.99",
 
     ticketTag: "SUPPORT THE RAFFLE · SUPPORT L’ASILE",
-    ticketHeading: "Your Participation Can Reach Beyond The Prize.",
+    ticketHeading: "Your Participation Can Reach Beyond The Prize!",
     ticketText:
       "The Grand Raffle Celebrates 300 years of L’Asile and brings people together around its future. Tickets are confirmed at $99.99 USD each. Scan the official MOPRA QR code or click the payment button, and complete the reservation form below so we have your details.",
     ticketButton: "Grand Raffle · December 31, 2027",
