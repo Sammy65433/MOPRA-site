@@ -1,57 +1,163 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
+  MapPin,
+  Ticket,
+  X,
+} from "lucide-react";
 import "./LasileMap.css";
 
-const maps = Array.from({ length: 7 }, (_, index) => ({
-  src: `/L'AsileGoogleMaps${index + 1}.png`,
-  number: index + 1,
-}));
+const maps = [
+  { src: "/L'AsileGoogleMaps1.png", number: 1 },
+  { src: "/L'AsileGoogleMaps2.png", number: 2 },
+  { src: "/L'AsileGoogleMaps3.png", number: 3 },
+  { src: "/L'AsileGoogleMaps4.png", number: 4 },
+  { src: "/L'AsileGoogleMaps5.png", number: 5 },
+  { src: "/L'AsileGoogleMaps6.png", number: 6 },
+  { src: "/L'AsileGoogleMaps7.png", number: 7 },
+  { src: "/LasileMap45.jpg", number: 8 },
+  { src: "/LasileMap46.png", number: 9 },
+  { src: "/LasileMap47.jpg", number: 10 },
+];
 
 export default function LasileMap({ t }) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [selected, setSelected] = useState(null);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || selected !== null) return undefined;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % maps.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [paused, selected]);
 
   useEffect(() => {
     if (selected === null) return undefined;
 
     function onKeyDown(event) {
       if (event.key === "Escape") setSelected(null);
+      if (event.key === "ArrowRight") {
+        setSelected((curr) => (curr + 1) % maps.length);
+      }
+      if (event.key === "ArrowLeft") {
+        setSelected((curr) => (curr - 1 + maps.length) % maps.length);
+      }
     }
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [selected]);
 
+  const currentMap = maps[activeIndex];
+
+  function prevSlide() {
+    setActiveIndex((curr) => (curr - 1 + maps.length) % maps.length);
+  }
+
+  function nextSlide() {
+    setActiveIndex((curr) => (curr + 1) % maps.length);
+  }
+
   return (
     <>
-      <figure className="lasile-map">
-        <figcaption className="lasile-map__heading">
-          <span className="lasile-map__eyebrow">{t.mapEyebrow}</span>
-          <h2>{t.mapTitle}</h2>
-          <p>{t.mapDescription}</p>
+      <figure
+        className="lasile-map"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <figcaption className="lasile-map__header">
+          <div className="lasile-map__heading">
+            <span className="lasile-map__eyebrow">
+              <MapPin size={15} aria-hidden="true" />
+              {t.mapEyebrow}
+            </span>
+            <h2>{t.mapTitle}</h2>
+            <p>{t.mapDescription}</p>
+          </div>
+
+          <div className="lasile-map__cta-group">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=L%27Asile%2C%20Haiti"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lasile-map__location-link"
+            >
+              {t.mapLink}
+            </a>
+            <a href="#reserve-spot" className="lasile-map__reserve-link">
+              <Ticket size={17} aria-hidden="true" />
+              {t.prizeReserveCta ?? "Reserve your spot · $99.99"}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </figcaption>
 
-        <div className="lasile-map__panels">
+        <div className="lasile-map__slideshow">
+          <button
+            type="button"
+            className="lasile-map__stage"
+            onClick={() => setSelected(activeIndex)}
+            aria-label={`${t.mapExpand} ${currentMap.number}`}
+          >
+            <img
+              key={currentMap.src}
+              src={currentMap.src}
+              alt={`${t.mapTitle} ${currentMap.number}`}
+              className="lasile-map__stage-img"
+            />
+            <span className="lasile-map__badge">
+              {currentMap.number} / {maps.length}
+            </span>
+            <span className="lasile-map__expand-pill">
+              <Expand size={15} aria-hidden="true" />
+              {t.mapExpand}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={prevSlide}
+            className="lasile-map__nav lasile-map__nav--prev"
+            aria-label="Previous map view"
+          >
+            <ChevronLeft size={26} aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            onClick={nextSlide}
+            className="lasile-map__nav lasile-map__nav--next"
+            aria-label="Next map view"
+          >
+            <ChevronRight size={26} aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="lasile-map__thumbs" role="tablist" aria-label={t.mapTitle}>
           {maps.map(({ src, number }, index) => (
             <button
               key={src}
               type="button"
-              className="lasile-map__thumbnail"
-              onClick={() => setSelected(index)}
-              aria-label={`${t.mapExpand} ${number}`}
+              role="tab"
+              aria-selected={index === activeIndex}
+              className={`lasile-map__thumb ${
+                index === activeIndex ? "lasile-map__thumb--active" : ""
+              }`}
+              onClick={() => setActiveIndex(index)}
+              aria-label={`${t.mapTitle} ${number}`}
             >
               <img src={src} alt="" loading="lazy" />
+              <span>{number}</span>
             </button>
           ))}
         </div>
-
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=L%27Asile%2C%20Haiti"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lasile-map__location-link"
-        >
-          {t.mapLink}
-        </a>
       </figure>
 
       {selected !== null && (

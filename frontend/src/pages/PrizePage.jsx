@@ -1,5 +1,6 @@
 import { ArrowUpRight, Ticket } from "lucide-react";
 import Countdown from "../Countdown";
+import LasileMap from "../components/LasileMap";
 import Prizes from "../components/Prizes";
 import RaffleDetails from "../components/RaffleDetails";
 import RaffleMarquee from "../components/RaffleMarquee";
@@ -36,6 +37,10 @@ export default function PrizesPage({ t, language }) {
         <Prizes t={t} />
         <Tickets t={t} />
       </div>
+
+      <section className="lasile-map-section" aria-label="L’Asile map gallery">
+        <LasileMap t={t} />
+      </section>
     </main>
   );
 }

@@ -3,8 +3,8 @@ const officialName = "Mouvement Patriotique pour la Renaissance de L’Asile";
 export const translations = {
   en: {
     navHome: "Home",
-    navAbout: "Our story",
-    navPrizes: "The raffle",
+    navAbout: "Our Story",
+    navPrizes: "The Raffle",
     navTickets: "Tickets",
 
     organizationFullName: officialName,
@@ -13,16 +13,16 @@ export const translations = {
     heroTwo: "L’ASILE",
     heroText:
       "MOPRA brings together people who love L’Asile and believe in its future. Through community, celebration, and shared responsibility, we are raising support for a stronger tomorrow—starting with our Grand Raffle for the 3rd Centenary of L’Asile.",
-    discover: "Read our story",
-    heroTickets: "Raffle and tickets",
-    heroPrizes: "The raffle and prizes",
+    discover: "Read our Story",
+    heroTickets: "Raffle and Tickets",
+    heroPrizes: "The Raffle and Prizes",
     heroSide: "L’Asile, Haiti",
     heroPhotoAlt: "Views of L’Asile and community-inspired imagery",
 
     raffleTag: "THE GRAND RAFFLE · 3RD CENTENARY OF L’ASILE",
     raffleHeading: "A celebration with a purpose.",
     raffleText:
-      "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four remarkable prizes, a community united across borders, and one shared goal: raising support to help L’Asile move forward.",
+      "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
     raffleDate: "December 31, 2027",
     raffleLocation: "L’Asile, Haiti, and live via Zoom",
     raffleDetailsTitle: "One community. Four prizes. A lasting impact.",
@@ -36,7 +36,7 @@ export const translations = {
     raffleLocationLabel: "Where the drawing happens",
     rafflePrizesLabel: "Prize choices",
     rafflePrizesValue: "Four prizes, each with a cash alternative",
-    raffleRulesTitle: "Important raffle information",
+    raffleRulesTitle: "Important Raffle Information",
     raffleRules: [
       "Prizes will be awarded in U.S. currency and in the United States.",
       "Winners are responsible for taxes and shipping accommodations.",
@@ -47,18 +47,18 @@ export const translations = {
     cashTag: "Cash alternatives",
     cashTitle: "Take the prize—or take the cash.",
     cashText:
-      "Every prize includes a cash alternative. The choice belongs to the winner.",
+      "Every Prize includes a cash alternative. The choice belongs to the winner.",
     cashImageAlt: "U.S. currency representing the raffle’s cash alternatives",
     cashAmounts: ["$60,000", "$10,000", "$2,500", "$1,500"],
     prizeImageDisclaimer:
       "Prize photographs are illustrative. Refer to the official flyer and final raffle rules for the awarded prize specifications.",
 
     prize: "Prize",
-    prizePending: "Details coming soon",
-    prizes_eyebrow: "Four prizes · Four opportunities",
-    prizes_title: "Choose the prize. Or choose the cash.",
+    prizePending: "Details Coming Soon",
+    prizes_eyebrow: "Four Prizes · Four Opportunities",
+    prizes_title: "Choose the Prize Or Choose the Cash.",
     prizes_sub:
-      "From a Jeep Wrangler to a complete solar system, every winning ticket offers a remarkable prize or a cash alternative.",
+      "From a Jeep Wrangler to a Complete Solar System, every winning ticket offers a remarkable prize or a cash alternative.",
     prize_place: ["1st prize", "2nd prize", "3rd prize", "4th prize"],
     prize_name: [
       "2026 Jeep Wrangler",
@@ -68,7 +68,7 @@ export const translations = {
     ],
     prize_note: [
       "Or take $60,000 in cash.",
-      "Includes a lithium battery, or take $10,000 in cash.",
+      "Includes a Lithium battery, or take $10,000 in cash.",
       "Or take $2,500 in cash.",
       "Or take $1,500 in cash.",
     ],
@@ -122,7 +122,7 @@ export const translations = {
     aboutGallerySub:
       "Every moment reminds us why we stand together. Click any photo or button below to reserve your $99.99 raffle ticket.",
     aboutReserveCta: "Get Your Ticket & Reserve Your Spot ($99.99)",
-    prizeReserveCta: "Reserve your spot · $99.99",
+    prizeReserveCta: "Reserve Your Spot · $99.99",
 
     ticketTag: "SUPPORT THE RAFFLE · SUPPORT L’ASILE",
     ticketHeading: "Your participation can reach beyond the prize.",
@@ -131,7 +131,7 @@ export const translations = {
     ticketButton: "Grand Raffle · December 31, 2027",
     dateNote: "Drawing in L’Asile and via Zoom · Tickets: $99.99 USD each.",
     ticketPage: {
-      getTicket: "Get your ticket",
+      getTicket: "Get Your Ticket",
       price: "Raffle ticket · $99.99 USD",
       paymentIntro:
         "The official MOPRA QR code is the main way to pay for raffle tickets. Scan it with your phone camera or click it to open the payment page. After paying (or right before), complete the reservation form so we match your name and contact to your payment.",
@@ -143,25 +143,25 @@ export const translations = {
       qrAlt: "Official MOPRA QR code for $99.99 raffle ticket payment",
       paymentButton: "Pay Online · $99.99 USD",
       questions: "Questions? Email",
-      reserve: "Reserve your spot",
+      reserve: "Reserve Your Spot",
       formWarning:
         "Enter the same name and contact details you use when paying so we can immediately match your reservation to your QR payment.",
       firstName: "First name",
       lastName: "Last name",
-      contact: "Email or phone",
+      contact: "Email or Phone",
       quantity: "Number of tickets ($99.99 each)",
-      totalLabel: "Total to pay",
+      totalLabel: "Total to Pay",
       message: "Message or payment note (optional)",
       submit: "Reserve your spot ($99.99/ticket)",
       processing: "Saving your reservation...",
       reservationCreated:
-        "Reservation saved! Now complete your payment with the MOPRA QR code or send your reservation confirmation to Cahctca@gmail.com below.",
+        "Reservation Saved! Now complete your payment with the MOPRA QR code or send your reservation confirmation to Cahctca@gmail.com below.",
       reservationError:
         "Online reservation server is offline—use the buttons below to pay via QR/Clover and send your reservation directly to Cahctca@gmail.com.",
       nextStepTitle: "Next step: Complete your payment & email confirmation",
       payNowCta: "1. Pay via MOPRA QR / Clover Checkout",
       sendGmailCta: "2. Send Reservation to Cahctca@gmail.com",
-      gallery: "Community & raffle gallery",
+      gallery: "Community & Raffle Gallery",
     },
 
     footer: "Connected by L’Asile. Raising support together.",

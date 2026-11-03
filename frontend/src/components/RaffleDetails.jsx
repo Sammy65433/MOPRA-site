@@ -37,9 +37,9 @@ export default function RaffleDetails({
     <section className="raffle-details" aria-labelledby="raffle-details-title">
       <Reveal className="raffle-details__inner">
         <header className="raffle-details__header">
-          <p className="section-tag justify-center">
-            <Gift size={17} aria-hidden="true" />
-            {t.raffleTag}
+          <p className="raffle-details__banner-tag">
+            <Gift size={26} aria-hidden="true" />
+            <span>{t.raffleTag}</span>
           </p>
           <h2 id="raffle-details-title" className="raffle-details__title">
             {t.raffleDetailsTitle}

@@ -1,14 +1,22 @@
 .lasile-map {
   position: relative;
   isolation: isolate;
-  max-width: 72rem;
-  margin: 2rem auto;
-  padding: 1rem;
+  max-width: 80rem;
+  margin: 1rem auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   overflow: hidden;
-  border: 1px solid rgba(121, 183, 255, 0.3);
-  border-radius: 1.5rem;
-  background: #0b0f17;
-  color: #f7f4e9;
+  border: 1.5px solid rgba(229, 199, 126, 0.48);
+  border-radius: 2rem;
+  background: linear-gradient(
+    145deg,
+    rgba(16, 30, 58, 0.86),
+    rgba(28, 20, 44, 0.86)
+  );
+  box-shadow:
+    0 28px 85px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(18px);
+  color: #faf7f0;
 }
 
 .lasile-map::before {
@@ -17,68 +25,251 @@
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(rgba(5, 7, 11, 0.76), rgba(5, 7, 11, 0.88)),
+    linear-gradient(
+      135deg,
+      rgba(16, 29, 56, 0.72),
+      rgba(26, 36, 66, 0.64),
+      rgba(30, 20, 44, 0.74)
+    ),
     url("/Lasilepic49.jpg") center / cover no-repeat;
-  opacity: 0.8;
+  opacity: 0.65;
   pointer-events: none;
 }
 
-.lasile-map__panels {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.lasile-map__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.lasile-map__heading {
+  max-width: 38rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(229, 199, 126, 0.4);
+  border-radius: 1.25rem;
+  background: rgba(14, 26, 50, 0.78);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+}
+
+.lasile-map__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #f7df9f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.lasile-map__heading h2 {
+  margin: 0.45rem 0 0;
+  color: #ffffff;
+  font-family: "Outfit", "Space Grotesk", sans-serif;
+  font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.lasile-map__heading p {
+  margin: 0.55rem 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.98rem;
+}
+
+.lasile-map__cta-group {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
 }
 
-.lasile-map__thumbnail {
-  display: block;
-  min-width: 0;
-  width: 100%;
-  height: 11rem;
+.lasile-map__location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.35rem;
+  border: 1px solid rgba(147, 197, 253, 0.65);
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.32);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.lasile-map__location-link:hover {
+  background: rgba(37, 99, 235, 0.52);
+  transform: translateY(-2px);
+}
+
+.lasile-map__reserve-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.45rem;
+  border: 1px solid #f5d98e;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e5c77e, #f7df9f);
+  color: #0f172a;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(229, 199, 126, 0.32);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.lasile-map__reserve-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(229, 199, 126, 0.48);
+}
+
+.lasile-map__slideshow {
+  position: relative;
+  border-radius: 1.5rem;
   overflow: hidden;
+  border: 2px solid rgba(229, 199, 126, 0.55);
+  background: #0d1629;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.lasile-map__stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: clamp(320px, 52vw, 600px);
   padding: 0;
   border: 0;
-  border-radius: 1rem;
-  background: #141e2d;
+  background: #0d1629;
   cursor: zoom-in;
-  opacity: 0;
-  animation: map-reveal 900ms ease-out forwards;
+  overflow: hidden;
 }
 
-.lasile-map__thumbnail:first-child {
-  grid-column: 1 / -1;
-  height: 18rem;
-}
-
-.lasile-map__thumbnail:nth-child(2) { animation-delay: 120ms; }
-.lasile-map__thumbnail:nth-child(3) { animation-delay: 240ms; }
-.lasile-map__thumbnail:nth-child(4) { animation-delay: 360ms; }
-.lasile-map__thumbnail:nth-child(5) { animation-delay: 480ms; }
-.lasile-map__thumbnail:nth-child(6) { animation-delay: 600ms; }
-.lasile-map__thumbnail:nth-child(7) { animation-delay: 720ms; }
-
-.lasile-map__thumbnail img {
+.lasile-map__stage-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 600ms ease, filter 600ms ease;
+  animation: map-slide-fade 550ms ease both;
+  transition: transform 600ms ease;
 }
 
-.lasile-map__thumbnail:hover img {
-  transform: scale(1.025);
-  filter: brightness(1.12);
+.lasile-map__stage:hover .lasile-map__stage-img {
+  transform: scale(1.02);
 }
 
-.lasile-map__thumbnail:focus-visible,
-.lasile-map__close:focus-visible {
-  outline: 3px solid #a6d0ff;
-  outline-offset: 3px;
+.lasile-map__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(229, 199, 126, 0.7);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #f7df9f;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.lasile-map figcaption {
+.lasile-map__expand-pill {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(229, 199, 126, 0.7);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f7df9f;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.lasile-map__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  border: 1.5px solid rgba(229, 199, 126, 0.75);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.lasile-map__nav:hover {
+  background: #e5c77e;
+  color: #0f172a;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.lasile-map__nav--prev {
+  left: 1rem;
+}
+
+.lasile-map__nav--next {
+  right: 1rem;
+}
+
+.lasile-map__thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
   margin-top: 1rem;
-  color: #a6d0ff;
-  font-size: 0.875rem;
+}
+
+.lasile-map__thumb {
+  position: relative;
+  height: 4.75rem;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(147, 197, 253, 0.25);
+  border-radius: 0.75rem;
+  background: #141e2d;
+  opacity: 0.68;
+  transition: opacity 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.lasile-map__thumb:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.lasile-map__thumb--active {
+  opacity: 1;
+  border-color: #e5c77e;
+  box-shadow: 0 0 0 2px rgba(229, 199, 126, 0.35);
+}
+
+.lasile-map__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lasile-map__thumb span {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.35rem;
+  padding: 0.1rem 0.42rem;
+  border-radius: 0.4rem;
+  background: rgba(15, 23, 42, 0.85);
+  color: #f7df9f;
+  font-size: 0.68rem;
+  font-weight: 700;
 }
 
 .lasile-map__overlay {
@@ -88,7 +279,8 @@
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(8, 13, 26, 0.92);
+  backdrop-filter: blur(10px);
 }
 
 .lasile-map__dialog {
@@ -101,6 +293,7 @@
   display: block;
   max-width: 100%;
   max-height: 90vh;
+  border-radius: 1rem;
   object-fit: contain;
 }
 
@@ -113,126 +306,26 @@
   place-items: center;
   width: 2.75rem;
   height: 2.75rem;
-  border: 0;
+  border: 1px solid #e5c77e;
   border-radius: 50%;
-  background: #0b0f17;
+  background: #0f172a;
   color: #fff;
   cursor: pointer;
 }
 
-@keyframes map-reveal {
+@keyframes map-slide-fade {
   from {
-    opacity: 0;
-    transform: scale(0.97);
+    opacity: 0.3;
+    transform: scale(1.02);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-@media (min-width: 768px) {
-  .lasile-map__panels {
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: repeat(3, 11rem);
-  }
-
-  .lasile-map__thumbnail,
-  .lasile-map__thumbnail:first-child {
-    height: 100%;
-  }
-
-  .lasile-map__thumbnail:first-child {
-    grid-column: 1;
-    grid-row: 1 / 4;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lasile-map__thumbnail {
-    opacity: 1;
-    animation: none;
-  }
-
-  .lasile-map__thumbnail img {
-    transition: none;
-  }
-
-  .lasile-map__thumbnail:hover img {
-    transform: none;
-    filter: none;
-  }
-}
-.lasile-map__location-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #79b7ff;
-  border-radius: 999px;
-  color: #a6d0ff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.lasile-map__location-link:hover {
-  background: rgba(121, 183, 255, 0.12);
-}
-
-.lasile-map__location-link:focus-visible {
-  outline: 3px solid #a6d0ff;
-  outline-offset: 3px;
-}
-.lasile-map__heading {
-  width: fit-content;
-  max-width: 100%;
-  margin-bottom: 1.5rem;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid rgba(166, 208, 255, 0.35);
-  border-radius: 1rem;
-  background: rgba(12, 25, 44, 0.72);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(14px);
-  animation: map-heading-in 800ms ease-out both;
-}
-
-.lasile-map__eyebrow {
-  color: #a6d0ff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.lasile-map__heading h2 {
-  margin: 0.4rem 0 0;
-  color: #f7f4e9;
-  font-family: "Outfit", "Space Grotesk", sans-serif;
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.lasile-map__heading p {
-  margin: 0.6rem 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
-}
-
-@keyframes map-heading-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lasile-map__heading {
-    animation: none;
+@media (min-width: 900px) {
+  .lasile-map__thumbs {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
   }
 }
