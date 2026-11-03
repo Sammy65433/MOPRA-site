@@ -87,7 +87,7 @@ export const translations = {
     aboutPhotoAlt: "Community-inspired imagery representing the spirit of L’Asile",
     aboutPhotoCaption: "L’Asile is the heart of our story and the reason we come together.",
     aboutReadMore: "Read the full MOPRA story",
-    aboutStoryTitle: "From a shared love of home to a movement for its future",
+    aboutStoryTitle: "From A Shared Love of Home to a Movement for its Future",
     aboutStory: [
       "Every community carries a story that cannot be measured only by its streets, buildings, or boundaries. L’Asile’s story lives in the voices of its elders, the laughter of its children, the determination of its families, and the memories carried by people who have had to build their lives far from home. It is a story of identity and belonging, but also of possibility. MOPRA begins with a simple belief: the people who love L’Asile can become one of its greatest sources of strength when they move forward together.",
       "Our movement brings that belief into focus. We are neighbors, friends, relatives, professionals, workers, students, parents, and members of a far-reaching diaspora. Some of us can walk the roads of L’Asile every day. Others return through photographs, family conversations, cultural traditions, and the hope of one day coming home. Distance may separate us physically, but it does not erase the bond we share. MOPRA gives that bond a common direction and invites everyone to find a meaningful place in the work.",
