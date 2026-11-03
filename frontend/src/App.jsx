@@ -4,15 +4,17 @@ import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import RaffleMarquee from "./components/RaffleMarquee";
+import RaffleDetails from "./components/RaffleDetails";
+import Prizes from "./components/Prizes";
+import About from "./components/About";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
 import Footer from "./components/Footer";
-import "./App.css";
 import LasileMap from "./components/LasileMap";
-
+import "./App.css";
 
 function ScrollToSection() {
   const { pathname, hash } = useLocation();
@@ -57,16 +59,20 @@ export default function App() {
           path="/"
           element={
             <main id="top">
-  <Hero t={t} />
-  <RaffleMarquee language={language} />
-  <Countdown language={language} />
-  <Tickets t={t} />
-
-  <section className="lasile-map-section" aria-label="L’Asile map gallery">
-    <LasileMap t={t} />
-  </section>
-</main>
-
+              <Hero t={t} />
+              <RaffleMarquee language={language} />
+              <Countdown language={language} />
+              <RaffleDetails t={t} />
+              <Prizes t={t} />
+              <About t={t} />
+              <Tickets t={t} />
+              <section
+                className="lasile-map-section"
+                aria-label="L’Asile map gallery"
+              >
+                <LasileMap t={t} />
+              </section>
+            </main>
           }
         />
         <Route
@@ -82,7 +88,6 @@ export default function App() {
           element={<TicketsPage t={t} language={language} />}
         />
       </Routes>
-      
 
       <Footer t={t} />
     </div>

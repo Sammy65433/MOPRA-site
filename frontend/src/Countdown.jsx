@@ -3,32 +3,35 @@ import { Clock3, Gift, Images } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./Countdown.css";
 
-const DEMO_DURATION = 120 * 24 * 60 * 60 * 1000;
+const DRAWING_DATE = new Date(2027, 11, 31).getTime();
 
 const photos = Array.from(
   { length: 8 },
-  (_, index) => `/haitian-gallery${index + 1}.jpg`
+  (_, index) => `/haitian-gallery${index + 1}.jpg`,
 );
 
 const content = {
   en: {
-    heading: "Demo countdown",
-    note: "Demo only. This is not the raffle drawing date.",
-    action: "Explore the raffle",
+    heading: "Countdown to the Grand Raffle",
+    date: "December 31, 2027 · L’Asile and via Zoom",
+    note: "Drawing time and Zoom access information will be shared by the organizers.",
+    action: "Explore the four prizes",
     gallery: "Illustrative community photos",
     labels: ["Days", "Hours", "Minutes", "Seconds"],
   },
   fr: {
-    heading: "Compte à rebours de démonstration",
-    note: "Démonstration uniquement. Ce n’est pas la date du tirage.",
-    action: "Découvrir la tombola",
+    heading: "Compte à rebours de la grande tombola",
+    date: "31 décembre 2027 · L’Asile et sur Zoom",
+    note: "L’heure du tirage et les informations d’accès à Zoom seront communiquées par les organisateurs.",
+    action: "Découvrir les quatre prix",
     gallery: "Photos d’illustration de la communauté",
     labels: ["Jours", "Heures", "Minutes", "Secondes"],
   },
   ht: {
-    heading: "Kontaj demonstrasyon",
-    note: "Demonstrasyon sèlman. Sa a se pa dat tiraj la.",
-    action: "Dekouvri tombola a",
+    heading: "Kont pou Gran Tombola a",
+    date: "31 desanm 2027 · Lazil ak sou Zoom",
+    note: "Òganizatè yo ap pataje lè tiraj la ak enfòmasyon pou antre sou Zoom.",
+    action: "Dekouvri kat prim yo",
     gallery: "Foto ilistrasyon kominote a",
     labels: ["Jou", "Èdtan", "Minit", "Segonn"],
   },
@@ -47,17 +50,16 @@ function getRemaining(target) {
 
 export default function Countdown({ language = "en" }) {
   const t = content[language] ?? content.en;
-  const [target] = useState(() => Date.now() + DEMO_DURATION);
-  const [values, setValues] = useState(() => getRemaining(target));
+  const [values, setValues] = useState(() => getRemaining(DRAWING_DATE));
   const [photoIndex, setPhotoIndex] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setValues(getRemaining(target));
+      setValues(getRemaining(DRAWING_DATE));
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [target]);
+  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -70,12 +72,14 @@ export default function Countdown({ language = "en" }) {
   return (
     <section className="draw-countdown" aria-labelledby="draw-countdown-title">
       <div className="draw-countdown__layout">
-        <Link to="/prizes" className="draw-countdown__link">
+        <Link to="/prizes#raffle" className="draw-countdown__link">
           <div className="draw-countdown__inner">
             <h2 id="draw-countdown-title" className="draw-countdown__heading">
               <Clock3 size={18} aria-hidden="true" />
               {t.heading}
             </h2>
+
+            <p className="draw-countdown__date">{t.date}</p>
 
             <div className="draw-countdown__clock" aria-hidden="true">
               {t.labels.map((label, index) => (

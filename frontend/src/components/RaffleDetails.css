@@ -1,0 +1,203 @@
+.raffle-details {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.5rem, 8vw, 7.5rem) 1.25rem;
+  border-block: 1px solid rgba(121, 183, 255, 0.15);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(37, 99, 199, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 85%, rgba(198, 40, 62, 0.1), transparent 28%),
+    #070b12;
+}
+
+.raffle-details__inner {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+}
+
+.raffle-details__header {
+  max-width: 58rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.raffle-details__title {
+  margin-top: 1.25rem;
+  color: #f7f4e9;
+  font: 700 clamp(2.25rem, 5.5vw, 4.5rem) / 1.06 "Space Grotesk", sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.raffle-details__intro {
+  max-width: 48rem;
+  margin: 1.5rem auto 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1rem, 1.7vw, 1.125rem);
+  line-height: 1.85;
+}
+
+.raffle-details__flyer {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(121, 183, 255, 0.4);
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.raffle-details__flyer a {
+  display: block;
+}
+
+.raffle-details__flyer a:focus-visible {
+  outline: 4px solid #79b7ff;
+  outline-offset: -4px;
+}
+
+.raffle-details__flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 300ms ease;
+}
+
+.raffle-details__flyer a:hover img {
+  transform: scale(1.008);
+}
+
+.raffle-details__flyer figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: #0d1522;
+  color: #a6d0ff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.raffle-details__facts {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.raffle-details__fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.raffle-details__fact > svg {
+  flex-shrink: 0;
+  color: #e5c77e;
+}
+
+.raffle-details__fact h3 {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.raffle-details__fact p {
+  margin-top: 0.5rem;
+  color: #f7f4e9;
+  font: 600 1.05rem/1.5 "Space Grotesk", sans-serif;
+}
+
+.raffle-details__rules {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgba(229, 199, 126, 0.25);
+  border-radius: 1rem;
+  background: rgba(229, 199, 126, 0.055);
+}
+
+.raffle-details__rules h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #f7df9f;
+  font: 700 1rem/1.5 "Space Grotesk", sans-serif;
+}
+
+.raffle-details__rules h3 svg {
+  flex-shrink: 0;
+}
+
+.raffle-details__rules ul {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.raffle-details__rules li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.raffle-details__rules li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #e5c77e;
+}
+
+.raffle-details__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: fit-content;
+  margin: 2rem auto 0;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: #79b7ff;
+  color: #05070b;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.raffle-details__cta:hover {
+  background: #a6d0ff;
+}
+
+.raffle-details__cta:focus-visible {
+  outline: 3px solid #a6d0ff;
+  outline-offset: 4px;
+}
+
+@media (min-width: 700px) {
+  .raffle-details__facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .raffle-details__rules {
+    grid-template-columns: minmax(200px, 0.65fr) minmax(0, 1.35fr);
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .raffle-details__flyer img {
+    transition: none;
+  }
+}

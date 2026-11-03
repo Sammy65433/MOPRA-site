@@ -1,9 +1,8 @@
-// src/pages/PrizePage.jsx
+import Countdown from "../Countdown";
 import Prizes from "../components/Prizes";
+import RaffleDetails from "../components/RaffleDetails";
 import RaffleMarquee from "../components/RaffleMarquee";
 import "./PrizePage.css";
-import Countdown from "../Countdown";
-
 
 export default function PrizesPage({ t, language }) {
   return (
@@ -21,13 +20,12 @@ export default function PrizesPage({ t, language }) {
         </div>
       </section>
 
-    <Countdown language={language} />
-     <RaffleMarquee language={language} />
-
+      <Countdown language={language} />
+      <RaffleDetails t={t} />
+      <RaffleMarquee language={language} />
       <div className="prizes-page-content">
         <Prizes t={t} />
       </div>
-       
     </main>
   );
 }

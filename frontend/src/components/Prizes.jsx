@@ -4,24 +4,24 @@ import "./Prizes.css";
 
 const cards = [
   {
-    image: "/trip-4-2-1.jpg",
-    size: "md:col-span-8 md:row-span-2 min-h-[320px] md:min-h-[560px]",
+    image: "/jeepwrangler.jpg",
+    size: "md:col-span-7 md:row-span-2 min-h-[420px] md:min-h-[650px]",
+    position: "object-[center_65%]",
   },
   {
-    image: "/gift-basket.jpg",
-    size: "md:col-span-4 min-h-[260px]",
+    image: "/solarpanels.jpg",
+    size: "md:col-span-5 min-h-[310px]",
+    position: "object-[center_60%]",
   },
   {
-    image: "/cash-in-hand.jpg",
-    size: "md:col-span-4 min-h-[260px]",
+    image: "/Toro200.jpg",
+    size: "md:col-span-5 min-h-[310px]",
+    position: "object-[center_68%]",
   },
   {
-    image: "/smart-tv.jpg",
-    size: "md:col-span-6 min-h-[280px]",
-  },
-  {
-    image: "/trip-4-2-2.jpg",
-    size: "md:col-span-6 min-h-[280px]",
+    image: "/Boxer125.webp",
+    size: "md:col-span-12 min-h-[340px] md:min-h-[430px]",
+    position: "object-center",
   },
 ];
 
@@ -35,14 +35,18 @@ export default function Prizes({ t = {} }) {
             {t.prizes_eyebrow ?? t.raffleTag ?? "The raffle"}
           </p>
 
-          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-serif text-4xl tracking-tight text-[#f8f6f0] sm:text-5xl lg:text-6xl">
-              {t.prizes_title ?? t.raffleHeading ?? "Prizes to be announced"}
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
+            <h2 className="font-display max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[#f8f6f0] sm:text-5xl lg:text-6xl">
+              {t.prizes_title ?? t.raffleHeading ?? "Raffle prizes"}
             </h2>
-            <p className="max-w-xs text-sm text-white/70 sm:text-base">
+            <p className="max-w-sm text-sm leading-7 text-white/70 sm:text-base">
               {t.prizes_sub ?? t.raffleText ?? ""}
             </p>
           </div>
+
+          <p className="mb-12 max-w-3xl text-sm leading-6 text-white/55">
+            {t.prizeImageDisclaimer}
+          </p>
         </Reveal>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
@@ -51,43 +55,39 @@ export default function Prizes({ t = {} }) {
               t.prize_name?.[index] ?? `${t.prize ?? "Prize"} ${index + 1}`;
             const place =
               t.prize_place?.[index] ?? `${t.prize ?? "Prize"} ${index + 1}`;
-            const note =
-              t.prize_note?.[index] ?? t.prizePending ?? "Details coming soon";
+            const note = t.prize_note?.[index] ?? "";
 
             return (
               <Reveal key={card.image} className={card.size} delay={index * 0.1}>
-                <div className="prize-card group relative h-full w-full min-h-[inherit] overflow-hidden rounded-2xl border border-white/10">
+                <article className="prize-card group relative h-full w-full min-h-[inherit] overflow-hidden rounded-2xl border border-white/10">
                   <img
                     src={card.image}
-                    alt=""
+                    alt={name}
                     loading="lazy"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${card.position}`}
                   />
 
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10"
+                    className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5"
                     aria-hidden="true"
                   />
 
-                  <p className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-md border border-[#d4af37]/60 bg-black/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#f2ce63]">
+                  <p className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-md border border-[#d4af37]/60 bg-black/75 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#f2ce63]">
                     <Gift size={14} aria-hidden="true" />
                     {place}
                   </p>
 
-                  <div className="absolute bottom-0 left-0 p-6 sm:p-8">
-                    <h3 className="font-serif text-2xl text-[#f8f6f0] sm:text-4xl">
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                    <h3 className="font-display max-w-xl text-2xl font-bold text-[#f8f6f0] sm:text-4xl">
                       {name}
                     </h3>
                     {note && (
-                      <p className="mt-2 max-w-sm text-sm text-white/80">
+                      <p className="mt-3 max-w-md text-base font-medium text-white/85 sm:text-lg">
                         {note}
                       </p>
                     )}
                   </div>
-                </div>
+                </article>
               </Reveal>
             );
           })}

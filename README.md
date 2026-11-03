@@ -1,18 +1,29 @@
 # MOPRA Website
 
-A responsive, multilingual React website prototype for a developing nonprofit initiative focused on L’Asile, Haiti. It gives the client a working preview of the organization’s story, raffle, ticket experience, and visual direction.
+A responsive, multilingual React website for the Mouvement Patriotique pour la Renaissance de L’Asile (MOPRA), focused on L’Asile, Haiti, its community story, and the Grand Raffle for the 3rd Centenary of L’Asile.
 
-> **Status:** Client preview, not a live ticket sale. The organization’s official name, mission, raffle details, payment accounts, and ticket process still need confirmation.
+> **Status:** The raffle date, prizes, and official flyer are published on the site. Ticket pricing, payment accounts, and the reservation/payment workflow still require organizer confirmation before launch.
 
 ## Pages and features
 
-- **Home (`/`):** Animated welcome hero, MOPRA logo, rotating L’Asile image gallery, left-scrolling ticker, demo raffle countdown, and a Tickets section.
-- **Our Story (`/about`):** Introductory organization copy, illustrative photography, and a seven-image L’Asile map gallery. Visitors can click a map image to enlarge it.
-- **The Raffle (`/prizes`):** Responsive prize-card layout with example imagery and placeholder prize descriptions.
-- **Tickets (`/tickets`):** Dedicated page with a photo-backed banner, demo countdown, six-image gallery, proposed payment layout, and reservation-form preview. The Tickets section also appears on Home.
+- **Home (`/`):** Animated community hero, raffle ticker, countdown to December 31, 2027, official raffle flyer and rules, four prize cards, story introduction, ticket reservation preview, and L’Asile map gallery.
+- **Our Story (`/about`):** An expanded MOPRA community narrative in all three site languages, community values, official raffle details, and an interactive seven-image L’Asile map gallery.
+- **The Raffle (`/prizes`):** Grand Raffle introduction, real-date countdown, official flyer, drawing information, prize rules, and four illustrated prize cards with cash alternatives.
+- **Tickets (`/tickets`):** Official raffle information, proposed payment layout, six-image gallery, and reservation form. Payment information is clearly marked as unconfirmed.
 - **Navigation:** Desktop navigation with icons, a mobile dropdown, language controls, and a clickable logo that returns to Home.
 - **Languages:** English, French, and Haitian Creole. The selected language is saved in the browser.
-- **Motion and accessibility:** Scroll reveals, photo transitions, labeled form fields, keyboard-focus styles, and reduced-motion support.
+- **Motion and accessibility:** Scroll reveals, photo transitions, labeled form fields, keyboard-focus styles, image descriptions, and reduced-motion support.
+
+## Confirmed raffle content
+
+- **Drawing:** December 31, 2027, in L’Asile and via Zoom. The drawing time and Zoom access details have not been supplied.
+- **1st prize:** One 2026 Jeep Wrangler or **$60,000**.
+- **2nd prize:** One complete 10 kW solar system with lithium battery or **$10,000**.
+- **3rd prize:** One Toro 200 motorcycle or **$2,500**.
+- **4th prize:** One Boxer 125 motorcycle or **$1,500**.
+- Prizes are awarded in U.S. currency and in the United States. Winners are responsible for taxes and shipping accommodations.
+
+The countdown targets the local start of December 31, 2027, because an exact drawing time and time zone have not been provided.
 
 ## Technology
 
@@ -26,16 +37,14 @@ A responsive, multilingual React website prototype for a developing nonprofit in
 
 The ticket reservation and raffle ticket flow is backed by an Express + MongoDB API in `backend/`:
 
-- `POST /api/tickets/reserve` saves a "Reserve your spot" reservation to MongoDB (status: `pending`).
-- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number (e.g. `MOPRA-XXXXXX`) when payment is received (status: `paid`).
-- `PATCH /api/tickets/:id/delivery` marks the ticket as `digital` (email with QR ticket) or `in-person` (handoff) after payment.
+- `POST /api/tickets/reserve` saves a reservation to MongoDB with `pending` status.
+- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number when payment is received.
+- `PATCH /api/tickets/:id/delivery` selects digital or in-person delivery after payment.
 - `POST /api/tickets/:id/resend` resends the digital ticket email.
 
 See `backend/README.md` for setup and full API details.
 
-During local development the Vite dev server proxies `/api` to the backend at `http://localhost:5050` (see `frontend/vite.config.js`).
-
-For production, set the frontend build variable `VITE_API_URL` to the backend URL (e.g. `https://mopra-backend.onrender.com`). Vite only inlines variables prefixed with `VITE_` into the build, so it must be set before `npm run build`. The frontend then calls `${VITE_API_URL}/api/tickets/reserve`.
+During local development, Vite proxies `/api` to `http://localhost:5050`. For production, set `VITE_API_URL` to the backend URL before building.
 
 ## Run locally
 
@@ -52,11 +61,12 @@ To test the production build:
 
 ```bash
 npm run build
+npm run lint
 ```
 
 ## Deployment
 
-The frontend is deployed on Render as a **Static Site**. Its build settings are:
+The frontend is deployed on Render as a **Static Site**:
 
 - Root directory: `frontend`
 - Build command: `npm install && npm run build`
@@ -69,33 +79,25 @@ React Router paths such as `/about`, `/prizes`, and `/tickets` need a rewrite fr
 ```text
 MOPRA-Website/
 ├── frontend/
-│   ├── public/              # Logo, photos, prize images, and map images
+│   ├── public/              # Logo, official flyer, prize photos, and galleries
 │   └── src/
-│       ├── components/      # Header, Hero, About, Prizes, Footer, map gallery
+│       ├── components/      # Header, Hero, About, Prizes, RaffleDetails, Footer
 │       ├── pages/           # About, raffle, and Tickets page wrappers
 │       ├── App.jsx          # Routes and homepage assembly
-│       ├── Countdown.jsx    # Demo timer and rotating image
-│       ├── Tickets.jsx      # Ticket layout and non-sending form
+│       ├── Countdown.jsx    # December 31, 2027 drawing countdown
+│       ├── Tickets.jsx      # Payment preview and reservation form
 │       └── i18n.js          # English, French, and Haitian Creole copy
+├── backend/                 # Express + MongoDB ticket API
 └── README.md
 ```
 
-## Preview-only details
+## Details still requiring review before launch
 
-- The countdown restarts as a **120-day demo** when the component loads. It does **not** show the official drawing date.
 - The displayed **$100 ticket price**, Zelle account, Cash App account, and bank-transfer option have **not been verified**. Do not send payment based on this preview.
-- The reservation form saves submissions to the MongoDB backend (`backend/`) when the API is running. Until payment is confirmed, reservations stay in `pending` status. Real personal information should only be entered once details are approved.
-- The displayed prize images are examples, not confirmed prizes. The current layout has **five demo cards**, while some translation arrays contain only four placeholder entries.
-- Gallery photos need review before being described as images of the organization’s activities.
-- The map gallery uses Google map imagery. Check usage rights and preserve required attribution before public use.
-- The displayed contact email is `Cahctca@gmail.com`. Confirm its spelling and ownership.
-- Confirm the exact spelling of **“Mouvement Patriotique pour la Renaissance de L’Asile”**, the approved website name, and the organization’s official story.
-
-## Before launch
-
-1. Approve the organization name, mission, story, and all three language versions.
-2. Confirm the raffle prizes, number of draws, drawing date, eligibility, and official rules.
-3. Verify ticket pricing, payment accounts, and physical or digital ticket delivery.
-4. Confirm the reservation, payment, and ticket delivery workflow with the backend and test the full flow.
-5. Review photo permissions, map attribution, accessibility, and mobile performance.
-6. Replace all meeting-preview notices and placeholder content only after details are approved.
+- Reservations use the MongoDB backend when the API is running and remain `pending` until payment is confirmed. Real personal information should only be entered after the process is approved.
+- Prize photographs are illustrative; final prize specifications and official raffle rules should be reviewed before publication.
+- The expanded MOPRA story is drafted website copy and should be reviewed by the organization.
+- Gallery photos need review before being described as documented organization activities.
+- Google map imagery requires appropriate attribution and usage-rights review.
+- Confirm ownership of the displayed contact email, `Cahctca@gmail.com`.
+- Confirm the drawing time, time zone, Zoom access process, eligibility, and complete official rules.

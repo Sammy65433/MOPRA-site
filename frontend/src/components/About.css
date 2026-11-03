@@ -24,21 +24,114 @@
   z-index: 1;
 }
 
-.anniversary-art {
-  background:
-    radial-gradient(circle, rgba(72, 145, 255, 0.13), transparent 40%),
-    repeating-linear-gradient(
-      135deg,
-      transparent,
-      transparent 17px,
-      rgba(72, 145, 255, 0.045) 18px,
-      transparent 19px
-    ),
-    #0a0d13;
+.about-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  color: #a6d0ff;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.anniversary-ring {
-  box-shadow: 0 0 30px rgba(72, 145, 255, 0.12);
+.about-read-more:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.about-read-more:focus-visible {
+  outline: 2px solid #79b7ff;
+  outline-offset: 5px;
+}
+
+.about-story {
+  margin-top: clamp(5rem, 10vw, 8rem);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid rgba(121, 183, 255, 0.2);
+}
+
+.about-story__title {
+  max-width: 62rem;
+  color: #f7f4e9;
+  font: 700 clamp(2rem, 4.5vw, 3.8rem) / 1.12 "Space Grotesk", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.about-story__body {
+  columns: 2;
+  column-gap: clamp(2.5rem, 5vw, 5rem);
+  margin-top: 3.5rem;
+}
+
+.about-story__body p {
+  margin: 0 0 1.75rem;
+  break-inside: avoid;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.about-story__body p:first-child {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.15rem;
+}
+
+.about-pillars {
+  margin-top: 3rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(121, 183, 255, 0.22);
+  border-radius: 1.5rem;
+  background: rgba(5, 7, 11, 0.55);
+}
+
+.about-pillars > h3 {
+  color: #a6d0ff;
+  font: 700 clamp(1.4rem, 3vw, 2rem) / 1.3 "Space Grotesk", sans-serif;
+}
+
+.about-pillars__grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-pillars article {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.about-pillars article > span {
+  color: #e5c77e;
+  font: 700 0.75rem/1 "Space Grotesk", sans-serif;
+  letter-spacing: 0.15em;
+}
+
+.about-pillars h4 {
+  margin-top: 1rem;
+  color: #f7f4e9;
+  font: 700 1.15rem/1.4 "Space Grotesk", sans-serif;
+}
+
+.about-pillars p {
+  margin-top: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  .about-pillars__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899px) {
+  .about-story__body {
+    columns: 1;
+  }
 }
 
 @media (max-width: 767px) {

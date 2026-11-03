@@ -68,6 +68,12 @@
   text-transform: uppercase;
 }
 
+.draw-countdown__date {
+  margin: 1rem 0 0;
+  color: #f7f4e9;
+  font: 700 clamp(1rem, 2vw, 1.35rem)/1.5 "Space Grotesk", sans-serif;
+}
+
 .draw-countdown__clock {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -1,21 +1,21 @@
-import { HeartHandshake, MapPin, Sparkles } from "lucide-react";
+import { CalendarDays, HeartHandshake, Sparkles } from "lucide-react";
 import "./RaffleMarquee.css";
 
 const messages = {
   en: [
-    { Icon: MapPin, text: "L’ASILE, HAITI" },
-    { Icon: HeartHandshake, text: "A COMMUNITY-FOCUSED INITIATIVE" },
-    { Icon: Sparkles, text: "RAFFLE DETAILS COMING SOON" },
+    { Icon: CalendarDays, text: "GRAND RAFFLE · DECEMBER 31, 2027" },
+    { Icon: HeartHandshake, text: "CELEBRATING 300 YEARS OF L’ASILE" },
+    { Icon: Sparkles, text: "FOUR PRIZES · CASH ALTERNATIVES" },
   ],
   fr: [
-    { Icon: MapPin, text: "L’ASILE, HAÏTI" },
-    { Icon: HeartHandshake, text: "UNE INITIATIVE AXÉE SUR LA COMMUNAUTÉ" },
-    { Icon: Sparkles, text: "DÉTAILS DE LA TOMBOLA À VENIR" },
+    { Icon: CalendarDays, text: "GRANDE TOMBOLA · 31 DÉCEMBRE 2027" },
+    { Icon: HeartHandshake, text: "300 ANS DE L’ASILE EN CÉLÉBRATION" },
+    { Icon: Sparkles, text: "QUATRE PRIX · OPTIONS EN ESPÈCES" },
   ],
   ht: [
-    { Icon: MapPin, text: "LAZIL, AYITI" },
-    { Icon: HeartHandshake, text: "YON INISYATIV POU KOMINOTE A" },
-    { Icon: Sparkles, text: "DETAY TOMBOLA A AP VINI" },
+    { Icon: CalendarDays, text: "GRAN TOMBOLA · 31 DESANM 2027" },
+    { Icon: HeartHandshake, text: "N AP SELEBRE 300 LANE LAZIL" },
+    { Icon: Sparkles, text: "KAT PRIM · OPSYON LAJAN KACH" },
   ],
 };
 
@@ -46,10 +46,9 @@ export default function RaffleMarquee({ language = "en" }) {
                     className="shrink-0 text-[#c6283e]"
                     aria-hidden="true"
                   />
-
                   {text}
                 </span>
-              ))
+              )),
             )}
           </div>
         ))}
