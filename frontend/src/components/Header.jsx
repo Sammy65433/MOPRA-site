@@ -40,7 +40,7 @@ export default function Header({ language, setLanguage, t }) {
             className="h-14 w-14 object-contain sm:h-16 sm:w-16"
           />
           <span className="font-display hidden text-base font-bold tracking-[0.12em] text-white min-[390px]:inline sm:text-xl">
-            MOPRA
+            MOPRA * CAHCTCA
           </span>
         </Link>
 
