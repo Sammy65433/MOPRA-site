@@ -26,7 +26,7 @@ export default function Header({ language, setLanguage, t }) {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#05070b]/95 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e5c77e]/25 bg-[#0f1b33]/90 backdrop-blur-xl">
       <div className="mx-auto flex h-[80px] max-w-7xl items-center justify-between gap-2 px-3 sm:px-8">
         <Link
           to="/"
@@ -105,7 +105,7 @@ export default function Header({ language, setLanguage, t }) {
         <nav
           id="mobile-navigation"
           aria-label="Mobile navigation"
-          className="border-t border-white/10 bg-[#090e19] px-5 py-3 md:hidden"
+          className="border-t border-[#e5c77e]/25 bg-[#12203d] px-5 py-3 md:hidden"
         >
           {links.map(({ to, label, Icon }) => (
             <Link

@@ -29,7 +29,7 @@ export async function buildTicketPayload(ticket) {
     quantity: ticket.quantity,
     deliveryMethod: ticket.deliveryMethod,
     status: ticket.status,
-    price: Number(process.env.TICKET_PRICE_USD || 100),
+    price: Number(process.env.TICKET_PRICE_USD || 99.99),
     paymentMethod: ticket.paymentMethod,
     paymentReference: ticket.paymentReference,
     qrDataUrl,
@@ -114,4 +114,58 @@ export async function sendDigitalTicketEmail(ticket, ticketPayload) {
 
   const info = await transporter.sendMail(mailOptions);
   return { sent: true, messageId: info.messageId, ticketNumber: ticket.ticketNumber };
+}
+
+export async function sendReservationNotificationEmail(reservation) {
+  const transporter = getTransporter();
+  const organizerEmail = process.env.ORGANIZER_EMAIL || "Cahctca@gmail.com";
+  const unitPrice = Number(process.env.TICKET_PRICE_USD || 99.99);
+  const totalAmount = (reservation.quantity * unitPrice).toFixed(2);
+  const paymentUrl = "https://link.clover.com/urlshortener/CVF3dD";
+
+  if (!transporter) {
+    console.log(
+      `[reservation] New reservation from ${reservation.firstName} ${reservation.lastName} (${reservation.contact}) for ${reservation.quantity} ticket(s) ($${totalAmount}). Email skipped (SMTP not configured).`
+    );
+    return { sent: false, skipped: true };
+  }
+
+  await transporter.sendMail({
+    from: process.env.EMAIL_FROM || "no-reply@mopra.org",
+    to: organizerEmail,
+    subject: `New MOPRA Raffle Reservation: ${reservation.firstName} ${reservation.lastName} (${reservation.quantity} ticket${reservation.quantity > 1 ? "s" : ""})`,
+    text: [
+      "New MOPRA Grand Raffle ticket reservation received:",
+      "",
+      `Name: ${reservation.firstName} ${reservation.lastName}`,
+      `Contact: ${reservation.contact}`,
+      `Tickets: ${reservation.quantity}`,
+      `Total ($${unitPrice.toFixed(2)} each): $${totalAmount} USD`,
+      `Message: ${reservation.message || "None"}`,
+      `Reservation ID: ${reservation._id}`,
+      "",
+      `Once payment is verified in Clover (${paymentUrl}), confirm the ticket in the MOPRA backend.`,
+    ].join("\n"),
+  });
+
+  if (String(reservation.contact).includes("@")) {
+    await transporter.sendMail({
+      from: process.env.EMAIL_FROM || "no-reply@mopra.org",
+      to: reservation.contact,
+      replyTo: organizerEmail,
+      subject: "MOPRA Grand Raffle — Reservation Received ($99.99/ticket)",
+      text: [
+        `Hi ${reservation.firstName} ${reservation.lastName},`,
+        "",
+        `We received your reservation for ${reservation.quantity} raffle ticket(s) ($${totalAmount} USD total).`,
+        "",
+        "To complete your entry, please submit your payment using the official MOPRA QR code on our website or via our secure Clover checkout link:",
+        paymentUrl,
+        "",
+        `Once our team confirms your payment, your official raffle ticket number will be issued. Questions? Reply to ${organizerEmail}.`,
+      ].join("\n"),
+    });
+  }
+
+  return { sent: true };
 }

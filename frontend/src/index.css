@@ -3,8 +3,8 @@
 
 :root {
   font-family: "DM Sans", sans-serif;
-  color: #f7f4e9;
-  background: #05070b;
+  color: #faf7f0;
+  background: #101c35;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +17,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
+  background: #101c35;
 }
 
 button,
@@ -29,6 +30,6 @@ button {
 }
 
 ::selection {
-  background: #d7b86b;
-  color: #05070b;
+  background: #e5c77e;
+  color: #0f172a;
 }

@@ -1,7 +1,9 @@
+import { ArrowUpRight, Ticket } from "lucide-react";
 import Countdown from "../Countdown";
 import Prizes from "../components/Prizes";
 import RaffleDetails from "../components/RaffleDetails";
 import RaffleMarquee from "../components/RaffleMarquee";
+import Tickets from "../Tickets";
 import "./PrizePage.css";
 
 export default function PrizesPage({ t, language }) {
@@ -17,6 +19,13 @@ export default function PrizesPage({ t, language }) {
             {t.raffleHeading}
           </h1>
           <p className="prizes-page__description">{t.raffleText}</p>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <a href="#reserve-spot" className="prizes-top-cta">
+              <Ticket size={18} aria-hidden="true" />
+              {t.prizeReserveCta ?? "Reserve your spot · $99.99"}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -25,6 +34,7 @@ export default function PrizesPage({ t, language }) {
       <RaffleMarquee language={language} />
       <div className="prizes-page-content">
         <Prizes t={t} />
+        <Tickets t={t} />
       </div>
     </main>
   );

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDownRight,
+  ArrowUpRight,
   BookOpen,
   Gift,
   HeartHandshake,
@@ -124,7 +125,7 @@ export default function Hero({ t }) {
           >
             <Link
               to="/about"
-              className="inline-flex min-h-13 items-center gap-3 rounded-full bg-[#79b7ff] px-6 py-3 text-sm font-bold text-[#05070b] hover:bg-[#a6d0ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#93c5fd] bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-6 py-3 text-sm font-extrabold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:from-[#1d4ed8] hover:to-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#93c5fd]"
             >
               <BookOpen size={18} aria-hidden="true" />
               {t.discover}
@@ -133,7 +134,7 @@ export default function Hero({ t }) {
 
             <Link
               to="/prizes"
-              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#79b7ff]/60 px-6 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-[#79b7ff]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#f5d98e] bg-gradient-to-r from-[#e5c77e] to-[#f7df9f] px-6 py-3 text-sm font-extrabold text-[#0f172a] shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e5c77e]"
             >
               <Gift size={18} aria-hidden="true" />
               {t.heroPrizes}
@@ -141,12 +142,12 @@ export default function Hero({ t }) {
             </Link>
 
             <Link
-              to="/tickets"
-              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#79b7ff]/60 px-6 py-3 text-sm font-bold text-[#f7f4e9] hover:bg-[#79b7ff]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79b7ff]"
+              to="/tickets#reserve-spot"
+              className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#fb7185] bg-gradient-to-r from-[#e11d48] to-[#be123c] px-6 py-3 text-sm font-extrabold text-white shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fb7185]"
             >
               <Ticket size={18} aria-hidden="true" />
-              {t.heroTickets}
-              <ArrowDownRight size={18} aria-hidden="true" />
+              {t.heroTickets} · $99.99
+              <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </motion.div>
         </div>

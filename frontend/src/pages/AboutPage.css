@@ -1,17 +1,21 @@
 .lasile-map-section {
   position: relative;
   isolation: isolate;
-  padding: 3rem 1.25rem;
-  background: #080d17;
+  padding: 3.5rem 1.25rem;
+  background: #111f3b;
 }
+
 .lasile-map-section::before {
   content: "";
   position: absolute;
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(rgba(5, 7, 11, 0.65), rgba(5, 7, 11, 0.8)),
+    linear-gradient(
+      rgba(15, 27, 53, 0.55),
+      rgba(22, 33, 62, 0.68)
+    ),
     url("/haitian-gallery3.jpg") center / cover no-repeat;
-  opacity: 0.55;
+  opacity: 0.7;
   pointer-events: none;
 }

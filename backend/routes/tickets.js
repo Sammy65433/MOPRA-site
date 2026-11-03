@@ -1,6 +1,11 @@
 import { Router } from "express";
 import Reservation from "../models/Reservation.js";
-import { generateTicketNumber, buildTicketPayload, sendDigitalTicketEmail } from "../services/ticketService.js";
+import {
+  generateTicketNumber,
+  buildTicketPayload,
+  sendDigitalTicketEmail,
+  sendReservationNotificationEmail,
+} from "../services/ticketService.js";
 
 const router = Router();
 
@@ -49,12 +54,20 @@ router.post("/reserve", async (req, res) => {
       quantity: tickets,
       message: message || "",
       status: "pending",
-      paymentMethod: paymentMethod || null,
+      paymentMethod: paymentMethod || "clover",
       deliveryMethod: "none",
     });
 
+    let emailNotification = { sent: false, skipped: true };
+    try {
+      emailNotification = await sendReservationNotificationEmail(reservation);
+    } catch (emailErr) {
+      console.error("Reservation notification email failed:", emailErr);
+    }
+
     return res.status(201).json({
       reservation,
+      emailNotification,
       message: "Reservation received. Complete your payment to issue your raffle ticket.",
     });
   } catch (err) {

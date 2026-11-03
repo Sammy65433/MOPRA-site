@@ -39,7 +39,7 @@ const reservationSchema = new mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      enum: ["zelle", "cashapp", "bank", "stripe", null],
+      enum: ["clover", "qr", "card", "zelle", "cashapp", "bank", "stripe", null],
       default: null,
     },
     paymentReference: {

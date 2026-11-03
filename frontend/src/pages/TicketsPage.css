@@ -1,7 +1,7 @@
 .tickets-page {
   min-height: 100vh;
   padding-top: 80px;
-  background: #05070b;
+  background: #101c35;
 }
 
 .tickets-page__banner {
@@ -9,7 +9,12 @@
   align-items: end;
   min-height: clamp(320px, 42vw, 480px);
   background:
-    linear-gradient(90deg, rgba(5, 7, 11, 0.93), rgba(5, 7, 11, 0.4)),
+    linear-gradient(
+      95deg,
+      rgba(14, 25, 48, 0.84) 0%,
+      rgba(24, 36, 66, 0.52) 55%,
+      rgba(32, 18, 40, 0.45) 100%
+    ),
     url("/tickets-gallery1.jpg") center / cover no-repeat;
 }
 
@@ -20,8 +25,8 @@
 }
 
 .tickets-page__eyebrow {
-  color: #a6d0ff;
-  font-size: 0.75rem;
+  color: #f7df9f;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -29,27 +34,29 @@
 
 .tickets-page__title {
   margin-top: 1rem;
-  color: #f7f4e9;
+  color: #ffffff;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   line-height: 1;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
 .tickets-page__description {
-  max-width: 40rem;
+  max-width: 42rem;
   margin-top: 1.25rem;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.125rem;
   line-height: 1.7;
 }
 
 .tickets-page__disclaimer {
-  max-width: 40rem;
+  max-width: 42rem;
   margin-top: 1rem;
   color: #f7df9f;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.55;
 }
 
 @media (min-width: 640px) {

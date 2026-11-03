@@ -1,38 +1,45 @@
 import { useEffect, useState } from "react";
-import { Clock3, Gift, Images } from "lucide-react";
+import { ArrowUpRight, Clock3, Gift, Ticket } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./Countdown.css";
 
 const DRAWING_DATE = new Date(2027, 11, 31).getTime();
 
-const photos = Array.from(
-  { length: 8 },
-  (_, index) => `/haitian-gallery${index + 1}.jpg`,
-);
+const photos = [
+  { src: "/wrangler-jeep1.jpg", contain: false },
+  { src: "/wrangler-jeep2.jpg", contain: false },
+  { src: "/jeepwrangler.jpg", contain: false },
+  { src: "/10kw-off-grid-solar-system.jpg", contain: true },
+  { src: "/solarpanels.jpg", contain: false },
+  { src: "/bike1.jpg", contain: false },
+  { src: "/bike2.jpg", contain: false },
+  { src: "/Toro200.jpg", contain: false },
+  { src: "/Boxer125.webp", contain: false },
+];
 
 const content = {
   en: {
     heading: "Countdown to the Grand Raffle",
     date: "December 31, 2027 · L’Asile and via Zoom",
-    note: "Drawing time and Zoom access information will be shared by the organizers.",
-    action: "Explore the four prizes",
-    gallery: "Illustrative community photos",
+    note: "Tickets are $99.99 USD. Click below to explore prizes or reserve your spot now.",
+    action: "Explore Prizes & Reserve ($99.99)",
+    gallery: "Raffle prize showcase · Click to reserve your spot",
     labels: ["Days", "Hours", "Minutes", "Seconds"],
   },
   fr: {
     heading: "Compte à rebours de la grande tombola",
     date: "31 décembre 2027 · L’Asile et sur Zoom",
-    note: "L’heure du tirage et les informations d’accès à Zoom seront communiquées par les organisateurs.",
-    action: "Découvrir les quatre prix",
-    gallery: "Photos d’illustration de la communauté",
+    note: "Billets à 99,99 $ US. Cliquez ci-dessous pour découvrir les prix ou réserver votre place.",
+    action: "Voir les prix et réserver (99,99 $ US)",
+    gallery: "Vitrine des prix · Cliquez pour réserver votre place",
     labels: ["Jours", "Heures", "Minutes", "Secondes"],
   },
   ht: {
     heading: "Kont pou Gran Tombola a",
     date: "31 desanm 2027 · Lazil ak sou Zoom",
-    note: "Òganizatè yo ap pataje lè tiraj la ak enfòmasyon pou antre sou Zoom.",
-    action: "Dekouvri kat prim yo",
-    gallery: "Foto ilistrasyon kominote a",
+    note: "Tikè yo se $99.99 USD. Klike anba a pou wè prim yo oswa rezève plas ou kounye a.",
+    action: "Gade prim yo epi rezève ($99.99)",
+    gallery: "Foto prim tombola yo · Klike pou rezève plas ou",
     labels: ["Jou", "Èdtan", "Minit", "Segonn"],
   },
 };
@@ -64,10 +71,12 @@ export default function Countdown({ language = "en" }) {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setPhotoIndex((current) => (current + 1) % photos.length);
-    }, 5000);
+    }, 4000);
 
     return () => window.clearInterval(timer);
   }, []);
+
+  const currentPhoto = photos[photoIndex];
 
   return (
     <section className="draw-countdown" aria-labelledby="draw-countdown-title">
@@ -97,25 +106,56 @@ export default function Countdown({ language = "en" }) {
             <span className="draw-countdown__button">
               <Gift size={17} aria-hidden="true" />
               {t.action}
-              <span aria-hidden="true">↗</span>
+              <ArrowUpRight size={17} aria-hidden="true" />
             </span>
           </div>
         </Link>
 
         <div className="draw-countdown__photo-wrap">
-          <div className="draw-countdown__photo-frame">
-            <img
-              key={photos[photoIndex]}
-              src={photos[photoIndex]}
-              alt=""
-              className="draw-countdown__photo"
-              loading="lazy"
-            />
+          <Link
+            to="/tickets#reserve-spot"
+            className="draw-countdown__photo-link"
+          >
+            <div
+              className={`draw-countdown__photo-frame ${
+                currentPhoto.contain ? "draw-countdown__photo-frame--light" : ""
+              }`}
+            >
+              <img
+                key={currentPhoto.src}
+                src={currentPhoto.src}
+                alt=""
+                className={`draw-countdown__photo ${
+                  currentPhoto.contain ? "draw-countdown__photo--contain" : ""
+                }`}
+                loading="lazy"
+              />
+            </div>
+            <p className="draw-countdown__photo-caption">
+              <Ticket size={16} aria-hidden="true" />
+              <span>{t.gallery}</span>
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </p>
+          </Link>
+
+          <div
+            className="draw-countdown__dots"
+            role="tablist"
+            aria-label="Select prize photo"
+          >
+            {photos.map((photo, idx) => (
+              <button
+                key={photo.src}
+                type="button"
+                onClick={() => setPhotoIndex(idx)}
+                aria-label={`Prize photo ${idx + 1}`}
+                aria-selected={idx === photoIndex}
+                className={`draw-countdown__dot ${
+                  idx === photoIndex ? "draw-countdown__dot--active" : ""
+                }`}
+              />
+            ))}
           </div>
-          <p className="draw-countdown__photo-caption">
-            <Images size={16} aria-hidden="true" />
-            {t.gallery}
-          </p>
         </div>
       </div>
     </section>

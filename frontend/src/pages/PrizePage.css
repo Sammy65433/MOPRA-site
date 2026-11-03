@@ -1,16 +1,21 @@
 .prizes-page {
   min-height: 100vh;
   padding-top: 80px;
-  background: #05070b;
+  background: #101c35;
 }
 
 .prizes-page__banner {
   display: flex;
   align-items: end;
-  min-height: clamp(320px, 42vw, 480px);
+  min-height: clamp(340px, 42vw, 500px);
   background:
-    linear-gradient(90deg, rgba(5, 7, 11, 0.93), rgba(5, 7, 11, 0.4)),
-    url("/haitian-gallery1.jpg") center / cover no-repeat;
+    linear-gradient(
+      95deg,
+      rgba(15, 27, 53, 0.84) 0%,
+      rgba(26, 36, 68, 0.55) 55%,
+      rgba(32, 18, 40, 0.45) 100%
+    ),
+    url("/haitian-gallery4.jpg") center / cover no-repeat;
 }
 
 .prizes-page__banner-content {
@@ -20,8 +25,8 @@
 }
 
 .prizes-page__eyebrow {
-  color: #a6d0ff;
-  font-size: 0.75rem;
+  color: #f7df9f;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -29,17 +34,18 @@
 
 .prizes-page__title {
   margin-top: 1rem;
-  color: #f7f4e9;
+  color: #ffffff;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   line-height: 1;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
 .prizes-page__description {
-  max-width: 40rem;
+  max-width: 42rem;
   margin-top: 1.25rem;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.125rem;
   line-height: 1.7;
 }
@@ -47,7 +53,7 @@
 .prizes-page-content {
   position: relative;
   isolation: isolate;
-  background: #080d17;
+  background: #12203d;
 }
 
 .prizes-page-content::before {
@@ -56,8 +62,13 @@
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(rgba(5, 7, 11, 0.7), rgba(5, 7, 11, 0.82)),
+    linear-gradient(
+      135deg,
+      rgba(16, 28, 53, 0.68),
+      rgba(27, 36, 66, 0.62),
+      rgba(34, 20, 44, 0.7)
+    ),
     url("/Lasilepic49.jpg") center / cover no-repeat;
-  opacity: 0.45;
+  opacity: 0.68;
   pointer-events: none;
 }

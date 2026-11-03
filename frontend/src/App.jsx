@@ -48,7 +48,7 @@ export default function App() {
   }, [language]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#05070b] text-[#f7f4e9]">
+    <div className="min-h-screen overflow-x-hidden bg-[#101c35] text-[#faf7f0]">
       <ScrollToSection />
       <Header language={language} setLanguage={setLanguage} t={t} />
 

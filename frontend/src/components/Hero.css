@@ -1,37 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Outfit:wght@600;700;800&display=swap");
 
-
-
 .hero-stage {
   isolation: isolate;
   background:
-    radial-gradient(circle at 72% 42%, rgba(28, 91, 190, 0.24), transparent 29rem),
-    radial-gradient(circle at 12% 78%, rgba(190, 42, 61, 0.13), transparent 22rem),
-    linear-gradient(120deg, #05070b 15%, #0b0f18 60%, #05070b);
+    radial-gradient(circle at 72% 42%, rgba(37, 99, 235, 0.35), transparent 32rem),
+    radial-gradient(circle at 12% 78%, rgba(225, 29, 72, 0.25), transparent 26rem),
+    radial-gradient(circle at 45% 20%, rgba(229, 199, 126, 0.16), transparent 28rem),
+    linear-gradient(125deg, #0f1b33 15%, #1a2849 58%, #1a152e);
 }
 
 .hero-stage::before {
   content: "";
   position: absolute;
   z-index: 0;
-  inset: 0 48% 0 0;
+  inset: 0;
   background:
     linear-gradient(
-      90deg,
-      rgba(5, 7, 11, 0.72) 0%,
-      rgba(11, 15, 24, 0.75) 65%,
-      #0b0f18 100%
+      95deg,
+      rgba(14, 25, 48, 0.72) 0%,
+      rgba(22, 35, 64, 0.56) 55%,
+      rgba(26, 20, 44, 0.68) 100%
     ),
     url("/Lasilepic49.jpg") center / cover no-repeat;
-  opacity: 0.36;
+  opacity: 0.62;
   pointer-events: none;
 }
 
 .hero-grid {
   opacity: 0.35;
   background-image:
-    linear-gradient(rgba(72, 145, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(72, 145, 255, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(147, 197, 253, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 197, 253, 0.14) 1px, transparent 1px);
   background-size: 70px 70px;
   mask-image: linear-gradient(90deg, transparent, black 45%, black 75%, transparent);
   transform: perspective(500px) rotateX(28deg) scale(1.35);
@@ -40,14 +39,14 @@
 }
 
 .hero-orb {
-  border: 1px solid rgba(72, 145, 255, 0.25);
+  border: 1px solid rgba(229, 199, 126, 0.3);
   background:
-    radial-gradient(circle at 35% 30%, rgba(90, 160, 255, 0.16), transparent 26%),
-    radial-gradient(circle at 70% 80%, rgba(187, 43, 59, 0.1), transparent 35%),
-    radial-gradient(circle at 50% 55%, #1e2027 4%, #0a0d14 52%, transparent 69%);
+    radial-gradient(circle at 35% 30%, rgba(90, 160, 255, 0.22), transparent 26%),
+    radial-gradient(circle at 70% 80%, rgba(225, 29, 72, 0.18), transparent 35%),
+    radial-gradient(circle at 50% 55%, #233052 4%, #111b32 52%, transparent 69%);
   box-shadow:
-    0 0 110px rgba(28, 91, 190, 0.13),
-    inset 0 0 90px rgba(72, 145, 255, 0.12);
+    0 0 110px rgba(37, 99, 235, 0.2),
+    inset 0 0 90px rgba(147, 197, 253, 0.16);
   pointer-events: none;
 }
 
@@ -61,12 +60,12 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(72, 145, 255, 0.07),
-    rgba(72, 145, 255, 0.65),
-    rgba(72, 145, 255, 0.07),
+    rgba(229, 199, 126, 0.1),
+    rgba(147, 197, 253, 0.7),
+    rgba(229, 199, 126, 0.1),
     transparent
   );
-  box-shadow: 0 0 22px rgba(72, 145, 255, 0.4);
+  box-shadow: 0 0 22px rgba(147, 197, 253, 0.45);
   animation: hero-flyby 9s linear infinite;
   pointer-events: none;
 }
@@ -90,10 +89,10 @@
   aspect-ratio: 5 / 4;
   overflow: hidden;
   padding: 8px;
-  border: 1px solid rgba(121, 183, 255, 0.45);
-  border-radius: 20px;
-  background: #0b0f17;
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(229, 199, 126, 0.55);
+  border-radius: 22px;
+  background: rgba(16, 28, 53, 0.85);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
 }
 
 .hero-photo-slide {
@@ -102,7 +101,7 @@
   display: block;
   width: calc(100% - 16px);
   height: calc(100% - 16px);
-  border-radius: 12px;
+  border-radius: 14px;
   object-fit: cover;
   opacity: 0;
   transform: scale(1);
@@ -117,17 +116,27 @@
 .hero-photo-caption {
   margin-top: 1rem;
   padding-left: 1rem;
-  border-left: 1px solid rgba(121, 183, 255, 0.5);
-  color: #79b7ff;
-  font-size: 0.75rem;
+  border-left: 2px solid #e5c77e;
+  color: #f7df9f;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 @keyframes hero-flyby {
-  from { translate: 220px -150px; opacity: 0; }
-  25%, 75% { opacity: 0.7; }
-  to { translate: -220px 150px; opacity: 0; }
+  from {
+    translate: 220px -150px;
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 0.7;
+  }
+  to {
+    translate: -220px 150px;
+    opacity: 0;
+  }
 }
 
 @media (max-width: 1023px) {
@@ -137,7 +146,7 @@
 
   .hero-stage::before {
     inset: 0;
-    opacity: 0.15;
+    opacity: 0.48;
   }
 }
 
@@ -167,16 +176,19 @@
     transform: none;
   }
 }
+
 .hero-organization-name {
   width: fit-content;
   max-width: 100%;
   margin-inline: auto;
-  padding: 0.6rem 1rem;
-  border-top: 2px solid #2563c7;
-  border-bottom: 2px solid #c6283e;
-  background: rgba(5, 7, 11, 0.72);
-  color: #f7f4e9;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+  padding: 0.65rem 1.15rem;
+  border-top: 2px solid #3b82f6;
+  border-bottom: 2px solid #e11d48;
+  border-radius: 0.5rem;
+  background: rgba(15, 27, 52, 0.8);
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
 }
 
 @media (max-width: 640px) {
@@ -197,15 +209,14 @@
 }
 
 .hero-title-blue {
-  color: #8fc3ff;
-  text-shadow: 0 0 36px rgba(37, 99, 199, 0.3);
+  color: #93c5fd;
+  text-shadow: 0 0 36px rgba(59, 130, 246, 0.45);
 }
 
 .hero-title-red {
-  color: #f27789;
-  text-shadow: 0 0 36px rgba(198, 40, 62, 0.3);
+  color: #fda4af;
+  text-shadow: 0 0 36px rgba(225, 29, 72, 0.45);
 }
-
 
 .hero-intro {
   display: flex;
@@ -213,15 +224,17 @@
   gap: 0.9rem;
   max-width: 38rem;
   margin-top: 1.5rem;
-  padding: 1.15rem 1.25rem;
-  border-left: 3px solid #c6283e;
-  border-radius: 0 0.75rem 0.75rem 0;
-  background: rgba(5, 7, 11, 0.68);
-  color: #f7f4e9;
+  padding: 1.2rem 1.35rem;
+  border-left: 4px solid #e5c77e;
+  border-radius: 0 1rem 1rem 0;
+  background: rgba(16, 28, 54, 0.78);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
   font-family: "Chakra Petch", "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.65;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 
 .hero-intro p {
@@ -231,7 +244,7 @@
 .hero-intro-icon {
   flex: none;
   margin-top: 0.25rem;
-  color: #8fc3ff;
+  color: #f7df9f;
 }
 
 @media (max-width: 640px) {
