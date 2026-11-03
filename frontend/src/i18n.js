@@ -25,7 +25,7 @@ export const translations = {
       "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
     raffleDate: "December 31, 2027",
     raffleLocation: "L’Asile, Haiti, and live via Zoom",
-    raffleDetailsTitle: "One Community! * Four Prizes! * A Lasting Impact!",
+    raffleDetailsTitle: "One Community! · Four Prizes! · A Lasting Impact!",
     raffleDetailsText:
       "The Grand Raffle connects the excitement of L’Asile’s 300th anniversary with an opportunity to invest in the community’s future. Every prize includes the option of the listed item or its cash alternative.",
     raffleFlyerAlt:
@@ -164,7 +164,7 @@ export const translations = {
       gallery: "Community & Raffle Gallery",
     },
 
-    footer: "Connected by L’Asile. Raising support together.",
+    footer: "Connected by L’Asile. Raising Support Together.",
     footerSlogan: "Community at Heart. Haiti in Our Future.",
   },
 
