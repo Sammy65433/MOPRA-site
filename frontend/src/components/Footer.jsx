@@ -18,7 +18,7 @@ export default function Footer({ t }) {
             className="h-12 w-12 object-contain"
           />
           <span className="font-display font-bold tracking-[0.25em] text-white">
-            MOPRA * CAHCTCA
+            MOPRA · CAHCTCA
           </span>
         </Link>
 

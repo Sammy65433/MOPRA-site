@@ -74,7 +74,7 @@ export const translations = {
     ],
 
     mapEyebrow: "Explore the area",
-    mapTitle: "Map Views Of L’Asile",
+    mapTitle: "Map Views of L’Asile",
     mapDescription: "Explore Where L’Asile Is Located in Haiti.",
     mapLink: "View L’Asile on Google Maps ↗",
     mapExpand: "Expand Map View",
