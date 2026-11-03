@@ -56,7 +56,7 @@ export const translations = {
     prize: "Prize",
     prizePending: "Details Coming Soon",
     prizes_eyebrow: "Four Prizes · Four Opportunities",
-    prizes_title: "Choose the Prize Or Choose the Cash.",
+    prizes_title: "Choose The Prize Or Choose The Cash",
     prizes_sub:
       "From a Jeep Wrangler to a Complete Solar System, every winning ticket offers a remarkable prize or a cash alternative.",
     prize_place: ["1st prize", "2nd prize", "3rd prize", "4th prize"],
