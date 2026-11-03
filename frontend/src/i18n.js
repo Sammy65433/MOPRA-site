@@ -12,8 +12,8 @@ export const translations = {
     heroOne: "TOGETHER FOR",
     heroTwo: "L’ASILE",
     heroText:
-      "MOPRA brings together people who love L’Asile and believe in its future. Through community, celebration, and shared responsibility, we are raising support for a stronger tomorrow—starting with our Grand Raffle for the 3rd Centenary of L’Asile.",
-    discover: "Read our Story",
+      "MOPRA brings together people who Love L’Asile and believe in its Future. Through Community, Celebration, and shared responsibility, we are raising support for a stronger tomorrow—starting with our Grand Raffle for the 3rd Centenary of L’Asile.",
+    discover: "Read Our Story",
     heroTickets: "Raffle and Tickets",
     heroPrizes: "The Raffle and Prizes",
     heroSide: "L’Asile, Haiti",
@@ -22,7 +22,7 @@ export const translations = {
     raffleTag: "THE GRAND RAFFLE · 3RD CENTENARY OF L’ASILE",
     raffleHeading: "A Celebration With A Purpose",
     raffleText:
-      "Join MOPRA’s Grand Raffle celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
+      "Join MOPRA’s Grand Raffle Celebrating the 3rd Centenary of L’Asile. Four Remarkable Prizes, A community united across borders, and one shared goal: raising support to help L’Asile move forward.",
     raffleDate: "December 31, 2027",
     raffleLocation: "L’Asile, Haiti, and live via Zoom",
     raffleDetailsTitle: "One Community!  Four Prizes!  A Lasting Impact!",
@@ -62,9 +62,9 @@ export const translations = {
     prize_place: ["1st prize", "2nd prize", "3rd prize", "4th prize"],
     prize_name: [
       "2026 Jeep Wrangler",
-      "Complete 10 kW solar system",
-      "Toro 200 motorcycle",
-      "Boxer 125 motorcycle",
+      "Complete 10 kW Solar System",
+      "Toro 200 Motorcycle",
+      "Boxer 125 Motorcycle",
     ],
     prize_note: [
       "Or take $60,000 in cash.",
@@ -134,7 +134,7 @@ export const translations = {
       getTicket: "Get Your Ticket",
       price: "Raffle Ticket · $99.99 USD",
       paymentIntro:
-        "The official MOPRA QR code is the main way to pay for raffle tickets. Scan it with your phone camera or click it to open the payment page. After paying (or right before), complete the reservation form so we match your name and contact to your payment.",
+        "The Official MOPRA QR code is the main way to pay for raffle tickets. Scan it with your phone camera or click it to open the payment page. After paying (or right before), complete the reservation form so we match your name and contact to your payment.",
       warning:
         "Ticket Price Confirmed: $99.99 USD each. Complete both your reservation and your QR/Clover payment so your official raffle ticket can be issued.",
       waysToPay: "Main payment method · MOPRA QR code",

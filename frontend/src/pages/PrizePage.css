@@ -42,14 +42,22 @@
 }
 
 .prizes-page__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   margin: 0;
-  color: #f7df9f;
+  color: #fff6d6;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.1rem, 2.5vw, 1.95rem);
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.prizes-page__eyebrow svg {
+  flex-shrink: 0;
+  color: #fde047;
 }
 
 .prizes-page__title {

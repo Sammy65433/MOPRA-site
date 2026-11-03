@@ -1,5 +1,6 @@
 import { ArrowUpRight, HeartHandshake, Ticket } from "lucide-react";
 import About from "../components/About";
+import CountdownMarquee from "../components/CountdownMarquee";
 import LasileMap from "../components/LasileMap";
 import RaffleMarquee from "../components/RaffleMarquee";
 import Tickets from "../Tickets";
@@ -37,6 +38,7 @@ export default function AboutPage({ t, language }) {
       <About t={t} full />
       <RaffleMarquee language={language} />
       <Tickets t={t} />
+      <CountdownMarquee language={language} />
       <section className="lasile-map-section" aria-label="L’Asile map gallery">
         <LasileMap t={t} />
       </section>

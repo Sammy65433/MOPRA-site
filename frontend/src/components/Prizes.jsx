@@ -36,28 +36,54 @@ export default function Prizes({ t = {} }) {
     <section id="raffle" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-[#f7df9f] sm:text-sm">
-            <Sparkles size={17} aria-hidden="true" />
-            {t.prizes_eyebrow ?? t.raffleTag ?? "The raffle"}
-          </p>
+          <div className="prizes-header-showcase mb-8">
+            <div className="prizes-header-bubble">
+              <p className="prizes-header-bubble__eyebrow">
+                <Sparkles size={24} aria-hidden="true" />
+                <span>{t.prizes_eyebrow ?? t.raffleTag ?? "The raffle"}</span>
+              </p>
 
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {t.prizes_title ?? t.raffleHeading ?? "Raffle prizes"}
-            </h2>
-            <div className="flex flex-col items-start gap-4 sm:items-end">
-              <p className="max-w-sm text-sm leading-7 text-white/85 sm:text-right sm:text-base">
+              <h2 className="prizes-header-bubble__title">
+                {t.prizes_title ?? t.raffleHeading ?? "Raffle prizes"}
+              </h2>
+
+              <p className="prizes-header-bubble__sub">
                 {t.prizes_sub ?? t.raffleText ?? ""}
               </p>
-              <a href="#reserve-spot" className="prizes-top-cta">
-                <Ticket size={18} aria-hidden="true" />
-                {reserveLabel}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </a>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="#reserve-spot" className="prizes-top-cta">
+                  <Ticket size={18} aria-hidden="true" />
+                  {reserveLabel}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              </div>
             </div>
+
+            <a
+              href="#reserve-spot"
+              className="prizes-header-cash-card group"
+              aria-label={reserveLabel}
+            >
+              <div className="prizes-header-cash-card__img-wrap">
+                <img
+                  src="/cash-in-hand.jpg"
+                  alt={t.cashImageAlt ?? "Cash prize alternative"}
+                  loading="lazy"
+                />
+                <span className="prizes-header-cash-card__badge">
+                  <BadgeDollarSign size={16} aria-hidden="true" />
+                  {t.cashTag ?? "Cash alternatives"}
+                </span>
+              </div>
+              <div className="prizes-header-cash-card__meta">
+                <strong>$60K · $10K · $2.5K · $1.5K</strong>
+                <span>{reserveLabel} ↗</span>
+              </div>
+            </a>
           </div>
 
-          <p className="mb-12 max-w-3xl text-sm leading-6 text-white/75">
+          <p className="mb-12 max-w-3xl text-sm leading-6 text-white/80">
             {t.prizeImageDisclaimer}
           </p>
         </Reveal>

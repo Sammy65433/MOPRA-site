@@ -5,6 +5,7 @@ import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import RaffleMarquee from "./components/RaffleMarquee";
+import CountdownMarquee from "./components/CountdownMarquee";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
@@ -87,6 +88,7 @@ export default function App() {
               </section>
 
               <Tickets t={t} />
+              <CountdownMarquee language={language} />
               <section
                 className="lasile-map-section"
                 aria-label="L’Asile map gallery"
