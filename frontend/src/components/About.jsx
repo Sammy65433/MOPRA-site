@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import "./About.css";
 
+const pillarImages = [
+  { src: "/haitian-gallery4.jpg", modifier: "" },
+  { src: "/Raffledetails_pic1.png", modifier: "about-pillar__image--flyer" },
+  { src: "/tickets-gallery6.jpg", modifier: "" },
+];
+
 export default function About({ t, full = false }) {
   return (
     <section
