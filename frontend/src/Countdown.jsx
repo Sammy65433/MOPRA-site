@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Clock3, Gift, Ticket } from "lucide-react";
+import { ArrowUpRight, Clock3, Gift, Sparkles, Ticket } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./Countdown.css";
 
@@ -80,12 +80,19 @@ export default function Countdown({ language = "en" }) {
 
   return (
     <section className="draw-countdown" aria-labelledby="draw-countdown-title">
+      <div className="draw-countdown__ambient-light draw-countdown__ambient-light--one" aria-hidden="true" />
+      <div className="draw-countdown__ambient-light draw-countdown__ambient-light--two" aria-hidden="true" />
+      <div className="draw-countdown__ambient-light draw-countdown__ambient-light--three" aria-hidden="true" />
+
       <div className="draw-countdown__layout">
         <Link to="/prizes#raffle" className="draw-countdown__link">
+          <div className="draw-countdown__spotlight" aria-hidden="true" />
           <div className="draw-countdown__inner">
             <h2 id="draw-countdown-title" className="draw-countdown__heading">
-              <Clock3 size={18} aria-hidden="true" />
-              {t.heading}
+              <Sparkles size={24} className="draw-countdown__sparkle" aria-hidden="true" />
+              <Clock3 size={24} aria-hidden="true" />
+              <span>{t.heading}</span>
+              <Sparkles size={24} className="draw-countdown__sparkle" aria-hidden="true" />
             </h2>
 
             <p className="draw-countdown__date">{t.date}</p>
@@ -104,9 +111,9 @@ export default function Countdown({ language = "en" }) {
             <p className="draw-countdown__note">{t.note}</p>
 
             <span className="draw-countdown__button">
-              <Gift size={17} aria-hidden="true" />
+              <Gift size={20} aria-hidden="true" />
               {t.action}
-              <ArrowUpRight size={17} aria-hidden="true" />
+              <ArrowUpRight size={20} aria-hidden="true" />
             </span>
           </div>
         </Link>
@@ -132,9 +139,9 @@ export default function Countdown({ language = "en" }) {
               />
             </div>
             <p className="draw-countdown__photo-caption">
-              <Ticket size={16} aria-hidden="true" />
+              <Ticket size={18} aria-hidden="true" />
               <span>{t.gallery}</span>
-              <ArrowUpRight size={15} aria-hidden="true" />
+              <ArrowUpRight size={17} aria-hidden="true" />
             </p>
           </Link>
 

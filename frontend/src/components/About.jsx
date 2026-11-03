@@ -46,9 +46,9 @@ export default function About({ t, full = false }) {
             </Reveal>
 
             <Reveal>
-              <p className="section-tag">
-                <HeartHandshake size={17} aria-hidden="true" />
-                {t.aboutTag}
+              <p className="about-big-tag">
+                <HeartHandshake size={24} aria-hidden="true" />
+                <span>{t.aboutTag}</span>
               </p>
 
               <h2 className="about-editorial-heading mt-5 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-6xl">

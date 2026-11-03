@@ -98,13 +98,13 @@ export default function Tickets({ t }) {
 
   return (
     <section id="tickets" className="scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28">
-      <div className="ticket-panel relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-[#e5c77e]/45 p-6 sm:p-12 lg:p-16">
+      <div className="ticket-panel relative mx-auto max-w-7xl overflow-hidden rounded-3xl border-2 border-[#e5c77e]/55 p-6 sm:p-12 lg:p-16">
         <div className="relative z-10">
           <div className="tickets-intro">
             <div>
-              <p className="section-tag">
-                <Ticket size={16} aria-hidden="true" />
-                {t.ticketTag}
+              <p className="tickets-big-tag">
+                <Ticket size={24} aria-hidden="true" />
+                <span>{t.ticketTag}</span>
               </p>
 
               <h2 className="font-display mt-5 text-4xl font-bold leading-[1.06] tracking-tight text-white sm:text-6xl">
@@ -166,9 +166,9 @@ export default function Tickets({ t }) {
             className="mt-14 grid scroll-mt-24 gap-10 border-t border-white/20 pt-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14"
           >
             <div>
-              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.28em] text-[#f7df9f]">
-                <Gift size={16} aria-hidden="true" />
-                {copy.getTicket}
+              <p className="tickets-sub-badge">
+                <Gift size={22} aria-hidden="true" />
+                <span>{copy.getTicket}</span>
               </p>
 
               <h3 className="font-display mt-4 text-4xl font-bold text-white sm:text-5xl">
@@ -183,9 +183,9 @@ export default function Tickets({ t }) {
                 {copy.warning}
               </p>
 
-              <h4 className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-[#f7df9f]">
-                <CreditCard size={16} aria-hidden="true" />
-                {copy.waysToPay}
+              <h4 className="tickets-payment-badge mt-8">
+                <CreditCard size={22} aria-hidden="true" />
+                <span>{copy.waysToPay}</span>
               </h4>
 
               <div className="clover-payment">

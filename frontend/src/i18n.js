@@ -45,9 +45,9 @@ export const translations = {
     raffleDetailsCta: "See ticket information",
     rafflePrizesCta: "See the prizes",
     cashTag: "Cash alternatives",
-    cashTitle: "Take the prize—or take the cash.",
+    cashTitle: "Take The Prize! or Take The Cash!",
     cashText:
-      "Every Prize includes a cash alternative. The choice belongs to the winner.",
+      "Every Prize includes a Cash Alternative. The Choice belongs to the Winner.",
     cashImageAlt: "U.S. currency representing the raffle’s cash alternatives",
     cashAmounts: ["$60,000", "$10,000", "$2,500", "$1,500"],
     prizeImageDisclaimer:

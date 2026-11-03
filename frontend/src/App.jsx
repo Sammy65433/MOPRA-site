@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { ArrowUpRight, Gift, Ticket } from "lucide-react";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import RaffleMarquee from "./components/RaffleMarquee";
-import RaffleDetails from "./components/RaffleDetails";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
@@ -60,7 +60,32 @@ export default function App() {
               <Hero t={t} />
               <RaffleMarquee language={language} />
               <Countdown language={language} />
-              <RaffleDetails t={t} showPrizeCta />
+
+              <section
+                className="px-5 pt-12 pb-2 sm:px-8"
+                aria-label="Raffle and ticket links"
+              >
+                <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-5 rounded-3xl border-2 border-[#e5c77e]/65 bg-gradient-to-r from-[#142854]/90 via-[#2a183f]/90 to-[#142854]/90 px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(229,199,126,0.22)] backdrop-blur-xl sm:px-10">
+                  <Link
+                    to="/tickets#reserve-spot"
+                    className="inline-flex items-center gap-3 rounded-full border-2 border-white bg-gradient-to-r from-[#fde047] via-[#e5c77e] to-[#f59e0b] px-8 py-4 font-display text-base font-extrabold text-[#0f172a] shadow-[0_14px_34px_rgba(245,158,11,0.45)] transition-transform hover:-translate-y-1 sm:text-lg"
+                  >
+                    <Ticket size={22} aria-hidden="true" />
+                    {t.raffleDetailsCta} · $99.99
+                    <ArrowUpRight size={20} aria-hidden="true" />
+                  </Link>
+
+                  <Link
+                    to="/prizes#raffle"
+                    className="inline-flex items-center gap-3 rounded-full border-2 border-[#93c5fd] bg-gradient-to-r from-[#2563eb] to-[#e11d48] px-8 py-4 font-display text-base font-extrabold text-white shadow-[0_14px_34px_rgba(37,99,235,0.4)] transition-transform hover:-translate-y-1 sm:text-lg"
+                  >
+                    <Gift size={22} aria-hidden="true" />
+                    {t.rafflePrizesCta}
+                    <ArrowUpRight size={20} aria-hidden="true" />
+                  </Link>
+                </div>
+              </section>
+
               <Tickets t={t} />
               <section
                 className="lasile-map-section"

@@ -10,7 +10,7 @@ const cards = [
     position: "object-[center_65%]",
   },
   {
-    image: "/solarpanels.jpg",
+    image: "/10kw-off-grid-solar-system.jpg",
     secondaryImage: "/10kw-off-grid-solar-system.jpg",
     size: "md:col-span-5 min-h-[310px]",
     position: "object-[center_60%]",
