@@ -2,12 +2,15 @@ import { useState } from "react";
 import {
   CalendarDays,
   CreditCard,
+  ExternalLink,
   Gift,
   Mail,
   Send,
   Ticket,
 } from "lucide-react";
 import "./components/Tickets.css";
+
+const CLOVER_URL = "https://link.clover.com/urlshortener/CVF3dD";
 
 const gallery = Array.from(
   { length: 6 },
@@ -19,12 +22,6 @@ export default function Tickets({ t }) {
   const [submitting, setSubmitting] = useState(false);
   const copy = t.ticketPage;
   const API_URL = import.meta.env.VITE_API_URL || "";
-
-  const paymentMethods = [
-    ["Zelle", "payments@mopra.org"],
-    ["Cash App", "$MOPRA300"],
-    [copy.bankTransfer, copy.bankDetails],
-  ];
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -122,17 +119,37 @@ export default function Tickets({ t }) {
                 {copy.waysToPay}
               </h4>
 
-              <dl className="mt-5 space-y-3">
-                {paymentMethods.map(([method, details]) => (
-                  <div
-                    key={method}
-                    className="flex flex-wrap justify-between gap-2 rounded-xl border border-white/15 bg-black/20 px-5 py-4"
+              <div className="clover-payment">
+                <div className="clover-payment__qr">
+                  <a
+                    href={CLOVER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={copy.paymentButton}
                   >
-                    <dt className="font-semibold text-[#f8f6f0]">{method}</dt>
-                    <dd className="break-all text-white/70">{details}</dd>
-                  </div>
-                ))}
-              </dl>
+                    <img
+                      src="/MOPRA-QR-CODE.png"
+                      alt={copy.qrAlt}
+                      width="1545"
+                      height="1999"
+                    />
+                  </a>
+                  <p>{copy.scanQr}</p>
+                </div>
+
+                <div className="clover-payment__action">
+                  <p>{copy.cloverNote}</p>
+                  <a
+                    href={CLOVER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="clover-payment__button"
+                  >
+                    {copy.paymentButton}
+                    <ExternalLink size={18} aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
 
               <p className="mt-6 flex flex-wrap items-center gap-2 text-sm leading-6 text-white/75">
                 <Mail size={16} aria-hidden="true" />

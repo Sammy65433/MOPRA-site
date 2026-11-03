@@ -113,24 +113,25 @@ export const translations = {
     ticketTag: "SUPPORT THE RAFFLE · SUPPORT L’ASILE",
     ticketHeading: "Your participation can reach beyond the prize.",
     ticketText:
-      "The Grand Raffle celebrates 300 years of L’Asile and brings people together around its future. Review the four prize choices and drawing details, then use the ticket reservation preview below. Payment instructions still require organizer confirmation.",
+      "The Grand Raffle celebrates 300 years of L’Asile and brings people together around its future. Tickets are confirmed at $100.00 USD each. Review the prizes, pay with the official MOPRA QR code or payment link, and complete the reservation form below.",
     ticketButton: "Grand Raffle · December 31, 2027",
-    dateNote:
-      "Drawing in L’Asile and via Zoom. Ticket sales and payment details remain subject to confirmation.",
+    dateNote: "Drawing in L’Asile and via Zoom · Tickets: $100.00 USD each.",
     ticketPage: {
       getTicket: "Get your ticket",
-      price: "One ticket. $100.",
+      price: "Raffle ticket · $100.00 USD",
       paymentIntro:
-        "The proposed process is payment by Zelle, Cash App, or bank transfer, followed by providing your details to request an entry.",
+        "The official MOPRA QR code is the main way to pay for raffle tickets. Scan it with your phone camera or click it to open the payment page. After paying, complete the reservation form to request your tickets.",
       warning:
-        "Meeting preview only. Price, payment accounts, and ticket process require client confirmation. Do not send payment.",
-      waysToPay: "Proposed ways to pay",
-      bankTransfer: "Bank transfer",
-      bankDetails: "Account details on request",
+        "Ticket price confirmed: $100.00 USD each. A reservation is not a raffle ticket; your ticket is issued after payment is confirmed.",
+      waysToPay: "Main payment method · MOPRA QR code",
+      cloverNote: "Click the QR code or payment button to open the secure checkout in a new tab.",
+      scanQr: "Scan the official MOPRA QR code to pay",
+      qrAlt: "Official MOPRA QR code for raffle ticket payment",
+      paymentButton: "Pay Online · $100.00 USD",
       questions: "Questions? Email",
       reserve: "Reserve your spot",
       formWarning:
-        "Reservations are saved to the MOPRA ticket system. Please enter real contact details.",
+        "This form saves a reservation and does not collect payment. Your ticket is issued after the organizers confirm payment.",
       firstName: "First name",
       lastName: "Last name",
       contact: "Email or phone",
@@ -139,7 +140,7 @@ export const translations = {
       submit: "Reserve your spot",
       processing: "Saving your reservation...",
       reservationCreated:
-        "Reservation received. Complete your payment using the methods above; once payment is confirmed, your raffle ticket will be emailed or ready for in-person pickup.",
+        "Reservation received. If you have not paid yet, scan the MOPRA QR code or use the payment link above. Your raffle ticket will be emailed or prepared for in-person pickup after payment is confirmed.",
       reservationError:
         "We could not save the reservation. Please try again or email Cahctca@gmail.com.",
       gallery: "Illustrative photo gallery",
@@ -261,24 +262,25 @@ export const translations = {
     ticketTag: "SOUTENIR LA TOMBOLA · SOUTENIR L’ASILE",
     ticketHeading: "Votre participation peut aller au-delà du prix.",
     ticketText:
-      "La grande tombola célèbre 300 ans de L’Asile et rassemble les personnes autour de son avenir. Découvrez les quatre choix de prix et les détails du tirage, puis utilisez l’aperçu de réservation ci-dessous. Les instructions de paiement doivent encore être confirmées par les organisateurs.",
+      "La grande tombola célèbre 300 ans de L’Asile et rassemble les personnes autour de son avenir. Le prix est confirmé à 100,00 $ US par billet. Découvrez les prix, payez avec le code QR officiel du MOPRA ou le lien de paiement, puis remplissez le formulaire de réservation ci-dessous.",
     ticketButton: "Grande tombola · 31 décembre 2027",
-    dateNote:
-      "Tirage à L’Asile et sur Zoom. La vente des billets et les modalités de paiement restent à confirmer.",
+    dateNote: "Tirage à L’Asile et sur Zoom · Billets : 100,00 $ US chacun.",
     ticketPage: {
       getTicket: "Obtenir un billet",
-      price: "Un billet. 100 $.",
+      price: "Billet de tombola · 100,00 $ US",
       paymentIntro:
-        "Le processus proposé prévoit un paiement par Zelle, Cash App ou virement bancaire, suivi de l’envoi de vos coordonnées pour demander une participation.",
+        "Le code QR officiel du MOPRA est le principal moyen de payer vos billets de tombola. Scannez-le avec l’appareil photo de votre téléphone ou cliquez dessus pour ouvrir la page de paiement. Après le paiement, remplissez le formulaire pour demander vos billets.",
       warning:
-        "Aperçu pour la réunion seulement. Le prix, les comptes de paiement et le processus doivent être confirmés par le client. N’envoyez aucun paiement.",
-      waysToPay: "Modes de paiement proposés",
-      bankTransfer: "Virement bancaire",
-      bankDetails: "Coordonnées bancaires sur demande",
+        "Prix confirmé : 100,00 $ US par billet. Une réservation n’est pas un billet de tombola ; votre billet est émis après confirmation du paiement.",
+      waysToPay: "Paiement principal · Code QR du MOPRA",
+      cloverNote: "Cliquez sur le code QR ou sur le bouton de paiement pour ouvrir la page sécurisée dans un nouvel onglet.",
+      scanQr: "Scannez le code QR officiel du MOPRA pour payer",
+      qrAlt: "Code QR officiel du MOPRA pour le paiement des billets de tombola",
+      paymentButton: "Payer en ligne · 100,00 $ US",
       questions: "Des questions ? Écrivez à",
       reserve: "Réserver votre place",
       formWarning:
-        "Les réservations sont enregistrées dans le système de billets MOPRA. Veuillez saisir vos coordonnées réelles.",
+        "Ce formulaire enregistre une réservation et ne collecte aucun paiement. Votre billet est émis après confirmation du paiement par les organisateurs.",
       firstName: "Prénom",
       lastName: "Nom",
       contact: "Adresse courriel ou téléphone",
@@ -287,7 +289,7 @@ export const translations = {
       submit: "Réserver votre place",
       processing: "Enregistrement de votre réservation…",
       reservationCreated:
-        "Réservation reçue. Finalisez votre paiement selon les méthodes ci-dessus ; une fois le paiement confirmé, votre billet de tombola sera envoyé par courriel ou remis en personne.",
+        "Réservation reçue. Si vous n’avez pas encore payé, scannez le code QR du MOPRA ou utilisez le lien de paiement ci-dessus. Votre billet sera envoyé par courriel ou préparé pour un retrait en personne après confirmation du paiement.",
       reservationError:
         "Nous n’avons pas pu enregistrer la réservation. Veuillez réessayer ou écrire à Cahctca@gmail.com.",
       gallery: "Galerie de photos d’illustration",
@@ -409,24 +411,25 @@ export const translations = {
     ticketTag: "SIPÒTE TOMBOLA A · SIPÒTE LAZIL",
     ticketHeading: "Patisipasyon ou ka ale pi lwen pase prim lan.",
     ticketText:
-      "Gran Tombola a selebre 300 lane Lazil epi li rasanble moun bò kote lavni li. Gade kat chwa prim yo ak detay tiraj la, epi sèvi ak apèsi rezèvasyon tikè anba a. Òganizatè yo toujou dwe konfime enstriksyon peman yo.",
+      "Gran Tombola a selebre 300 lane Lazil epi li rasanble moun bò kote lavni li. Pri a konfime a $100.00 USD pou chak tikè. Gade prim yo, peye ak kòd QR ofisyèl MOPRA a oswa lyen peman an, epi ranpli fòm rezèvasyon anba a.",
     ticketButton: "Gran Tombola · 31 desanm 2027",
-    dateNote:
-      "Tiraj la ap fèt Lazil ak sou Zoom. Vant tikè ak detay peman yo rete pou konfimasyon.",
+    dateNote: "Tiraj la ap fèt Lazil ak sou Zoom · Tikè: $100.00 USD chak.",
     ticketPage: {
       getTicket: "Jwenn tikè w",
-      price: "Yon tikè. $100.",
+      price: "Tikè tombola · $100.00 USD",
       paymentIntro:
-        "Pwosesis yo pwopoze a se peye ak Zelle, Cash App oswa transfè labank, epi voye enfòmasyon w pou mande yon plas nan tiraj la.",
+        "Kòd QR ofisyèl MOPRA a se prensipal fason pou peye tikè tombola yo. Skane li ak kamera telefòn ou oswa klike sou li pou louvri paj peman an. Apre ou fin peye, ranpli fòm rezèvasyon an pou mande tikè ou yo.",
       warning:
-        "Apèsi pou reyinyon an sèlman. Kliyan an poko konfime pri a, kont peman yo oswa pwosesis tikè a. Pa voye lajan.",
-      waysToPay: "Fason pou peye yo pwopoze",
-      bankTransfer: "Transfè labank",
-      bankDetails: "Detay kont lan sou demann",
+        "Pri tikè a konfime: $100.00 USD chak. Yon rezèvasyon pa yon tikè tombola; yo ap bay tikè ou a apre yo konfime peman an.",
+      waysToPay: "Prensipal fason peman · Kòd QR MOPRA a",
+      cloverNote: "Klike sou kòd QR la oswa bouton peman an pou louvri paj sekirize a nan yon nouvo onglè.",
+      scanQr: "Skane kòd QR ofisyèl MOPRA a pou peye",
+      qrAlt: "Kòd QR ofisyèl MOPRA a pou peye tikè tombola",
+      paymentButton: "Peye sou entènèt · $100.00 USD",
       questions: "Ou gen kesyon? Ekri",
       reserve: "Rezève plas ou",
       formWarning:
-        "Rezèvasyon yo anrejistre nan sistèm tikè MOPRA a. Tanpri mete enfòmasyon kontak ou reyèl.",
+        "Fòm sa a anrejistre yon rezèvasyon, li pa pran peman. Yo ap bay tikè ou a apre òganizatè yo konfime peman an.",
       firstName: "Prenon",
       lastName: "Siyati",
       contact: "Imèl oswa telefòn",
@@ -435,7 +438,7 @@ export const translations = {
       submit: "Rezève plas ou",
       processing: "N ap anrejistre rezèvasyon ou...",
       reservationCreated:
-        "Rezèvasyon ou anrejistre. Finalize peman ou dapre metòd ki pi wo yo; lè peman an konfime, yo ap voye tikè tombola a pa imèl oswa remèt li an pèsòn.",
+        "Rezèvasyon ou anrejistre. Si ou poko peye, skane kòd QR MOPRA a oswa sèvi ak lyen peman ki pi wo a. Yo ap voye tikè ou a pa imèl oswa prepare li pou ou vin chache apre yo konfime peman an.",
       reservationError:
         "Nou pa kapab anrejistre rezèvasyon ou. Tanpri eseye ankò oswa ekri Cahctca@gmail.com.",
       gallery: "Galri foto ilistrasyon",

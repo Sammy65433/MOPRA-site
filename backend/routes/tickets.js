@@ -96,7 +96,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // PATCH /api/tickets/:id/payment
-// Staff confirms payment (Zelle / Cash App / bank transfer / card).
+// Staff confirms payment (Clover / card / other approved method).
 // On success the reservation becomes "paid" and a raffle ticket number is issued.
 router.patch("/:id/payment", async (req, res) => {
   try {

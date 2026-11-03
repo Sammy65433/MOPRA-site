@@ -26,6 +26,95 @@
   border-radius: 0.5rem;
 }
 
+.clover-payment {
+  display: grid;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.clover-payment__qr > a {
+  display: block;
+  padding: 0.55rem;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.clover-payment__qr > a:focus-visible {
+  outline: 3px solid #79b7ff;
+  outline-offset: 4px;
+}
+
+.clover-payment__qr img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.clover-payment__qr p {
+  margin-top: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.clover-payment__action > p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.clover-payment__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 54px;
+  margin-top: 1rem;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid #228800;
+  border-radius: 0.5rem;
+  background: #228800;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.clover-payment__button:hover {
+  border-color: #2d9d08;
+  background: #2d9d08;
+}
+
+.clover-payment__button:focus-visible {
+  outline: 3px solid #a6d0ff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 479px) {
+  .clover-payment {
+    grid-template-columns: 1fr;
+  }
+
+  .clover-payment__qr {
+    width: min(100%, 280px);
+    margin-inline: auto;
+  }
+
+  .clover-payment__action {
+    text-align: center;
+  }
+
+  .clover-payment__button {
+    width: 100%;
+  }
+}
+
 @media (min-width: 1024px) {
   .tickets-intro {
     grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);

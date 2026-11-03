@@ -5,7 +5,7 @@ Express + MongoDB backend for the MOPRA website ticket system: "Reserve your spo
 ## Features
 
 - **Reserve a spot:** `POST /api/tickets/reserve` saves a reservation (name, contact, quantity, message) into MongoDB with status `pending`.
-- **Confirm payment:** `PATCH /api/tickets/:id/payment` records the payment (Zelle / Cash App / bank transfer / card) and a payment reference, then issues a raffle ticket number (e.g. `MOPRA-AB12CD34`) and moves the reservation to status `paid`.
+- **Confirm payment:** `PATCH /api/tickets/:id/payment` records the payment (Clover / card / other approved method) and a payment reference, then issues a raffle ticket number (e.g. `MOPRA-AB12CD34`) and moves the reservation to status `paid`.
 - **Deliver the ticket:**
   - `PATCH /api/tickets/:id/delivery` with `{ "deliveryMethod": "digital" | "in-person" }`.
   - `digital` sends the ticket by email (ticket number + QR code).
@@ -56,7 +56,7 @@ The API runs on `http://localhost:5050` and a health check is at `http://localho
   "contact": "marie@example.com",
   "quantity": 1,
   "message": "Optional note",
-  "paymentMethod": "zelle"
+  "paymentMethod": "clover"
 }
 ```
 
@@ -76,8 +76,8 @@ Response: `201` with `{ "reservation": {...}, "message": "..." }`.
 
 ```json
 {
-  "paymentMethod": "zelle",
-  "paymentReference": "Zelle transfer from Marie Jean - Nov 2"
+  "paymentMethod": "clover",
+  "paymentReference": "Clover checkout receipt for Marie Jean - Nov 2"
 }
 ```
 
@@ -125,7 +125,7 @@ Environment variables to set on the backend service:
 ## Workflow summary
 
 1. Visitor reserves a spot → reservation saved as `pending`.
-2. Visitor pays via Zelle / Cash App / bank transfer.
+2. Visitor pays through the Clover checkout linked on the website.
 3. Staff confirms payment via `PATCH /api/tickets/:id/payment` → ticket number issued, status `paid`.
 4. Staff sends ticket: `digital` (email with QR code) or `in-person` (handoff).
 5. If email fails, staff can retry with `POST /api/tickets/:id/resend`.
