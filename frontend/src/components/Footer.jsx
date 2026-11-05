@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import "./Footer.css";
 
-const CLOVER_URL = "https://link.clover.com/urlshortener/CVF3dD";
+const CLOVER_URL = "https://www.clover.com/pay-widgets/b31dc9e4-f7f7-466d-b851-557bb96dfbd9";
 const CURRENT_YEAR = 2026;
 
 export default function Footer({ t }) {

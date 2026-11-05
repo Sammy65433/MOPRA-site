@@ -1,6 +1,7 @@
 import { Router } from "express";
 import Reservation from "../models/Reservation.js";
 import RaffleConfig from "../models/RaffleConfig.js";
+import { sendReservationNotificationEmail } from "../services/ticketService.js";
 
 const router = Router();
 
@@ -40,6 +41,97 @@ router.get("/tickets", checkAdminToken, async (req, res) => {
     return res.status(200).json({ reservations, tickets });
   } catch (err) {
     console.error("Admin tickets error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// POST /api/admin/tickets — staff create reservation (e.g. phone payments)
+// Body: { firstName, lastName, contact, quantity, message, deliveryMethod, paymentMethod }
+router.post("/tickets", checkAdminToken, async (req, res) => {
+  try {
+    const { firstName, lastName, contact, quantity, message, deliveryMethod, paymentMethod } =
+      req.body || {};
+
+    if (!firstName || !lastName || !contact) {
+      return res.status(400).json({
+        error: "First name, last name, and contact (email or phone) are required.",
+      });
+    }
+
+    const tickets = Math.floor(Number(quantity));
+    if (!Number.isFinite(tickets) || tickets < 1) {
+      return res.status(400).json({ error: "Quantity must be at least 1 ticket." });
+    }
+    if (tickets > 5) {
+      return res.status(400).json({ error: "You can reserve up to 5 tickets per person." });
+    }
+
+    const escapeRegex = (value) =>
+      String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const duplicate = await Reservation.findOne({
+      status: { $in: ["pending", "paid", "delivered"] },
+      $or: [
+        { contact: { $regex: `^${escapeRegex(contact)}$`, $options: "i" } },
+        {
+          $and: [
+            { firstName: { $regex: `^${escapeRegex(firstName)}$`, $options: "i" } },
+            { lastName: { $regex: `^${escapeRegex(lastName)}$`, $options: "i" } },
+          ],
+        },
+      ],
+    });
+
+    if (duplicate) {
+      return res.status(409).json({
+        error: "A reservation already exists for this name or contact.",
+      });
+    }
+
+    const capacity = Number(process.env.RAFFLE_CAPACITY || 0);
+    if (capacity > 0) {
+      const activeReservations = await Reservation.find({
+        status: { $in: ["pending", "paid"] },
+      }).select("quantity");
+      const activeTotal = activeReservations.reduce(
+        (sum, reservation) => sum + (reservation.quantity || 0),
+        0
+      );
+      if (activeTotal + tickets > capacity) {
+        return res.status(409).json({
+          error: "Sorry, the raffle is fully booked. Please check back later.",
+        });
+      }
+    }
+
+    const reservation = await Reservation.create({
+      firstName,
+      lastName,
+      contact,
+      quantity: tickets,
+      message: message || "",
+      status: "pending",
+      paymentMethod: paymentMethod || "phone",
+      deliveryMethod:
+        deliveryMethod && ["digital", "in-person"].includes(deliveryMethod)
+          ? deliveryMethod
+          : "none",
+    });
+
+    let emailNotification = { sent: false, skipped: true };
+    try {
+      emailNotification = await sendReservationNotificationEmail(reservation);
+    } catch (emailErr) {
+      console.error("Admin reservation notification email failed:", emailErr);
+    }
+
+    return res.status(201).json({
+      reservation,
+      emailNotification,
+      message: "Reservation created by staff. Confirm payment to issue the raffle ticket.",
+    });
+  } catch (err) {
+    console.error("Admin create reservation error:", err);
     return res.status(500).json({ error: "Server error" });
   }
 });

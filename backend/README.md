@@ -11,6 +11,7 @@ Express + MongoDB backend for the MOPRA website ticket system: "Reserve your spo
   - `digital` sends the ticket by email (ticket number + QR code) via SendGrid HTTP API.
   - `in-person` marks the ticket for in-person handoff at the meeting.
 - **Resend:** `POST /api/tickets/:id/resend` re-sends the digital ticket email.
+- **Staff create reservation (phone payments):** `POST /api/admin/tickets` (password-protected) lets staff enter a customer directly (name, contact, quantity, message, delivery method, payment method) — used for raffle spots paid by phone/in person.
 - **Admin (password-protected):**
   - `GET /api/admin/tickets` lists confirmed (paid/delivered) purchases with ticket numbers.
   - `PATCH /api/admin/tickets/:id/cancel` marks a reservation as cancelled.
@@ -71,6 +72,26 @@ The API runs on `http://localhost:5050` and a health check is at `http://localho
 Response: `201` with `{ "reservation": {...}, "emailNotification": {...}, "message": "..." }`.
 
 Rules: quantity must be between 1 and 5. Duplicate reservations by name or contact (email/phone) are rejected with `409`.
+
+### Create reservation (staff — phone payments)
+
+`POST /api/admin/tickets?token=...`
+
+```json
+{
+  "firstName": "Marie",
+  "lastName": "Jean",
+  "contact": "555-555-5555",
+  "quantity": 1,
+  "message": "Paid by phone - cash / app",
+  "deliveryMethod": "in-person",
+  "paymentMethod": "phone"
+}
+```
+
+Response: `201` with `{ "reservation": {...}, "emailNotification": {...} }`.
+
+Use this when a customer pays by phone/in person — staff enters the customer info directly instead of the visitor going through the public reserve flow.
 
 ### List reservations
 
@@ -139,6 +160,8 @@ Environment variables to set on the backend service:
 3. Staff confirms payment via `PATCH /api/tickets/:id/payment` → ticket number issued, status `paid`.
 4. Staff sends ticket: `digital` (email with QR code) or `in-person` (handoff).
 5. If email fails, staff can retry with `POST /api/tickets/:id/resend`.
+
+**Phone payments:** staff create the reservation directly with `POST /api/admin/tickets` (e.g. `{ "firstName": "...", "lastName": "...", "contact": "555...", "quantity": 1, "deliveryMethod": "in-person" }`), then confirm payment via `PATCH /api/tickets/:id/payment` with the phone payment details.
 
 
 
