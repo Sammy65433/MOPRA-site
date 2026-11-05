@@ -12,9 +12,6 @@ const router = Router();
 const ACTIVE_STATUSES = ["pending", "paid"];
 
 // POST /api/tickets/reserve
-// Create a "reserve your spot" reservation in MongoDB.
-// Once payment is received, staff confirm it via PATCH /api/tickets/:id/payment
-// which issues the raffle ticket and moves the reservation to "paid".
 router.post("/reserve", async (req, res) => {
   try {
     const { firstName, lastName, contact, quantity, message, paymentMethod } = req.body || {};
@@ -77,7 +74,6 @@ router.post("/reserve", async (req, res) => {
 });
 
 // GET /api/tickets
-// List reservations. Optional ?status=pending filter.
 router.get("/", async (req, res) => {
   try {
     const { status } = req.query;
@@ -109,8 +105,6 @@ router.get("/:id", async (req, res) => {
 });
 
 // PATCH /api/tickets/:id/payment
-// Staff confirms payment (Clover / card / other approved method).
-// On success the reservation becomes "paid" and a raffle ticket number is issued.
 router.patch("/:id/payment", async (req, res) => {
   try {
     const { paymentMethod, paymentReference } = req.body || {};
@@ -150,9 +144,6 @@ router.patch("/:id/payment", async (req, res) => {
 });
 
 // PATCH /api/tickets/:id/delivery
-// Mark how the ticket was delivered after payment:
-// - digital:   send the digital ticket (QR + ticket number) by email.
-// - in-person: staff marks the ticket for in-person pickup/handoff.
 router.patch("/:id/delivery", async (req, res) => {
   try {
     const { deliveryMethod } = req.body || {};
@@ -195,7 +186,6 @@ router.patch("/:id/delivery", async (req, res) => {
       return res.status(200).json({ reservation, ticket, email: emailResult });
     }
 
-    // In-person delivery: staff keeps the ticket number for handoff.
     return res.status(200).json({ reservation, ticket, delivery: "in-person" });
   } catch (err) {
     console.error("Delivery error:", err);
@@ -204,7 +194,6 @@ router.patch("/:id/delivery", async (req, res) => {
 });
 
 // POST /api/tickets/:id/resend
-// Resend the digital ticket email for a delivered digital ticket.
 router.post("/:id/resend", async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);
@@ -220,7 +209,14 @@ router.post("/:id/resend", async (req, res) => {
     }
 
     const ticket = await buildTicketPayload(reservation);
-    const emailResult = await sendDigitalTicketEmail(reservation, ticket);
+
+    let emailResult = { sent: false, skipped: true, ticketNumber: reservation.ticketNumber };
+    try {
+      emailResult = await sendDigitalTicketEmail(reservation, ticket);
+    } catch (emailError) {
+      console.error("Digital ticket email resend failed:", emailError);
+      emailResult = { sent: false, error: "email_failed" };
+    }
 
     return res.status(200).json({ reservation, ticket, email: emailResult });
   } catch (err) {
