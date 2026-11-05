@@ -22,7 +22,22 @@ export default function RaffleStats() {
 
   return (
     <div
-      className="inline-flex items-center gap-3 rounded-full border-2 border-[#93c5fd] bg-gradient-to-r from-[#2563eb] to-[#e11d48] px-8 py-4 font-display text-base font-extrabold text-white shadow-[0_14px_34px_rgba(37,99,235,0.4)] transition-transform hover:-translate-y-1 sm:text-lg"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "0.75rem",
+        borderRadius: "9999px",
+        border: "2px solid #93c5fd",
+        background: "linear-gradient(90deg, #2563eb, #e11d48)",
+        padding: "1rem 2rem",
+        fontSize: "1.5rem",
+        fontWeight: 900,
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        color: "#ffffff",
+        boxShadow: "0 14px 34px rgba(37,99,235,0.4)",
+        letterSpacing: "0.5px",
+        lineHeight: 1.2,
+      }}
     >
       <span>🎟️ {stats.participants} participant{stats.participants === 1 ? "" : "s"} so far</span>
       <span style={{ opacity: 0.7 }}>·</span>
