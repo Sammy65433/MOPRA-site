@@ -37,31 +37,21 @@ export default function RaffleStats() {
   return (
     <>
       <div
+        className="inline-block rounded-full p-[3px]"
         style={{
-          display: "inline-block",
-          padding: "3px",
-          borderRadius: "9999px",
           background: "conic-gradient(from 0deg, #fde047, #e11d48, #2563eb, #22c55e, #fde047)",
           animation: "borderLights 3s linear infinite",
           boxShadow: "0 0 18px rgba(229,199,126,0.6), 0 0 36px rgba(37,99,235,0.4)",
         }}
       >
         <div
+          className="flex flex-wrap items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#2563eb] to-[#e11d48] px-4 py-2 text-center font-bold leading-tight text-white shadow-[0_14px_34px_rgba(37,99,235,0.4)] sm:gap-3 sm:px-8 sm:py-4 sm:text-lg"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "0.75rem",
-            borderRadius: "9999px",
-            background: "linear-gradient(90deg, #2563eb, #e11d48)",
-            padding: "1rem 2rem",
-            fontSize: "1.5rem",
-            fontWeight: 900,
             fontFamily: "Georgia, 'Times New Roman', serif",
-            color: "#ffffff",
+            fontSize: "clamp(0.9rem, 3.5vw, 1.5rem)",
+            fontWeight: 900,
             letterSpacing: "0.5px",
-            lineHeight: 1.2,
-            minWidth: "320px",
+            maxWidth: "90vw",
           }}
         >
           <span
@@ -69,6 +59,8 @@ export default function RaffleStats() {
             style={{
               display: "inline-block",
               animation: "raffleSlideIn 0.4s ease",
+              whiteSpace: "normal",
+              wordBreak: "break-word",
             }}
           >
             {slides[slide]}
