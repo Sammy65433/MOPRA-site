@@ -11,6 +11,7 @@ import Tickets from "./Tickets";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
+import AdminPage from "./pages/AdminPage";
 import Footer from "./components/Footer";
 import LasileMap from "./components/LasileMap";
 import "./App.css";
@@ -109,6 +110,10 @@ export default function App() {
         <Route
           path="/tickets"
           element={<TicketsPage t={t} language={language} />}
+        />
+        <Route
+          path="/admin"
+          element={<AdminPage />}
         />
       </Routes>
 

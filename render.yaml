@@ -28,7 +28,7 @@ services:
         sync: false
       - key: SMTP_PASS
         sync: false
-      - key: EMAIL_FROM
+      - key: ADMIN_TOKEN
         sync: false
       - key: APP_URL
         value: https://gomopra.org
