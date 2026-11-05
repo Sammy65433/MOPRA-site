@@ -81,7 +81,7 @@ export default function Hero({ t }) {
             className="mx-auto mb-4 h-24 w-24 object-contain sm:h-32 sm:w-32"
           />
 
-          <p className="hero-organization-name mb-6 text-center text-xl font-bold uppercase leading-relaxed tracking-[0.12em] sm:text-2xl md:text-3xl">
+          <p className="hero-organization-name mb-6 text-center text-sm font-semibold uppercase leading-relaxed tracking-[0.12em] sm:text-base">
             {t.organizationFullName ??
               "Mouvement Patriotique pour la Renaissance de L’Asile"}
           </p>
