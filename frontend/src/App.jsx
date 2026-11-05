@@ -63,7 +63,6 @@ export default function App() {
               <Hero t={t} />
               <RaffleMarquee language={language} />
               <Countdown language={language} />
-              <RaffleStats />
 
               <section
                 className="px-5 pt-12 pb-2 sm:px-8"
@@ -87,6 +86,9 @@ export default function App() {
                     {t.rafflePrizesCta}
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
+
+                  <RaffleStats />
+
                 </div>
               </section>
 
