@@ -208,7 +208,7 @@ export async function sendReservationNotificationEmail(reservation) {
   const primaryOrganizer = organizerList[0] || "info@gomopra.org";
   const unitPrice = Number(process.env.TICKET_PRICE_USD || 100);
   const totalAmount = (reservation.quantity * unitPrice).toFixed(2);
-  const paymentUrl = "https://link.clover.com/urlshortener/CVF3dD";
+  const paymentUrl = "https://www.clover.com/pay-widgets/b31dc9e4-f7f7-466d-b851-557bb96dfbd9";
 
   if (!hasSendGrid() && !hasSmtp()) {
     console.log(

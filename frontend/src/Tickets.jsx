@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import "./components/Tickets.css";
 
-const CLOVER_URL = "https://link.clover.com/urlshortener/CVF3dD";
+const CLOVER_URL = "https://www.clover.com/pay-widgets/b31dc9e4-f7f7-466d-b851-557bb96dfbd9";
 const TICKET_PRICE = 100;
 
 const gallery = [
