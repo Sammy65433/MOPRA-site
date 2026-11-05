@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 
 const IMAGES = [
   "/Raffledetails_pic1.png",
-  "/ticket-box.jpg",
-  "/Raffledetails_pic2.png",
+  "/gift-giving2.jpg",
+  "/Raffledetails_pic1.png",
   "/ticket-box3.jpg",
   "/Raffledetails_pic1.png",
-  "/haitian-gallery1.jpg",
+  "/gift-giving1.jpg",
+  "/Raffledetails_pic1.png",
+  "/ticket-box.jpg",
+  
 ];
 
 export default function TicketBoxSlideshow() {
