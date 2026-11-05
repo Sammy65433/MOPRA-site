@@ -88,12 +88,16 @@ export default function App() {
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
 
-                  <img
-                    src="/ticket-box.jpg"
-                    alt="Raffle ticket box"
-                    className="h-[256px] w-[256px] shrink-0 rounded-xl object-contain sm:h-[352px] sm:w-[352px]"
-                  />
-                  <RaffleStats />
+                  <a href="#reserve-spot" className="shrink-0">
+                    <img
+                      src="/ticket-box.jpg"
+                      alt="Raffle ticket box"
+                      className="h-[256px] w-[256px] rounded-xl object-contain transition-transform hover:-translate-y-1 sm:h-[352px] sm:w-[352px]"
+                    />
+                  </a>
+                  <a href="#reserve-spot" className="shrink-0">
+                    <RaffleStats />
+                  </a>
 
                   <HowItWorks t={t} compact />
 
