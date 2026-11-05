@@ -88,6 +88,11 @@ export default function App() {
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
 
+                  <img
+                    src="/ticket-box.jpg"
+                    alt="Raffle ticket box"
+                    className="h-16 w-16 shrink-0 rounded-xl object-contain sm:h-20 sm:w-20"
+                  />
                   <RaffleStats />
 
                   <HowItWorks t={t} compact />
