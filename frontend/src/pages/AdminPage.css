@@ -239,3 +239,58 @@
 .admin-page .admin-table td {
   padding: 1rem 0.9rem;
 }
+
+.admin-new-reservation {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(229, 199, 126, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-new-reservation__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.admin-new-reservation__header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.admin-new-reservation__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-top: 1rem;
+}
+
+.admin-new-reservation__form input,
+.admin-new-reservation__form select {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 199, 126, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+  color: #f7f4e9;
+  font-size: 1rem;
+}
+
+.admin-new-reservation__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: rgba(247, 244, 233, 0.7);
+}
+
+.admin-new-reservation__created {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.08);
+}

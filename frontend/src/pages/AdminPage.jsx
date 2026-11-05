@@ -12,6 +12,19 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [data, setData] = useState(null);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState("");
+  const [createdReservation, setCreatedReservation] = useState(null);
+  const [createForm, setCreateForm] = useState({
+    firstName: "",
+    lastName: "",
+    contact: "",
+    quantity: "1",
+    deliveryMethod: "in-person",
+    paymentMethod: "phone",
+    message: "",
+  });
 
   async function load(overrideToken) {
     const t = overrideToken ?? token;
@@ -155,6 +168,110 @@ export default function AdminPage() {
     }
   }
 
+  async function createReservation(e) {
+    e.preventDefault();
+    const {
+      firstName,
+      lastName,
+      contact,
+      quantity,
+      deliveryMethod,
+      paymentMethod,
+      message,
+    } = createForm;
+    if (!firstName || !lastName || !contact) {
+      setCreateError("First name, last name, and contact are required.");
+      return;
+    }
+    const qty = Math.floor(Number(quantity));
+    if (!Number.isFinite(qty) || qty < 1) {
+      setCreateError("Quantity must be at least 1 ticket.");
+      return;
+    }
+    setCreateError("");
+    setCreating(true);
+    try {
+      const res = await fetch(
+        `${API_URL}/api/admin/tickets?token=${encodeURIComponent(token)}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            contact: contact.trim(),
+            quantity: qty,
+            message: message.trim(),
+            deliveryMethod,
+            paymentMethod,
+          }),
+        }
+      );
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setCreateError(json.error || "Failed to create reservation.");
+        return;
+      }
+      setCreatedReservation(json.reservation);
+      await load();
+    } catch {
+      setCreateError("Could not reach the server.");
+    } finally {
+      setCreating(false);
+    }
+  }
+
+  async function confirmPhonePayment(e) {
+    e.preventDefault();
+    const reservation = createdReservation;
+    if (!reservation?._id) return;
+    try {
+      const payRes = await fetch(
+        `${API_URL}/api/tickets/${reservation._id}/payment`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            paymentMethod: createForm.paymentMethod || "phone",
+            paymentReference:
+              createForm.message || `Phone payment - ${new Date().toISOString()}`,
+          }),
+        }
+      );
+      const payJson = await payRes.json().catch(() => ({}));
+      if (!payRes.ok) {
+        setCreateError(payJson.error || "Failed to confirm payment.");
+        return;
+      }
+
+      const delRes = await fetch(
+        `${API_URL}/api/tickets/${reservation._id}/delivery`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            deliveryMethod: createForm.deliveryMethod || "in-person",
+          }),
+        }
+      );
+      const delJson = await delRes.json().catch(() => ({}));
+      if (!delRes.ok) {
+        setCreateError(delJson.error || "Failed to set delivery.");
+        return;
+      }
+
+      alert(
+        `Payment confirmed. Ticket issued: ${
+          payJson.reservation?.ticketNumber || reservation.ticketNumber || ""
+        }`
+      );
+      setCreatedReservation(null);
+      await load();
+    } catch {
+      setCreateError("Could not reach the server.");
+    }
+  }
+
   if (!authed) {
     return (
       <main className="admin-page">
@@ -290,6 +407,133 @@ export default function AdminPage() {
           </table>
         </div>
       )}
+
+      <section className="admin-new-reservation">
+        <div className="admin-new-reservation__header">
+          <h2>Add Reservation — Phone Payment</h2>
+          <button
+            type="button"
+            onClick={() => setShowCreateForm((v) => !v)}
+            className="admin-btn admin-btn--print"
+          >
+            {showCreateForm ? "Close" : "Add phone payment / reservation"}
+          </button>
+        </div>
+        <p className="admin-winner__hint">
+          For raffle spots paid by phone or in person, enter the customer info below. The
+          reservation is created, then confirm payment to issue the ticket.
+        </p>
+        {showCreateForm && (
+          <form onSubmit={createReservation} className="admin-new-reservation__form">
+            <input
+              className="admin-login__input"
+              placeholder="First name"
+              value={createForm.firstName}
+              onChange={(e) =>
+                setCreateForm({ ...createForm, firstName: e.target.value })
+              }
+              required
+            />
+            <input
+              className="admin-login__input"
+              placeholder="Last name"
+              value={createForm.lastName}
+              onChange={(e) =>
+                setCreateForm({ ...createForm, lastName: e.target.value })
+              }
+              required
+            />
+            <input
+              className="admin-login__input"
+              placeholder="Contact (email or phone)"
+              value={createForm.contact}
+              onChange={(e) =>
+                setCreateForm({ ...createForm, contact: e.target.value })
+              }
+              required
+            />
+            <label className="admin-new-reservation__label">
+              Tickets
+              <input
+                className="admin-login__input"
+                type="number"
+                min={1}
+                max={5}
+                value={createForm.quantity}
+                onChange={(e) =>
+                  setCreateForm({ ...createForm, quantity: e.target.value })
+                }
+                required
+              />
+            </label>
+            <label className="admin-new-reservation__label">
+              Delivery
+              <select
+                className="admin-login__input"
+                value={createForm.deliveryMethod}
+                onChange={(e) =>
+                  setCreateForm({ ...createForm, deliveryMethod: e.target.value })
+                }
+              >
+                <option value="digital">Digital (email + QR)</option>
+                <option value="in-person">In person</option>
+              </select>
+            </label>
+            <label className="admin-new-reservation__label">
+              Payment method
+              <select
+                className="admin-login__input"
+                value={createForm.paymentMethod}
+                onChange={(e) =>
+                  setCreateForm({ ...createForm, paymentMethod: e.target.value })
+                }
+              >
+                <option value="phone">Phone</option>
+                <option value="cash">Cash</option>
+                <option value="zelle">Zelle</option>
+                <option value="app">Cash App</option>
+                <option value="bank">Bank transfer</option>
+                <option value="clover">Clover</option>
+              </select>
+            </label>
+            <input
+              className="admin-login__input"
+              placeholder="Message / payment reference (optional)"
+              value={createForm.message}
+              onChange={(e) =>
+                setCreateForm({ ...createForm, message: e.target.value })
+              }
+            />
+            <button type="submit" disabled={creating} className="admin-btn admin-btn--print">
+              {creating ? "Creating..." : "Create Reservation"}
+            </button>
+          </form>
+        )}
+        {createError && <p className="admin-login__error">{createError}</p>}
+        {createdReservation && (
+          <div className="admin-new-reservation__created">
+            <p>
+              Created reservation for {createdReservation.firstName}{" "}
+              {createdReservation.lastName} — {createdReservation.quantity} ticket(s). Status:{" "}
+              {createdReservation.status}
+            </p>
+            <button
+              type="button"
+              onClick={confirmPhonePayment}
+              className="admin-btn admin-btn--print"
+            >
+              Confirm Payment &amp; Issue Ticket
+            </button>
+            <button
+              type="button"
+              onClick={() => setCreatedReservation(null)}
+              className="admin-action-btn"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+      </section>
 
       <section className="admin-winner">
         <h2>Set Raffle Winner</h2>
