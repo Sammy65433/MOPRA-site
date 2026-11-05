@@ -94,7 +94,7 @@ export default function App() {
   href="https://link.clover.com/urlshortener/CVF3dD"
   target="_blank"
   rel="noopener noreferrer"
-  className="block w-full max-w-[260px] shrink-0"
+  className="block w-full max-w-[360px] shrink-0"
 >
   <div className="border-lights-bold rounded-2xl p-2">
     <img
