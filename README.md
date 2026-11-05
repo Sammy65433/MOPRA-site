@@ -105,3 +105,7 @@ MOPRA-Website/
 - Google map imagery requires appropriate attribution and usage-rights review.
 - Confirm ownership of the displayed contact email, `Cahctca@gmail.com`.
 - Confirm the drawing time, time zone, Zoom access process, eligibility, and complete official rules.
+
+
+
+
