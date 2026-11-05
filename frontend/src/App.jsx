@@ -90,24 +90,30 @@ export default function App() {
                   </Link>
 
                   <TicketBoxSlideshow />
-                  <a href="#reserve-spot" className="shrink-0">
-                    <div className="border-lights-bold rounded-2xl">
-                      <img
-                        src="/MOPRA-QR-CODE1.png"
-                        alt="MOPRA QR code to pay for raffle tickets"
-                        className="h-[200px] w-[200px] rounded-xl object-contain sm:h-[260px] sm:w-[260px]"
-                      />
-                    </div>
-                    <p className="mt-2 text-center text-xs font-semibold text-[#f7df9f] sm:text-sm">
-                      Main payment method · MOPRA QR code
-                    </p>
-                    <p className="mt-1 text-center text-xs text-white/70 sm:text-sm">
-                      Click the QR code or payment button to open the secure checkout in a new tab.
-                    </p>
-                    <p className="mt-1 text-center text-xs font-bold text-white sm:text-sm">
-                      Pay Online · $100 USD
-                    </p>
-                  </a>
+                  <a
+  href="https://link.clover.com/urlshortener/CVF3dD"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block w-full max-w-[260px] shrink-0"
+>
+  <div className="border-lights-bold rounded-2xl p-2">
+    <img
+      src="/MOPRA-QR-CODE1.png"
+      alt="Pay for MOPRA raffle tickets through Clover"
+      className="block h-auto w-full rounded-xl"
+    />
+  </div>
+  <p className="mt-2 text-center text-xs font-semibold text-[#f7df9f] sm:text-sm">
+    Main payment method · MOPRA QR code
+  </p>
+  <p className="mt-1 text-center text-xs text-white/70 sm:text-sm">
+    Click the QR code to open secure checkout in a new tab.
+  </p>
+  <p className="mt-1 text-center text-xs font-bold text-white sm:text-sm">
+    Pay Online · $100 USD
+  </p>
+</a>
+
                   <a href="#reserve-spot" className="shrink-0">
                     <RaffleStats />
                   </a>

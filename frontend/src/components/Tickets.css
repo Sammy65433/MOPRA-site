@@ -99,11 +99,11 @@
 
 .clover-payment {
   display: grid;
-  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  justify-items: center;
   margin-top: 1.25rem;
-  padding: 1.5rem;
+  padding: 1rem;
   border: 2px solid rgba(229, 199, 126, 0.55);
   border-radius: 1.5rem;
   background: linear-gradient(
@@ -114,19 +114,15 @@
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
 }
 
+.clover-payment__qr {
+  width: min(100%, 220px);
+}
 .clover-payment__qr > a {
   display: block;
   padding: 0.75rem;
   border: 2px solid #e5c77e;
   border-radius: 1rem;
-  background: #ffffff;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-.clover-payment__qr > a:hover {
-  transform: translateY(-3px) scale(1.015);
-  box-shadow: 0 20px 50px rgba(229, 199, 126, 0.35);
+  background: #fff;
 }
 
 .clover-payment__qr > a:focus-visible {
@@ -150,11 +146,12 @@
   text-align: center;
 }
 
-.clover-payment__action > p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.92rem;
-  line-height: 1.65;
+
+.clover-payment__action {
+  width: 100%;
+  text-align: center;
 }
+
 
 .clover-payment__button {
   display: inline-flex;
@@ -206,18 +203,20 @@
   transform: translateY(-2px);
   box-shadow: 0 18px 40px rgba(229, 199, 126, 0.5);
 }
-
 @media (max-width: 639px) {
   .clover-payment {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .clover-payment__qr {
-    width: min(100%, 320px);
+    width: min(100%, 220px);
     margin-inline: auto;
   }
 
   .clover-payment__action {
+    width: 100%;
     text-align: center;
   }
 }
