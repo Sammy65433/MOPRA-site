@@ -139,3 +139,35 @@ button {
   .border-lights-bold { animation: none; }
   .border-lights-bold::before { animation: none; }
 }
+
+/* Border of lights — BOLD blue/white variant (raffle marquee) */
+.border-lights-bold-blue-white {
+  position: relative;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(255, 255, 255, 0.35);
+  animation: borderLightsBlueWhiteBoldGlow 2s ease-in-out infinite alternate;
+}
+
+.border-lights-bold-blue-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 4px;
+  background: conic-gradient(from 0deg, #3b82f6, #ffffff, #1d4ed8, #93c5fd, #3b82f6);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderLightsBoldSpin 2.5s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes borderLightsBlueWhiteBoldGlow {
+  0% { box-shadow: 0 0 16px rgba(59, 130, 246, 0.5), 0 0 32px rgba(255, 255, 255, 0.25); }
+  100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.9), 0 0 80px rgba(255, 255, 255, 0.55); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-lights-bold-blue-white { animation: none; }
+  .border-lights-bold-blue-white::before { animation: none; }
+}

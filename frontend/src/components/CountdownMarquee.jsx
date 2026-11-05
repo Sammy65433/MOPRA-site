@@ -67,7 +67,7 @@ export default function CountdownMarquee({ language = "en" }) {
   return (
     <a
       href="#reserve-spot"
-      className="countdown-marquee group border-lights"
+      className="countdown-marquee group border-lights-bold"
       aria-label={`${copy.countdownPrefix}: ${timerText}`}
     >
       <div className="countdown-marquee__track">

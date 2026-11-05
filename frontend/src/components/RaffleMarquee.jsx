@@ -30,7 +30,7 @@ export default function RaffleMarquee({ language = "en" }) {
   return (
     <Link
       to="/prizes#raffle"
-      className="group block overflow-hidden border-lights-blue-white bg-gradient-to-r from-[#0f1d3a] via-[#1c1632] to-[#0f1d3a] py-5 transition-colors hover:from-[#162952] hover:via-[#281b3d] hover:to-[#162952] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#e5c77e]"
+      className="group block overflow-hidden border-lights-bold-blue-white bg-gradient-to-r from-[#0f1d3a] via-[#1c1632] to-[#0f1d3a] py-5 transition-colors hover:from-[#162952] hover:via-[#281b3d] hover:to-[#162952] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#e5c77e]"
       aria-label={label}
     >
       <div className="marquee-track flex w-max items-center">
