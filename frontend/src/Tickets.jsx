@@ -190,20 +190,22 @@ export default function Tickets({ t }) {
 
               <div className="clover-payment">
                 <div className="clover-payment__qr">
-                  <a
-                    href={CLOVER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={copy.paymentButton}
-                    className="border-lights-bold block"
-                  >
-                    <img
-                      src="/MOPRA-QR-CODE1.png"
-                      alt={copy.qrAlt}
-                      width="1545"
-                      height="1999"
-                    />
-                  </a>
+                  <div className="border-lights-bold inline-block rounded-2xl">
+                    <a
+                      href={CLOVER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={copy.paymentButton}
+                      className="block relative z-10"
+                    >
+                      <img
+                        src="/MOPRA-QR-CODE1.png"
+                        alt={copy.qrAlt}
+                        width="1545"
+                        height="1999"
+                      />
+                    </a>
+                  </div>
                   <p>{copy.scanQr}</p>
                 </div>
 
