@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const IMAGES = [
   "/ticket-box.jpg",
-  "/ticket-box2.jpg",
   "/ticket-box3.jpg",
   "/Raffledetails_pic1.png",
 ];
