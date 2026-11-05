@@ -19,7 +19,7 @@ export default function TicketBoxSlideshow() {
 
   return (
     <a href="#reserve-spot" className="shrink-0" aria-label="Reserve your spot">
-      <div className="relative h-[256px] w-[256px] sm:h-[352px] sm:w-[352px]">
+      <div className="relative h-[384px] w-[384px] sm:h-[512px] sm:w-[512px]">
         {IMAGES.map((src, i) => (
           <img
             key={src}
