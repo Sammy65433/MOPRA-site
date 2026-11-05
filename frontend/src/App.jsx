@@ -8,6 +8,7 @@ import RaffleMarquee from "./components/RaffleMarquee";
 import CountdownMarquee from "./components/CountdownMarquee";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
+import RaffleStats from "./components/RaffleStats";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
@@ -62,6 +63,7 @@ export default function App() {
               <Hero t={t} />
               <RaffleMarquee language={language} />
               <Countdown language={language} />
+              <RaffleStats />
 
               <section
                 className="px-5 pt-12 pb-2 sm:px-8"

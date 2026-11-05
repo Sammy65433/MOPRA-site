@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import ticketRoutes from "./routes/tickets.js";
 import adminRoutes from "./routes/admin.js";
+import statsRoutes from "./routes/stats.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/tickets", ticketRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api", statsRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });

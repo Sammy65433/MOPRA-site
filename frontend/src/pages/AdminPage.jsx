@@ -96,6 +96,65 @@ export default function AdminPage() {
     win.document.close();
   }
 
+  async function cancelReservation(id) {
+    if (!window.confirm("Cancel this reservation? It will be marked as cancelled.")) return;
+    try {
+      const res = await fetch(
+        `${API_URL}/api/admin/tickets/${id}/cancel?token=${encodeURIComponent(token)}`,
+        { method: "PATCH" }
+      );
+      if (!res.ok) {
+        setError("Failed to cancel.");
+        return;
+      }
+      await load();
+    } catch {
+      setError("Could not reach the server.");
+    }
+  }
+
+  async function deleteReservation(id) {
+    if (!window.confirm("Permanently delete this reservation? This cannot be undone.")) return;
+    try {
+      const res = await fetch(
+        `${API_URL}/api/admin/tickets/${id}?token=${encodeURIComponent(token)}`,
+        { method: "DELETE" }
+      );
+      if (!res.ok) {
+        setError("Failed to delete.");
+        return;
+      }
+      await load();
+    } catch {
+      setError("Could not reach the server.");
+    }
+  }
+
+  async function setWinner(e) {
+    e.preventDefault();
+    const ticketNumber = e.target.ticketNumber.value.trim();
+    const name = e.target.winnerName.value.trim();
+    if (!ticketNumber) return;
+    try {
+      const res = await fetch(
+        `${API_URL}/api/admin/winner?token=${encodeURIComponent(token)}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ticketNumber, name }),
+        }
+      );
+      if (!res.ok) {
+        setError("Failed to set winner.");
+        return;
+      }
+      alert(`Winner set: ${ticketNumber}`);
+      e.target.reset();
+    } catch {
+      setError("Could not reach the server.");
+    }
+  }
+
   if (!authed) {
     return (
       <main className="admin-page">
@@ -164,6 +223,7 @@ export default function AdminPage() {
                 <th>Ticket Numbers</th>
                 <th>Status</th>
                 <th>Paid</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -179,12 +239,51 @@ export default function AdminPage() {
                   </td>
                   <td>{r.status}</td>
                   <td>{r.paidAt ? new Date(r.paidAt).toLocaleString() : "—"}</td>
+                  <td className="admin-table__actions">
+                    <button
+                      onClick={() => cancelReservation(r._id)}
+                      className="admin-action-btn admin-action-btn--cancel"
+                      title="Cancel"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={() => deleteReservation(r._id)}
+                      className="admin-action-btn admin-action-btn--delete"
+                      title="Delete"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       )}
+
+      <section className="admin-winner">
+        <h2>Set Raffle Winner</h2>
+        <p className="admin-winner__hint">
+          After the drawing on December 31, 2027, enter the winning ticket number and name. It will appear on the public site.
+        </p>
+        <form onSubmit={setWinner} className="admin-winner__form">
+          <input
+            name="ticketNumber"
+            placeholder="Winning ticket number (e.g. MOPRA-XXXXXX)"
+            className="admin-login__input"
+            required
+          />
+          <input
+            name="winnerName"
+            placeholder="Winner name (optional)"
+            className="admin-login__input"
+          />
+          <button type="submit" className="admin-btn admin-btn--print">
+            Set Winner
+          </button>
+        </form>
+      </section>
     </main>
   );
 }

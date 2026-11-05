@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Reservation from "../models/Reservation.js";
+import RaffleConfig from "../models/RaffleConfig.js";
 
 const router = Router();
 
@@ -12,7 +13,6 @@ function checkAdminToken(req, res, next) {
 }
 
 // GET /api/admin/tickets?token=...
-// Returns only confirmed (paid/delivered) reservations with their issued ticket numbers.
 router.get("/tickets", checkAdminToken, async (req, res) => {
   try {
     const reservations = await Reservation.find({
@@ -39,6 +39,59 @@ router.get("/tickets", checkAdminToken, async (req, res) => {
     return res.status(200).json({ reservations, tickets });
   } catch (err) {
     console.error("Admin tickets error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// PATCH /api/admin/tickets/:id/cancel?token=...
+router.patch("/tickets/:id/cancel", checkAdminToken, async (req, res) => {
+  try {
+    const reservation = await Reservation.findById(req.params.id);
+    if (!reservation) {
+      return res.status(404).json({ error: "Reservation not found." });
+    }
+    if (reservation.status === "cancelled") {
+      return res.status(400).json({ error: "Already cancelled." });
+    }
+    reservation.status = "cancelled";
+    reservation.deliveredAt = reservation.deliveredAt || null;
+    await reservation.save();
+    return res.status(200).json({ reservation });
+  } catch (err) {
+    console.error("Cancel error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// DELETE /api/admin/tickets/:id?token=...
+router.delete("/tickets/:id", checkAdminToken, async (req, res) => {
+  try {
+    const reservation = await Reservation.findByIdAndDelete(req.params.id);
+    if (!reservation) {
+      return res.status(404).json({ error: "Reservation not found." });
+    }
+    return res.status(200).json({ deleted: true, id: req.params.id });
+  } catch (err) {
+    console.error("Delete error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// PATCH /api/admin/winner?token=...  body: { ticketNumber, name }
+router.patch("/winner", checkAdminToken, async (req, res) => {
+  try {
+    const { ticketNumber, name } = req.body || {};
+    if (!ticketNumber) {
+      return res.status(400).json({ error: "ticketNumber is required." });
+    }
+    const config = await RaffleConfig.findOneAndUpdate(
+      { key: "main" },
+      { key: "main", winnerTicketNumber: ticketNumber, winnerName: name || null, drawnAt: new Date() },
+      { upsert: true, new: true }
+    );
+    return res.status(200).json({ config });
+  } catch (err) {
+    console.error("Set winner error:", err);
     return res.status(500).json({ error: "Server error" });
   }
 });
