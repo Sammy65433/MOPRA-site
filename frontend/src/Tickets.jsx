@@ -195,6 +195,7 @@ export default function Tickets({ t }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={copy.paymentButton}
+                    className="border-lights-bold block"
                   >
                     <img
                       src="/MOPRA-QR-CODE1.png"

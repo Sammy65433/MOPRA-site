@@ -115,7 +115,7 @@
 }
 
 .clover-payment__qr {
-  width: min(100%, 220px);
+  width: min(100%, 320px);
 }
 .clover-payment__qr > a {
   display: block;
