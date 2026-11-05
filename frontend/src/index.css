@@ -103,10 +103,10 @@ button {
   }
 }
 
-/* Border of lights — BOLD variant (countdown) */
+/* Border of lights — BOLD variant (countdown) matching the participation badge */
 .border-lights-bold {
   position: relative;
-  box-shadow: 0 0 32px rgba(229, 199, 126, 0.65), 0 0 64px rgba(37, 99, 235, 0.55), 0 0 96px rgba(229, 199, 126, 0.35);
+  box-shadow: 0 0 18px rgba(229, 199, 126, 0.6), 0 0 36px rgba(37, 99, 235, 0.4);
   animation: borderLightsBoldGlow 2s ease-in-out infinite alternate;
 }
 
@@ -115,19 +115,24 @@ button {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 5px;
-  background: conic-gradient(from 0deg, #fde047, #2563eb, #e11d48, #f7df9f, #22c55e, #3b82f6, #fde047);
+  padding: 4px;
+  background: conic-gradient(from 0deg, #fde047, #e11d48, #2563eb, #22c55e, #fde047);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: borderLightsSpin 2s linear infinite;
+  animation: borderLightsBoldSpin 3s linear infinite;
   pointer-events: none;
   z-index: 1;
 }
 
 @keyframes borderLightsBoldGlow {
-  0% { box-shadow: 0 0 24px rgba(229, 199, 126, 0.5), 0 0 48px rgba(37, 99, 235, 0.4), 0 0 72px rgba(229, 199, 126, 0.25); }
-  100% { box-shadow: 0 0 48px rgba(229, 199, 126, 0.9), 0 0 96px rgba(37, 99, 235, 0.75), 0 0 144px rgba(229, 199, 126, 0.5); }
+  0% { box-shadow: 0 0 18px rgba(229, 199, 126, 0.5), 0 0 36px rgba(37, 99, 235, 0.35); }
+  100% { box-shadow: 0 0 36px rgba(229, 199, 126, 0.85), 0 0 72px rgba(37, 99, 235, 0.65); }
+}
+
+@keyframes borderLightsBoldSpin {
+  0% { filter: hue-rotate(0deg); transform: rotate(0deg); }
+  100% { filter: hue-rotate(360deg); transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
