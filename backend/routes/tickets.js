@@ -27,6 +27,40 @@ router.post("/reserve", async (req, res) => {
       return res.status(400).json({ error: "Quantity must be at least 1 ticket." });
     }
 
+    // Prevent duplicate reservations by name or contact (email/phone).
+    const escapeRegex = (value) =>
+      String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const duplicate = await Reservation.findOne({
+      status: { $in: ["pending", "paid", "delivered"] },
+      $or: [
+        { contact: { $regex: `^${escapeRegex(contact)}$`, $options: "i" } },
+        {
+          $and: [
+            { firstName: { $regex: `^${escapeRegex(firstName)}$`, $options: "i" } },
+            { lastName: { $regex: `^${escapeRegex(lastName)}$`, $options: "i" } },
+          ],
+        },
+      ],
+    });
+
+    if (duplicate) {
+      const sameContact =
+        String(duplicate.contact).toLowerCase() === String(contact).toLowerCase();
+      const sameName =
+        String(duplicate.firstName).toLowerCase() === String(firstName).toLowerCase() &&
+        String(duplicate.lastName).toLowerCase() === String(lastName).toLowerCase();
+
+      let reason = "a reservation with these details";
+      if (sameContact && sameName) reason = "this name and contact";
+      else if (sameContact) reason = "this email or phone number";
+      else if (sameName) reason = "this name";
+
+      return res.status(409).json({
+        error: `A reservation already exists for ${reason}. Each person may only reserve once.`,
+      });
+    }
+
     const capacity = Number(process.env.RAFFLE_CAPACITY || 0);
     if (capacity > 0) {
       const activeReservations = await Reservation.find({
