@@ -91,9 +91,17 @@ export default function App() {
 
                   <TicketBoxSlideshow />
                   <a href="#reserve-spot" className="shrink-0">
+                    <div className="border-lights-bold rounded-2xl p-2">
+                      <img
+                        src="/MOPRA-QR-CODE1.png"
+                        alt="MOPRA QR code to pay for raffle tickets"
+                        className="h-[200px] w-[200px] rounded-xl object-contain sm:h-[260px] sm:w-[260px]"
+                      />
+                    </div>
+                  </a>
+                  <a href="#reserve-spot" className="shrink-0">
                     <RaffleStats />
                   </a>
-
                   <HowItWorks t={t} compact />
 
                 </div>
