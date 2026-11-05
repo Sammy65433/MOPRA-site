@@ -268,9 +268,12 @@ export default function Tickets({ t }) {
                       name="quantity"
                       type="number"
                       min="1"
+                      max="5"
                       value={quantity}
                       onChange={(e) =>
-                        setQuantity(Math.max(1, Number(e.target.value) || 1))
+                        setQuantity(
+                          Math.min(5, Math.max(1, Number(e.target.value) || 1))
+                        )
                       }
                       required
                       className="mt-2 w-full rounded-xl border border-white/30 bg-white/10 px-4 py-3 text-white focus:border-[#e5c77e] focus:outline-none"

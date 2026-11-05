@@ -26,6 +26,9 @@ router.post("/reserve", async (req, res) => {
     if (!Number.isFinite(tickets) || tickets < 1) {
       return res.status(400).json({ error: "Quantity must be at least 1 ticket." });
     }
+    if (tickets > 5) {
+      return res.status(400).json({ error: "You can reserve up to 5 tickets per person." });
+    }
 
     // Prevent duplicate reservations by name or contact (email/phone).
     const escapeRegex = (value) =>
