@@ -146,7 +146,7 @@ export default function Hero({ t }) {
               className="inline-flex min-h-13 items-center gap-3 rounded-full border border-[#fb7185] bg-gradient-to-r from-[#e11d48] to-[#be123c] px-6 py-3 text-sm font-extrabold text-white shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fb7185]"
             >
               <Ticket size={18} aria-hidden="true" />
-              {t.heroTickets} · $99.99
+              {t.heroTickets} · $100
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </motion.div>

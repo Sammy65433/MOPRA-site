@@ -1,0 +1,50 @@
+# Render Blueprint — MOPRA (GOMOPRA) Website
+# Deploys the Express/MongoDB backend (Web Service) and the React/Vite frontend (Static Site).
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: gomopra-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: CLIENT_URL
+        value: https://gomopra.org
+      - key: TICKET_PRICE_USD
+        value: 100
+      - key: RAFFLE_CAPACITY
+        value: 200
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: APP_URL
+        value: https://gomopra.org
+
+  - type: static
+    name: gomopra-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: gomopra-backend
+          type: web
+          property: url
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

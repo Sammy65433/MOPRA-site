@@ -20,7 +20,7 @@ const copyByLang = {
     countdownPrefix: "LIVE COUNTDOWN",
     units: ["d", "h", "m", "s"],
     items: [
-      { Icon: Ticket, text: "RESERVE YOUR SPOT · $99.99 USD" },
+      { Icon: Ticket, text: "RESERVE YOUR SPOT · $100 USD" },
       { Icon: Gift, text: "WIN A 2026 JEEP WRANGLER OR $60,000 CASH" },
       { Icon: QrCode, text: "SCAN MOPRA QR CODE TO PAY ONLINE" },
       { Icon: Sparkles, text: "DRAWING DEC 31, 2027 · L’ASILE & ZOOM" },
@@ -30,7 +30,7 @@ const copyByLang = {
     countdownPrefix: "COMPTE À REBOURS EN DIRECT",
     units: ["j", "h", "m", "s"],
     items: [
-      { Icon: Ticket, text: "RÉSERVEZ VOTRE PLACE · 99,99 $ US" },
+      { Icon: Ticket, text: "RÉSERVEZ VOTRE PLACE · 100 $ US" },
       { Icon: Gift, text: "GAGNEZ UNE JEEP WRANGLER 2026 OU 60 000 $" },
       { Icon: QrCode, text: "SCANNEZ LE CODE QR MOPRA POUR PAYER" },
       { Icon: Sparkles, text: "TIRAGE 31 DÉC. 2027 · L’ASILE ET ZOOM" },
@@ -40,7 +40,7 @@ const copyByLang = {
     countdownPrefix: "KONT AN DIRÈK",
     units: ["j", "è", "m", "s"],
     items: [
-      { Icon: Ticket, text: "REZÈVE PLAS OU · $99.99 USD" },
+      { Icon: Ticket, text: "REZÈVE PLAS OU · $100 USD" },
       { Icon: Gift, text: "GENYEN YON JEEP WRANGLER 2026 OSWA 60 000 DOLA" },
       { Icon: QrCode, text: "SKANE KÒD QR MOPRA POU PEYE SOU ENTÈNÈT" },
       { Icon: Sparkles, text: "TIRAJ 31 DESANM 2027 · LAZIL AK ZOOM" },

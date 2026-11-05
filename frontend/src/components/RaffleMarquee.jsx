@@ -5,19 +5,19 @@ import "./RaffleMarquee.css";
 const messages = {
   en: [
     { Icon: CalendarDays, text: "GRAND RAFFLE · DECEMBER 31, 2027" },
-    { Icon: Ticket, text: "TICKETS $99.99 · CLICK TO ENTER THE RAFFLE" },
+    { Icon: Ticket, text: "TICKETS $100 · CLICK TO ENTER THE RAFFLE" },
     { Icon: HeartHandshake, text: "CELEBRATING 300 YEARS OF L’ASILE" },
     { Icon: Sparkles, text: "FOUR PRIZES · CASH ALTERNATIVES" },
   ],
   fr: [
     { Icon: CalendarDays, text: "GRANDE TOMBOLA · 31 DÉCEMBRE 2027" },
-    { Icon: Ticket, text: "BILLETS 99,99 $ US · CLIQUEZ POUR PARTICIPER" },
+    { Icon: Ticket, text: "BILLETS 100 $ US · CLIQUEZ POUR PARTICIPER" },
     { Icon: HeartHandshake, text: "300 ANS DE L’ASILE EN CÉLÉBRATION" },
     { Icon: Sparkles, text: "QUATRE PRIX · OPTIONS EN ESPÈCES" },
   ],
   ht: [
     { Icon: CalendarDays, text: "GRAN TOMBOLA · 31 DESANM 2027" },
-    { Icon: Ticket, text: "TIKÈ $99.99 · KLIKE POU PATISIPE NAN TOMBOLA A" },
+    { Icon: Ticket, text: "TIKÈ $100 · KLIKE POU PATISIPE NAN TOMBOLA A" },
     { Icon: HeartHandshake, text: "N AP SELEBRE 300 LANE LAZIL" },
     { Icon: Sparkles, text: "KAT PRIM · OPSYON LAJAN KACH" },
   ],

@@ -72,7 +72,7 @@ export default function App() {
                     className="inline-flex items-center gap-3 rounded-full border-2 border-white bg-gradient-to-r from-[#fde047] via-[#e5c77e] to-[#f59e0b] px-8 py-4 font-display text-base font-extrabold text-[#0f172a] shadow-[0_14px_34px_rgba(245,158,11,0.45)] transition-transform hover:-translate-y-1 sm:text-lg"
                   >
                     <Ticket size={22} aria-hidden="true" />
-                    {t.raffleDetailsCta} · $99.99
+                    {t.raffleDetailsCta} · $100
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
 

@@ -14,7 +14,7 @@ import {
 import "./components/Tickets.css";
 
 const CLOVER_URL = "https://link.clover.com/urlshortener/CVF3dD";
-const TICKET_PRICE = 99.99;
+const TICKET_PRICE = 100;
 
 const gallery = [
   "/tickets-gallery1.jpg",
@@ -40,7 +40,7 @@ function buildMailtoHref(reservation) {
       `Last Name: ${reservation.lastName}`,
       `Email / Phone: ${reservation.contact}`,
       `Number of Tickets: ${reservation.quantity}`,
-      `Total ($99.99 per ticket): $${total} USD`,
+      `Total ($100 per ticket): $${total} USD`,
       `Message / Payment Note: ${reservation.message || "N/A"}`,
       "",
       `I am completing my $${total} USD payment via the official MOPRA QR code / Clover link (${CLOVER_URL}).`,
@@ -121,7 +121,7 @@ export default function Tickets({ t }) {
                   className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#e5c77e] to-[#f7df9f] px-6 py-3.5 text-sm font-extrabold text-[#0f172a] shadow-lg transition-transform hover:-translate-y-0.5"
                 >
                   <Ticket size={17} aria-hidden="true" />
-                  {copy.reserve} · $99.99
+                  {copy.reserve} · $100
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </a>
 

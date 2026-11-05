@@ -24,7 +24,7 @@ export default function TicketsPage({ t, language }) {
           <div className="mt-7 flex flex-wrap gap-4">
             <a href="#reserve-spot" className="prizes-top-cta">
               <Ticket size={18} aria-hidden="true" />
-              {t.aboutReserveCta ?? "Get Your Ticket & Reserve Your Spot ($99.99)"}
+              {t.aboutReserveCta ?? "Get Your Ticket & Reserve Your Spot ($100)"}
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>

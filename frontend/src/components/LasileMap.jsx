@@ -85,7 +85,7 @@ export default function LasileMap({ t }) {
             </a>
             <a href="#reserve-spot" className="lasile-map__reserve-link">
               <Ticket size={17} aria-hidden="true" />
-              {t.prizeReserveCta ?? "Reserve your spot · $99.99"}
+              {t.prizeReserveCta ?? "Reserve your spot · $100"}
               <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           </div>

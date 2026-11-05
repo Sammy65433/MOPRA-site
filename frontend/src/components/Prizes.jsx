@@ -30,7 +30,7 @@ const cards = [
 ];
 
 export default function Prizes({ t = {} }) {
-  const reserveLabel = t.prizeReserveCta ?? "Reserve your spot · $99.99";
+  const reserveLabel = t.prizeReserveCta ?? "Reserve your spot · $100";
 
   return (
     <section id="raffle" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32">

@@ -29,7 +29,7 @@ export async function buildTicketPayload(ticket) {
     quantity: ticket.quantity,
     deliveryMethod: ticket.deliveryMethod,
     status: ticket.status,
-    price: Number(process.env.TICKET_PRICE_USD || 99.99),
+    price: Number(process.env.TICKET_PRICE_USD || 100),
     paymentMethod: ticket.paymentMethod,
     paymentReference: ticket.paymentReference,
     qrDataUrl,
@@ -119,7 +119,7 @@ export async function sendDigitalTicketEmail(ticket, ticketPayload) {
 export async function sendReservationNotificationEmail(reservation) {
   const transporter = getTransporter();
   const organizerEmail = process.env.ORGANIZER_EMAIL || "Cahctca@gmail.com";
-  const unitPrice = Number(process.env.TICKET_PRICE_USD || 99.99);
+  const unitPrice = Number(process.env.TICKET_PRICE_USD || 100);
   const totalAmount = (reservation.quantity * unitPrice).toFixed(2);
   const paymentUrl = "https://link.clover.com/urlshortener/CVF3dD";
 
@@ -153,7 +153,7 @@ export async function sendReservationNotificationEmail(reservation) {
       from: process.env.EMAIL_FROM || "no-reply@mopra.org",
       to: reservation.contact,
       replyTo: organizerEmail,
-      subject: "MOPRA Grand Raffle — Reservation Received ($99.99/ticket)",
+      subject: "MOPRA Grand Raffle — Reservation Received ($100/ticket)",
       text: [
         `Hi ${reservation.firstName} ${reservation.lastName},`,
         "",

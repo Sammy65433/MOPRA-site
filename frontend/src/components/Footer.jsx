@@ -32,10 +32,10 @@ export default function Footer({ t }) {
               <Sparkles size={18} aria-hidden="true" />
               <span>{t.raffleTag ?? "THE GRAND RAFFLE · 3RD CENTENARY OF L’ASILE"}</span>
             </p>
-            <h3>{copy.price ?? "Raffle ticket · $99.99 USD"}</h3>
+            <h3>{copy.price ?? "Raffle ticket · $100 USD"}</h3>
             <p>
               {t.dateNote ??
-                "Drawing December 31, 2027 in L’Asile and via Zoom · Tickets: $99.99 USD each."}
+                "Drawing December 31, 2027 in L’Asile and via Zoom · Tickets: $100 USD each."}
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function Footer({ t }) {
               className="site-footer__btn site-footer__btn--pay"
             >
               <QrCode size={22} aria-hidden="true" />
-              <span>{copy.paymentButton ?? "Pay Online · $99.99 USD"}</span>
+              <span>{copy.paymentButton ?? "Pay Online · $100 USD"}</span>
               <ExternalLink size={18} aria-hidden="true" />
             </a>
 
@@ -56,7 +56,7 @@ export default function Footer({ t }) {
               className="site-footer__btn site-footer__btn--reserve"
             >
               <Ticket size={22} aria-hidden="true" />
-              <span>{t.prizeReserveCta ?? "Reserve your spot · $99.99"}</span>
+              <span>{t.prizeReserveCta ?? "Reserve your spot · $100"}</span>
               <ArrowUpRight size={20} aria-hidden="true" />
             </a>
           </div>
