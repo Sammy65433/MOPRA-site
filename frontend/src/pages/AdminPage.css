@@ -202,3 +202,40 @@
   flex: 1;
   min-width: 200px;
 }
+
+.admin-row--paid {
+  background: rgba(250, 204, 21, 0.08);
+  box-shadow: inset 4px 0 0 #facc15;
+}
+
+.admin-row--delivered {
+  background: rgba(74, 222, 128, 0.1);
+  box-shadow: inset 4px 0 0 #4ade80, 0 0 12px rgba(74, 222, 128, 0.15);
+}
+
+.admin-btn--logout-big {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: rgba(255, 80, 80, 0.5);
+  color: #ff8a8a;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.admin-btn--logout-big:hover {
+  background: rgba(255, 80, 80, 0.3);
+  color: #fff;
+}
+
+.admin-footer {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.admin-page .admin-table {
+  font-size: 1.05rem;
+}
+
+.admin-page .admin-table th,
+.admin-page .admin-table td {
+  padding: 1rem 0.9rem;
+}

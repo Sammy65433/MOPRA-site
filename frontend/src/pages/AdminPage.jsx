@@ -196,11 +196,11 @@ export default function AdminPage() {
         <h1>Confirmed Ticket Purchases</h1>
         <div className="admin-header__actions">
           <button onClick={printStickers} className="admin-btn admin-btn--print">
-            <Printer size={18} aria-hidden="true" />
+            <Printer size={20} aria-hidden="true" />
             Print ticket stickers ({tickets.length})
           </button>
-          <button onClick={logout} className="admin-btn admin-btn--logout">
-            <LogOut size={18} aria-hidden="true" />
+          <button onClick={logout} className="admin-btn admin-btn--logout admin-btn--logout-big">
+            <LogOut size={20} aria-hidden="true" />
             Sign out
           </button>
         </div>
@@ -228,14 +228,43 @@ export default function AdminPage() {
             </thead>
             <tbody>
               {reservations.map((r) => (
-                <tr key={r._id}>
+                <tr
+                  key={r._id}
+                  className={
+                    r.status === "delivered"
+                      ? "admin-row admin-row--delivered"
+                      : r.status === "paid"
+                      ? "admin-row admin-row--paid"
+                      : "admin-row"
+                  }
+                >
                   <td>{r.firstName} {r.lastName}</td>
                   <td>{r.contact}</td>
                   <td>{r.quantity}</td>
                   <td className="admin-table__tickets">
-                    {(r.ticketNumbers || []).map((n) => (
-                      <span key={n} className="admin-ticket-chip">{n}</span>
-                    ))}
+                    {(r.ticketNumbers || []).map((n, idx) => {
+                      const palette = [
+                        "#fde047", "#38bdf8", "#fb7185", "#4ade80",
+                        "#c084fc", "#fb923c", "#2dd4bf", "#f472b6",
+                      ];
+                      const color = palette[idx % palette.length];
+                      return (
+                        <span
+                          key={n}
+                          className="admin-ticket-chip"
+                          style={{
+                            color,
+                            borderColor: color,
+                            background: `${color}22`,
+                            boxShadow: `0 0 8px ${color}55`,
+                            fontSize: "0.85rem",
+                            padding: "0.3rem 0.6rem",
+                          }}
+                        >
+                          {n}
+                        </span>
+                      );
+                    })}
                   </td>
                   <td>{r.status}</td>
                   <td>{r.paidAt ? new Date(r.paidAt).toLocaleString() : "—"}</td>
@@ -284,6 +313,13 @@ export default function AdminPage() {
           </button>
         </form>
       </section>
+
+      <div className="admin-footer">
+        <button onClick={logout} className="admin-btn admin-btn--logout admin-btn--logout-big">
+          <LogOut size={20} aria-hidden="true" />
+          Sign out
+        </button>
+      </div>
     </main>
   );
 }
