@@ -73,7 +73,7 @@ export default function App() {
                 <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-5 rounded-3xl border-2 border-[#e5c77e]/65 bg-gradient-to-r from-[#142854]/90 via-[#2a183f]/90 to-[#142854]/90 px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(229,199,126,0.22)] backdrop-blur-xl sm:px-10">
                   <Link
                     to="/tickets#reserve-spot"
-                    className="inline-flex items-center gap-3 rounded-full border-2 border-white bg-gradient-to-r from-[#fde047] via-[#e5c77e] to-[#f59e0b] px-8 py-4 font-display text-base font-extrabold text-[#0f172a] shadow-[0_14px_34px_rgba(245,158,11,0.45)] transition-transform hover:-translate-y-1 sm:text-lg"
+                    className="border-lights-bold inline-flex items-center gap-3 rounded-full border-2 border-white bg-gradient-to-r from-[#fde047] via-[#e5c77e] to-[#f59e0b] px-8 py-4 font-display text-base font-extrabold text-[#0f172a] shadow-[0_14px_34px_rgba(245,158,11,0.45)] transition-transform hover:-translate-y-1 sm:text-lg"
                   >
                     <Ticket size={22} aria-hidden="true" />
                     {t.raffleDetailsCta} · $100
@@ -82,7 +82,7 @@ export default function App() {
 
                   <Link
                     to="/prizes#raffle"
-                    className="inline-flex items-center gap-3 rounded-full border-2 border-[#93c5fd] bg-gradient-to-r from-[#2563eb] to-[#e11d48] px-8 py-4 font-display text-base font-extrabold text-white shadow-[0_14px_34px_rgba(37,99,235,0.4)] transition-transform hover:-translate-y-1 sm:text-lg"
+                    className="border-lights-bold inline-flex items-center gap-3 rounded-full border-2 border-[#93c5fd] bg-gradient-to-r from-[#2563eb] to-[#e11d48] px-8 py-4 font-display text-base font-extrabold text-white shadow-[0_14px_34px_rgba(37,99,235,0.4)] transition-transform hover:-translate-y-1 sm:text-lg"
                   >
                     <Gift size={22} aria-hidden="true" />
                     {t.rafflePrizesCta}
