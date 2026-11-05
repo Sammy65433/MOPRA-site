@@ -166,6 +166,15 @@ export const translations = {
 
     footer: "Connected by L’Asile. Raising Support Together.",
     footerSlogan: "Community at Heart. Haiti in Our Future.",
+
+    howItWorksTitle: "How to reserve your spot",
+    howItWorksSteps: [
+      "Reserve your spot — fill out the form with your name, contact, and number of tickets (up to 5 per person).",
+      "Pay $100 per ticket — scan the official MOPRA QR code or use the Clover checkout link.",
+      "Get your ticket — once payment is confirmed, you receive your official raffle ticket by email or in person.",
+    ],
+    howItWorksNote: "Reservations stay pending until payment is verified. Each person may only reserve once.",
+    howItWorksShort: "Reserve your spot, pay $100 per ticket, then receive your official raffle ticket by email or in person.",
   },
 
   fr: {
@@ -333,6 +342,15 @@ export const translations = {
 
     footer: "Unis par L’Asile. Mobilisons du soutien ensemble.",
     footerSlogan: "La communauté au cœur. Haïti dans notre avenir.",
+
+    howItWorksTitle: "Comment réserver votre place",
+    howItWorksSteps: [
+      "Réservez votre place — remplissez le formulaire avec votre nom, vos coordonnées et le nombre de billets (jusqu’à 5 par personne).",
+      "Payez 100 $ US par billet — scannez le code QR officiel du MOPRA ou utilisez le lien de paiement Clover.",
+      "Recevez votre billet — une fois le paiement confirmé, vous recevez votre billet officiel par courriel ou en personne.",
+    ],
+    howItWorksNote: "Les réservations restent en attente jusqu’à la vérification du paiement. Chaque personne ne peut réserver qu’une fois.",
+    howItWorksShort: "Réservez votre place, payez 100 $ US par billet, puis recevez votre billet officiel par courriel ou en personne.",
   },
 
   ht: {
@@ -499,6 +517,15 @@ export const translations = {
 
     footer: "Lazil konekte nou. Ann mobilize sipò ansanm.",
     footerSlogan: "Kominote a nan kè nou. Ayiti nan lavni nou.",
+
+    howItWorksTitle: "Kijan pou rezève plas ou",
+    howItWorksSteps: [
+      "Rezève plas ou — ranpli fòm nan ak non ou, enfòmasyon kontak ou, ak kantite tikè (jiska 5 pou chak moun).",
+      "Peye $100 USD pou chak tikè — skane kòd QR ofisyèl MOPRA a oswa itilize lyen peman Clover la.",
+      "Recevwa tikè ou — lè yo konfime peman an, w ap resevwa tikè ofisyèl ou pa imèl oswa an pèsonèl.",
+    ],
+    howItWorksNote: "Rezèvasyon yo rete an atant jiskaske yo verifye peman an. Chak moun pa ka rezève plis pase yon fwa.",
+    howItWorksShort: "Rezève plas ou, peye $100 USD pou chak tikè, epi resevwa tikè ofisyèl ou pa imèl oswa an pèsonèl.",
   },
 };
 

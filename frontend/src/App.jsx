@@ -8,6 +8,7 @@ import RaffleMarquee from "./components/RaffleMarquee";
 import CountdownMarquee from "./components/CountdownMarquee";
 import Countdown from "./Countdown";
 import Tickets from "./Tickets";
+import HowItWorks from "./components/HowItWorks";
 import RaffleStats from "./components/RaffleStats";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
@@ -88,6 +89,8 @@ export default function App() {
                   </Link>
 
                   <RaffleStats />
+
+                  <HowItWorks t={t} compact />
 
                 </div>
               </section>

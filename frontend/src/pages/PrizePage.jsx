@@ -4,6 +4,7 @@ import CountdownMarquee from "../components/CountdownMarquee";
 import LasileMap from "../components/LasileMap";
 import Prizes from "../components/Prizes";
 import RaffleDetails from "../components/RaffleDetails";
+import HowItWorks from "../components/HowItWorks";
 import RaffleMarquee from "../components/RaffleMarquee";
 import Tickets from "../Tickets";
 import "./PrizePage.css";
@@ -39,6 +40,7 @@ export default function PrizesPage({ t, language }) {
       <RaffleMarquee language={language} />
       <Countdown language={language} />
       <RaffleDetails t={t} />
+      <HowItWorks t={t} />
       <div className="prizes-page-content">
         <Prizes t={t} />
         <Tickets t={t} />

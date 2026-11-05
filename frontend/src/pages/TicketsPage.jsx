@@ -5,6 +5,7 @@ import LasileMap from "../components/LasileMap";
 import RaffleDetails from "../components/RaffleDetails";
 import RaffleMarquee from "../components/RaffleMarquee";
 import Tickets from "../Tickets";
+import HowItWorks from "../components/HowItWorks";
 import "./TicketsPage.css";
 
 export default function TicketsPage({ t, language }) {
@@ -34,6 +35,7 @@ export default function TicketsPage({ t, language }) {
       <RaffleMarquee language={language} />
       <Countdown language={language} />
       <RaffleDetails t={t} showCta={false} />
+      <HowItWorks t={t} />
       <Tickets t={t} />
       <CountdownMarquee language={language} />
       <section className="lasile-map-section" aria-label="L’Asile map gallery">
