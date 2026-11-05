@@ -4,6 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL || "";
 
 export default function RaffleStats() {
   const [stats, setStats] = useState(null);
+  const [slide, setSlide] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -18,13 +19,27 @@ export default function RaffleStats() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!stats) return;
+    const id = setInterval(() => {
+      setSlide((s) => (s + 1) % 2);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [stats]);
+
   if (!stats) return null;
+
+  const slides = [
+    `🎟️ ${stats.participants} participant${stats.participants === 1 ? "" : "s"} so far · ${stats.ticketsSold} ticket${stats.ticketsSold === 1 ? "" : "s"} sold`,
+    "Get your tickets today 🎟️",
+  ];
 
   return (
     <div
       style={{
         display: "inline-flex",
         alignItems: "center",
+        justifyContent: "center",
         gap: "0.75rem",
         borderRadius: "9999px",
         border: "2px solid #93c5fd",
@@ -37,17 +52,31 @@ export default function RaffleStats() {
         boxShadow: "0 14px 34px rgba(37,99,235,0.4)",
         letterSpacing: "0.5px",
         lineHeight: 1.2,
+        minWidth: "320px",
+        transition: "opacity 0.4s ease",
       }}
     >
-      <span>🎟️ {stats.participants} participant{stats.participants === 1 ? "" : "s"} so far</span>
-      <span style={{ opacity: 0.7 }}>·</span>
-      <span>{stats.ticketsSold} ticket{stats.ticketsSold === 1 ? "" : "s"} sold</span>
-      {stats.winner && (
-        <>
-          <span style={{ opacity: 0.7 }}>·</span>
-          <span>🏆 Winner: {stats.winner.ticketNumber}</span>
-        </>
-      )}
+      <span
+        key={slide}
+        style={{
+          display: "inline-block",
+          animation: "raffleSlideIn 0.4s ease",
+        }}
+      >
+        {slides[slide]}
+        {stats.winner && slide === 0 && (
+          <>
+            {" "}
+            <span style={{ color: "#f7df9f" }}>· 🏆 Winner: {stats.winner.ticketNumber}</span>
+          </>
+        )}
+      </span>
+      <style>{`
+        @keyframes raffleSlideIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }
