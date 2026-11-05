@@ -6,8 +6,9 @@ const router = Router();
 
 function checkAdminToken(req, res, next) {
   const token = req.query.token || req.headers["x-admin-token"];
-  if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) {
-    return res.status(401).json({ error: "Unauthorized. Provide a valid admin token." });
+  const expected = process.env.ADMIN_PASSWORD || process.env.ADMIN_TOKEN;
+  if (!expected || token !== expected) {
+    return res.status(401).json({ error: "Unauthorized. Provide a valid admin password." });
   }
   next();
 }

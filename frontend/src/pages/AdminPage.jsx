@@ -27,7 +27,7 @@ export default function AdminPage() {
       );
       if (!res.ok) {
         if (res.status === 401) {
-          setError("Invalid token. Access denied.");
+          setError("Invalid password. Access denied.");
           setAuthed(false);
           sessionStorage.removeItem("mopra-admin-token");
         } else {
@@ -161,7 +161,7 @@ export default function AdminPage() {
         <div className="admin-login">
           <Lock size={32} aria-hidden="true" />
           <h1>Staff Admin</h1>
-          <p>Enter the admin token to view confirmed ticket purchases.</p>
+          <p>Enter the admin password to view confirmed ticket purchases.</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -173,7 +173,7 @@ export default function AdminPage() {
               type="password"
               value={token}
               onChange={(e) => setToken(e.target.value)}
-              placeholder="Admin token"
+              placeholder="Admin password"
               className="admin-login__input"
               autoFocus
             />
