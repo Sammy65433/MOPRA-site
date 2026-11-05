@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Gift, Ticket } from "lucide-react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
