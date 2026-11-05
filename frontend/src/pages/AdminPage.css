@@ -144,12 +144,61 @@
   gap: 0.4rem;
 }
 
-.admin-ticket-chip {
-  font-family: monospace;
-  font-size: 0.75rem;
-  padding: 0.2rem 0.5rem;
+.admin-table__actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.admin-action-btn {
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
-  background: rgba(229, 199, 126, 0.15);
   border: 1px solid rgba(229, 199, 126, 0.4);
-  color: #f7df9f;
+  background: rgba(0, 0, 0, 0.3);
+  color: #f7f4e9;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-action-btn--cancel:hover {
+  background: rgba(255, 165, 0, 0.2);
+  border-color: #ffa500;
+}
+
+.admin-action-btn--delete:hover {
+  background: rgba(255, 80, 80, 0.2);
+  border-color: #ff5050;
+  color: #ff8a8a;
+}
+
+.admin-winner {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(229, 199, 126, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-winner h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.admin-winner__hint {
+  color: rgba(247, 244, 233, 0.6);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.admin-winner__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.admin-winner__form input {
+  flex: 1;
+  min-width: 200px;
 }
