@@ -98,6 +98,15 @@ export default function App() {
                         className="h-[200px] w-[200px] rounded-xl object-contain sm:h-[260px] sm:w-[260px]"
                       />
                     </div>
+                    <p className="mt-2 text-center text-xs font-semibold text-[#f7df9f] sm:text-sm">
+                      Main payment method · MOPRA QR code
+                    </p>
+                    <p className="mt-1 text-center text-xs text-white/70 sm:text-sm">
+                      Click the QR code or payment button to open the secure checkout in a new tab.
+                    </p>
+                    <p className="mt-1 text-center text-xs font-bold text-white sm:text-sm">
+                      Pay Online · $100 USD
+                    </p>
                   </a>
                   <a href="#reserve-spot" className="shrink-0">
                     <RaffleStats />
