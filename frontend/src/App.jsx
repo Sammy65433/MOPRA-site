@@ -10,6 +10,7 @@ import Countdown from "./Countdown";
 import Tickets from "./Tickets";
 import HowItWorks from "./components/HowItWorks";
 import RaffleStats from "./components/RaffleStats";
+import TicketBoxSlideshow from "./components/TicketBoxSlideshow";
 import AboutPage from "./pages/AboutPage";
 import PrizesPage from "./pages/PrizePage";
 import TicketsPage from "./pages/TicketsPage";
@@ -88,13 +89,7 @@ export default function App() {
                     <ArrowUpRight size={20} aria-hidden="true" />
                   </Link>
 
-                  <a href="#reserve-spot" className="shrink-0">
-                    <img
-                      src="/ticket-box.jpg"
-                      alt="Raffle ticket box"
-                      className="h-[256px] w-[256px] rounded-xl object-contain transition-transform hover:-translate-y-1 sm:h-[352px] sm:w-[352px]"
-                    />
-                  </a>
+                  <TicketBoxSlideshow />
                   <a href="#reserve-spot" className="shrink-0">
                     <RaffleStats />
                   </a>
