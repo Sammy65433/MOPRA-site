@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Gift, Ticket } from "lucide-react";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { startingLanguage, translations } from "./i18n";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -39,8 +39,6 @@ function ScrollToSection() {
 export default function App() {
   const [language, setLanguage] = useState(startingLanguage);
   const t = translations[language];
-  const location = useLocation();
-  const isAdmin = location.pathname.startsWith("/admin");
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -55,7 +53,7 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#101c35] text-[#faf7f0]">
       <ScrollToSection />
-      {!isAdmin && <Header language={language} setLanguage={setLanguage} t={t} />}
+      <Header language={language} setLanguage={setLanguage} t={t} />
 
       <Routes>
         <Route
@@ -123,7 +121,7 @@ export default function App() {
         />
       </Routes>
 
-      {!isAdmin && <Footer t={t} />}
+      <Footer t={t} />
     </div>
   );
 }
