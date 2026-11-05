@@ -53,6 +53,10 @@ function getTransporter() {
   cachedTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT || 587),
+    secure: Number(process.env.SMTP_PORT || 587) === 465,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     auth: {
       user: process.env.SMTP_USER || "",
       pass: process.env.SMTP_PASS || "",
@@ -60,6 +64,16 @@ function getTransporter() {
   });
 
   return cachedTransporter;
+}
+
+// Wraps sendMail so a hanging SMTP connection can never block the API forever.
+async function sendMailWithTimeout(transporter, mailOptions, timeoutMs = 20000) {
+  return Promise.race([
+    transporter.sendMail(mailOptions),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("SMTP send timed out")), timeoutMs)
+    ),
+  ]);
 }
 
 export async function sendDigitalTicketEmail(ticket, ticketPayload) {
@@ -112,7 +126,7 @@ export async function sendDigitalTicketEmail(ticket, ticketPayload) {
     ];
   }
 
-  const info = await transporter.sendMail(mailOptions);
+  const info = await sendMailWithTimeout(transporter, mailOptions);
   return { sent: true, messageId: info.messageId, ticketNumber: ticket.ticketNumber };
 }
 
@@ -130,7 +144,7 @@ export async function sendReservationNotificationEmail(reservation) {
     return { sent: false, skipped: true };
   }
 
-  await transporter.sendMail({
+  await sendMailWithTimeout(transporter, {
     from: process.env.EMAIL_FROM || "no-reply@mopra.org",
     to: organizerEmail,
     subject: `New MOPRA Raffle Reservation: ${reservation.firstName} ${reservation.lastName} (${reservation.quantity} ticket${reservation.quantity > 1 ? "s" : ""})`,
@@ -149,7 +163,7 @@ export async function sendReservationNotificationEmail(reservation) {
   });
 
   if (String(reservation.contact).includes("@")) {
-    await transporter.sendMail({
+    await sendMailWithTimeout(transporter, {
       from: process.env.EMAIL_FROM || "no-reply@mopra.org",
       to: reservation.contact,
       replyTo: organizerEmail,
