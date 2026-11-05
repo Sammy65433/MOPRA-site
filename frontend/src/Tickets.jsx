@@ -84,10 +84,11 @@ export default function Tickets({ t }) {
         body: JSON.stringify(payload),
       });
 
+      const json = await response.json().catch(() => ({}));
       if (response.ok) {
         setStatus(copy.reservationCreated);
       } else {
-        setStatus(copy.reservationError);
+        setStatus(json.error || copy.reservationError);
       }
     } catch {
       setStatus(copy.reservationError);
