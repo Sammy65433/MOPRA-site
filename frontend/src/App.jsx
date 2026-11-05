@@ -91,7 +91,7 @@ export default function App() {
                   <img
                     src="/ticket-box.jpg"
                     alt="Raffle ticket box"
-                    className="h-32 w-32 shrink-0 rounded-xl object-contain sm:h-44 sm:w-44"
+                    className="h-[256px] w-[256px] shrink-0 rounded-xl object-contain sm:h-[352px] sm:w-[352px]"
                   />
                   <RaffleStats />
 
