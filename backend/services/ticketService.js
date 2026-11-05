@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import QRCode from "qrcode";
 import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 import Reservation from "../models/Reservation.js";
 
 const TICKET_PREFIX = "MOPRA-";
@@ -39,6 +40,11 @@ export async function buildTicketPayload(ticket) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// Unified email sender.
+// Render (and many hosts) block outbound SMTP ports, so in production we prefer
+// the SendGrid HTTP API. SMTP (nodemailer) is kept as a fallback for local dev.
+// ---------------------------------------------------------------------------
 let cachedTransporter = null;
 
 function getTransporter() {
@@ -66,86 +72,147 @@ function getTransporter() {
   return cachedTransporter;
 }
 
-// Wraps sendMail so a hanging SMTP connection can never block the API forever.
-async function sendMailWithTimeout(transporter, mailOptions, timeoutMs = 20000) {
-  return Promise.race([
-    transporter.sendMail(mailOptions),
-    new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("SMTP send timed out")), timeoutMs)
-    ),
-  ]);
+// Configure SendGrid once if an API key is present.
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+}
+
+function hasSendGrid() {
+  return Boolean(process.env.SENDGRID_API_KEY);
+}
+
+function hasSmtp() {
+  return Boolean(process.env.SMTP_HOST);
+}
+
+// Send an email using whichever provider is configured.
+// Returns { sent, messageId?, skipped?, error? }.
+async function sendEmail({ to, from, subject, text, html, attachments = [] }) {
+  const sender = from || process.env.EMAIL_FROM || "no-reply@mopra.org";
+
+  // Prefer SendGrid HTTP API (works on Render where SMTP ports are blocked).
+  if (hasSendGrid()) {
+    try {
+      const sgAttachments = attachments
+        .filter((a) => a && a.content)
+        .map((a) => ({
+          content: String(a.content).includes(",")
+            ? String(a.content).split(",").pop()
+            : String(a.content),
+          filename: a.filename || "attachment",
+          type: a.type || "application/octet-stream",
+          disposition: a.disposition || "attachment",
+        }));
+
+      const [response] = await sgMail.send({
+        to,
+        from: sender,
+        subject,
+        text,
+        html,
+        attachments: sgAttachments.length ? sgAttachments : undefined,
+      });
+
+      return {
+        sent: true,
+        messageId: response?.headers?.["x-message-id"] || null,
+        provider: "sendgrid",
+      };
+    } catch (err) {
+      const message =
+        err?.response?.body?.errors?.[0]?.message ||
+        err?.message ||
+        String(err);
+      console.error("[email] SendGrid send failed:", message);
+      return { sent: false, error: "email_failed", message, provider: "sendgrid" };
+    }
+  }
+
+  // Fallback: SMTP via nodemailer (local dev).
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.log(`[email] No email provider configured. Skipping send to ${to}.`);
+    return { sent: false, skipped: true };
+  }
+
+  try {
+    const info = await transporter.sendMail({
+      from: sender,
+      to,
+      subject,
+      text,
+      html,
+      attachments,
+    });
+    return { sent: true, messageId: info.messageId, provider: "smtp" };
+  } catch (err) {
+    console.error("[email] SMTP send failed:", err?.message || err);
+    return { sent: false, error: "email_failed", message: err?.message || String(err), provider: "smtp" };
+  }
 }
 
 export async function sendDigitalTicketEmail(ticket, ticketPayload) {
-  const transporter = getTransporter();
-
-  if (!transporter) {
-    console.log(`[ticket] Digital ticket ${ticket.ticketNumber} created for ${ticket.contact}. Email skipped (SMTP not configured).`);
-    return { sent: false, skipped: true, ticketNumber: ticket.ticketNumber };
-  }
-
   const isInPerson = ticket.deliveryMethod === "in-person";
   const verificationUrl = `https://mopra.org/tickets/verify/${ticket.ticketNumber}`;
-  const ticketUrl = `${process.env.APP_URL || "http://localhost:5173"}/tickets`;
 
-  const mailOptions = {
-    from: process.env.EMAIL_FROM || "no-reply@mopra.org",
+  const text = [
+    `Hi ${ticket.firstName} ${ticket.lastName},`,
+    "",
+    "Your payment was confirmed. Your raffle ticket is ready.",
+    `Ticket number: ${ticket.ticketNumber}`,
+    isInPerson
+      ? "Please bring this ticket number to the meeting for in-person verification."
+      : "Scan the QR code or show the ticket number at the meeting.",
+    "",
+    verificationUrl,
+    "",
+    "Thank you for supporting the Mouvement Patriotique pour la Renaissance de L’Asile.",
+  ].join("\n");
+
+  const html = `<p>Hi ${ticket.firstName} ${ticket.lastName},</p>
+    <p>Your payment was confirmed. Your raffle ticket is ready.</p>
+    <p>Ticket number: <strong>${ticket.ticketNumber}</strong></p>
+    ${isInPerson
+      ? "<p>Please bring this ticket number to the meeting for in-person verification.</p>"
+      : "<p>Scan the QR code or show the ticket number at the meeting:</p>"}
+    <img src="${ticketPayload.qrDataUrl}" alt="Raffle ticket QR code" width="180" />
+    <p><a href="${verificationUrl}">Verify your ticket</a></p>
+    <p>Thank you for supporting the Mouvement Patriotique pour la Renaissance de L’Asile.</p>`;
+
+  const attachments = ticketPayload.qrDataUrl
+    ? [
+        {
+          content: ticketPayload.qrDataUrl,
+          filename: `${ticket.ticketNumber}.png`,
+          type: "image/png",
+          disposition: "attachment",
+        },
+      ]
+    : [];
+
+  return sendEmail({
     to: ticket.contact,
     subject: `Your ${ticket.ticketNumber} raffle ticket is confirmed`,
-    text: [
-      `Hi ${ticket.firstName} ${ticket.lastName},`,
-      "",
-      "Your payment was confirmed. Your raffle ticket is ready.",
-      `Ticket number: ${ticket.ticketNumber}`,
-      isInPerson
-        ? "Please bring this ticket number to the meeting for in-person verification."
-        : "Scan the QR code or show the ticket number at the meeting.",
-      "",
-      verificationUrl,
-      "",
-      "Thank you for supporting the Mouvement Patriotique pour la Renaissance de L’Asile.",
-    ].join("\n"),
-    html: `<p>Hi ${ticket.firstName} ${ticket.lastName},</p>
-      <p>Your payment was confirmed. Your raffle ticket is ready.</p>
-      <p>Ticket number: <strong>${ticket.ticketNumber}</strong></p>
-      ${isInPerson
-        ? "<p>Please bring this ticket number to the meeting for in-person verification.</p>"
-        : "<p>Scan the QR code or show the ticket number at the meeting:</p>"}
-      <img src="${ticketPayload.qrDataUrl}" alt="Raffle ticket QR code" width="180" />
-      <p><a href="${verificationUrl}">Verify your ticket</a></p>
-      <p>Thank you for supporting the Mouvement Patriotique pour la Renaissance de L’Asile.</p>`,
-  };
-
-  if (ticketPayload.qrDataUrl) {
-    mailOptions.attachments = [
-      {
-        filename: `${ticket.ticketNumber}.png`,
-        content: Buffer.from(ticketPayload.qrDataUrl.split(",")[1], "base64"),
-        cid: "ticket-qr",
-      },
-    ];
-  }
-
-  const info = await sendMailWithTimeout(transporter, mailOptions);
-  return { sent: true, messageId: info.messageId, ticketNumber: ticket.ticketNumber };
+    text,
+    html,
+    attachments,
+  });
 }
 
 export async function sendReservationNotificationEmail(reservation) {
-  const transporter = getTransporter();
   const organizerEmail = process.env.ORGANIZER_EMAIL || "Cahctca@gmail.com";
   const unitPrice = Number(process.env.TICKET_PRICE_USD || 100);
   const totalAmount = (reservation.quantity * unitPrice).toFixed(2);
   const paymentUrl = "https://link.clover.com/urlshortener/CVF3dD";
 
-  if (!transporter) {
+  if (!hasSendGrid() && !hasSmtp()) {
     console.log(
-      `[reservation] New reservation from ${reservation.firstName} ${reservation.lastName} (${reservation.contact}) for ${reservation.quantity} ticket(s) ($${totalAmount}). Email skipped (SMTP not configured).`
+      `[reservation] New reservation from ${reservation.firstName} ${reservation.lastName} (${reservation.contact}) for ${reservation.quantity} ticket(s) ($${totalAmount}). Email skipped (no provider configured).`
     );
     return { sent: false, skipped: true };
   }
 
-  await sendMailWithTimeout(transporter, {
-    from: process.env.EMAIL_FROM || "no-reply@mopra.org",
+  const organizerResult = await sendEmail({
     to: organizerEmail,
     subject: `New MOPRA Raffle Reservation: ${reservation.firstName} ${reservation.lastName} (${reservation.quantity} ticket${reservation.quantity > 1 ? "s" : ""})`,
     text: [
@@ -162,9 +229,9 @@ export async function sendReservationNotificationEmail(reservation) {
     ].join("\n"),
   });
 
+  let customerResult = { sent: false, skipped: true };
   if (String(reservation.contact).includes("@")) {
-    await sendMailWithTimeout(transporter, {
-      from: process.env.EMAIL_FROM || "no-reply@mopra.org",
+    customerResult = await sendEmail({
       to: reservation.contact,
       replyTo: organizerEmail,
       subject: "MOPRA Grand Raffle — Reservation Received ($100/ticket)",
@@ -181,5 +248,6 @@ export async function sendReservationNotificationEmail(reservation) {
     });
   }
 
-  return { sent: true };
+  const allSent = organizerResult.sent && (customerResult.sent || customerResult.skipped);
+  return { sent: allSent, organizer: organizerResult, customer: customerResult };
 }

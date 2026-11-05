@@ -180,7 +180,7 @@ router.patch("/:id/delivery", async (req, res) => {
         emailResult = await sendDigitalTicketEmail(reservation, ticket);
       } catch (emailError) {
         console.error("Digital ticket email failed:", emailError);
-        emailResult = { sent: false, error: "email_failed" };
+        emailResult = { sent: false, error: "email_failed", message: emailError?.message || String(emailError) };
       }
 
       return res.status(200).json({ reservation, ticket, email: emailResult });
