@@ -91,7 +91,14 @@ export default function App() {
 
                   <TicketBoxSlideshow />
                   <a href="#reserve-spot" className="shrink-0">
-                    <div className="border-lights-bold rounded-2xl p-2">
+                    <div
+                      className="rounded-2xl p-1"
+                      style={{
+                        background: "conic-gradient(from 0deg, #fde047, #e11d48, #2563eb, #22c55e, #fde047)",
+                        animation: "borderLights 3s linear infinite",
+                        boxShadow: "0 0 18px rgba(229,199,126,0.6), 0 0 36px rgba(37,99,235,0.4)",
+                      }}
+                    >
                       <img
                         src="/MOPRA-QR-CODE1.png"
                         alt="MOPRA QR code to pay for raffle tickets"

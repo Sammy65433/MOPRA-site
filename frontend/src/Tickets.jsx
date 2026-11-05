@@ -97,7 +97,7 @@ export default function Tickets({ t }) {
   }
 
   return (
-    <section id="tickets" className="scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28">
+    <section id="tickets" className="scroll-mt-20 px-5 pt-20 pb-8 sm:px-8 sm:pt-28 sm:pb-10">
       <div className="ticket-panel relative mx-auto max-w-7xl overflow-hidden rounded-3xl border-2 border-[#e5c77e]/55 p-6 sm:p-12 lg:p-16">
         <div className="relative z-10">
           <div className="tickets-intro">
@@ -197,7 +197,7 @@ export default function Tickets({ t }) {
                     aria-label={copy.paymentButton}
                   >
                     <img
-                      src="/MOPRA-QR-CODE.png"
+                      src="/MOPRA-QR-CODE1.png"
                       alt={copy.qrAlt}
                       width="1545"
                       height="1999"
