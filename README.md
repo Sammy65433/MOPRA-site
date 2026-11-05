@@ -39,14 +39,16 @@ The countdown targets the local start of December 31, 2027, because an exact dra
 
 The ticket reservation and raffle ticket flow is backed by an Express + MongoDB API in `backend/`:
 
-- `POST /api/tickets/reserve` saves a reservation to MongoDB with `pending` status.
-- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number when payment is received.
-- `PATCH /api/tickets/:id/delivery` selects digital or in-person delivery after payment.
+- `POST /api/tickets/reserve` saves a reservation to MongoDB with `pending` status. Enforces a maximum of 5 tickets per person and prevents duplicate reservations by name or contact (email/phone).
+- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number (one per ticket quantity) when payment is received.
+- `PATCH /api/tickets/:id/delivery` selects digital (email with QR code) or in-person delivery after payment.
 - `POST /api/tickets/:id/resend` resends the digital ticket email.
+
+Email is delivered through the **SendGrid HTTP API** (Render blocks outbound SMTP ports). Each reservation triggers two emails: a confirmation to the customer and a notification to the staff inboxes (`info@gomopra.org` and `Cahctca@gmail.com`). Staff can also set `ORGANIZER_EMAIL` to override the recipient list (comma-separated).
 
 See `backend/README.md` for setup and full API details.
 
-During local development, Vite proxies `/api` to `http://localhost:5050`. For production, set `VITE_API_URL` to the backend URL before building.
+During local development, Vite proxies `/api` to `http://localhost:5050`. For production, set `VITE_API_URL` to the backend URL before building. The repo includes a `render.yaml` blueprint that deploys both services on Render in one step.
 
 ## Run locally
 

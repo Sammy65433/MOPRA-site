@@ -38,7 +38,9 @@ The API runs on `http://localhost:5050` and a health check is at `http://localho
 | `APP_URL` | Public app URL used in ticket emails | `http://localhost:5173` |
 | `TICKET_PRICE_USD` | Ticket price used in ticket payloads | `100` |
 | `RAFFLE_CAPACITY` | Optional max tickets (reservations + paid). Set to `0` to disable. | `200` |
-| `SMTP_HOST` | SMTP host for digital ticket email. Leave empty to skip sending. | - |
+| `SENDGRID_API_KEY` | SendGrid API key for email delivery (HTTP API). Preferred on Render. | - |
+| `ORGANIZER_EMAIL` | Staff notification recipients (comma-separated). | `info@gomopra.org, Cahctca@gmail.com` |
+| `SMTP_HOST` | SMTP host (local dev fallback only; Render blocks SMTP ports). | - |
 | `SMTP_PORT` | SMTP port | `587` |
 | `SMTP_USER` / `SMTP_PASS` | SMTP credentials | - |
 | `EMAIL_FROM` | From address for tickets | `no-reply@mopra.org` |
@@ -60,7 +62,9 @@ The API runs on `http://localhost:5050` and a health check is at `http://localho
 }
 ```
 
-Response: `201` with `{ "reservation": {...}, "message": "..." }`.
+Response: `201` with `{ "reservation": {...}, "emailNotification": {...}, "message": "..." }`.
+
+Rules: quantity must be between 1 and 5. Duplicate reservations by name or contact (email/phone) are rejected with `409`.
 
 ### List reservations
 
