@@ -33,3 +33,72 @@ button {
   background: #e5c77e;
   color: #0f172a;
 }
+
+/* Border of lights — animated glowing border */
+.border-lights {
+  position: relative;
+  box-shadow: 0 0 18px rgba(229, 199, 126, 0.45), 0 0 36px rgba(37, 99, 235, 0.35);
+  animation: borderLightsGlow 2.5s ease-in-out infinite alternate;
+}
+
+.border-lights::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from 0deg, #fde047, #2563eb, #e11d48, #22c55e, #fde047);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderLightsSpin 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes borderLightsGlow {
+  0% { box-shadow: 0 0 14px rgba(229, 199, 126, 0.4), 0 0 28px rgba(37, 99, 235, 0.3); }
+  100% { box-shadow: 0 0 26px rgba(229, 199, 126, 0.7), 0 0 48px rgba(37, 99, 235, 0.55); }
+}
+
+@keyframes borderLightsSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Blue and white lights variant (raffle marquee) */
+.border-lights-blue-white {
+  position: relative;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.5), 0 0 36px rgba(255, 255, 255, 0.25);
+  animation: borderLightsBlueWhiteGlow 2s ease-in-out infinite alternate;
+}
+
+.border-lights-blue-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from 0deg, #3b82f6, #ffffff, #1d4ed8, #93c5fd, #3b82f6);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderLightsSpin 2.5s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes borderLightsBlueWhiteGlow {
+  0% { box-shadow: 0 0 12px rgba(59, 130, 246, 0.4), 0 0 24px rgba(255, 255, 255, 0.2); }
+  100% { box-shadow: 0 0 28px rgba(59, 130, 246, 0.75), 0 0 52px rgba(255, 255, 255, 0.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-lights,
+  .border-lights-blue-white {
+    animation: none;
+  }
+  .border-lights::before,
+  .border-lights-blue-white::before {
+    animation: none;
+  }
+}
