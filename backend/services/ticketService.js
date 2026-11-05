@@ -200,7 +200,12 @@ export async function sendDigitalTicketEmail(ticket, ticketPayload) {
 }
 
 export async function sendReservationNotificationEmail(reservation) {
-  const organizerEmail = process.env.ORGANIZER_EMAIL || "Cahctca@gmail.com";
+  const organizerEmail = process.env.ORGANIZER_EMAIL || "info@gomopra.org, Cahctca@gmail.com";
+  const organizerList = organizerEmail
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+  const primaryOrganizer = organizerList[0] || "info@gomopra.org";
   const unitPrice = Number(process.env.TICKET_PRICE_USD || 100);
   const totalAmount = (reservation.quantity * unitPrice).toFixed(2);
   const paymentUrl = "https://link.clover.com/urlshortener/CVF3dD";
@@ -213,7 +218,7 @@ export async function sendReservationNotificationEmail(reservation) {
   }
 
   const organizerResult = await sendEmail({
-    to: organizerEmail,
+    to: organizerList.join(", "),
     subject: `New MOPRA Raffle Reservation: ${reservation.firstName} ${reservation.lastName} (${reservation.quantity} ticket${reservation.quantity > 1 ? "s" : ""})`,
     text: [
       "New MOPRA Grand Raffle ticket reservation received:",
@@ -233,7 +238,7 @@ export async function sendReservationNotificationEmail(reservation) {
   if (String(reservation.contact).includes("@")) {
     customerResult = await sendEmail({
       to: reservation.contact,
-      replyTo: organizerEmail,
+      replyTo: primaryOrganizer,
       subject: "MOPRA Grand Raffle — Reservation Received ($100/ticket)",
       text: [
         `Hi ${reservation.firstName} ${reservation.lastName},`,
@@ -243,7 +248,7 @@ export async function sendReservationNotificationEmail(reservation) {
         "To complete your entry, please submit your payment using the official MOPRA QR code on our website or via our secure Clover checkout link:",
         paymentUrl,
         "",
-        `Once our team confirms your payment, your official raffle ticket number will be issued. Questions? Reply to ${organizerEmail}.`,
+        `Once our team confirms your payment, your official raffle ticket number will be issued. Questions? Reply to ${primaryOrganizer}.`,
       ].join("\n"),
     });
   }
