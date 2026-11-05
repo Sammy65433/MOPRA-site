@@ -5,8 +5,8 @@ const IMAGES = [
   "/ticket-box.jpg",
   "/Raffledetails_pic2.png",
   "/ticket-box3.jpg",
-  "/Raffledetails_pic2.png",
-  "/ticket-box2.jpg",
+  "/Raffledetails_pic1.png",
+  "/haitian-gallery1.jpg",
 ];
 
 export default function TicketBoxSlideshow() {
