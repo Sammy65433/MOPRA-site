@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 const IMAGES = [
   "/Raffledetails_pic1.png",
   "/ticket-box.jpg",
-  "/Raffledetails_pic1.png",
+  "/Raffledetails_pic2.png",
   "/ticket-box3.jpg",
-  "/Raffledetails_pic1.png",
+  "/Raffledetails_pic2.png",
+  "/ticket-box2.jpg",
 ];
 
 export default function TicketBoxSlideshow() {
