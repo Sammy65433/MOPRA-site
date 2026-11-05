@@ -39,6 +39,8 @@ function ScrollToSection() {
 export default function App() {
   const [language, setLanguage] = useState(startingLanguage);
   const t = translations[language];
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -53,7 +55,7 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#101c35] text-[#faf7f0]">
       <ScrollToSection />
-      <Header language={language} setLanguage={setLanguage} t={t} />
+      {!isAdmin && <Header language={language} setLanguage={setLanguage} t={t} />}
 
       <Routes>
         <Route
@@ -121,7 +123,7 @@ export default function App() {
         />
       </Routes>
 
-      <Footer t={t} />
+      {!isAdmin && <Footer t={t} />}
     </div>
   );
 }
