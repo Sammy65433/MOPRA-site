@@ -206,6 +206,25 @@
   text-shadow:
     0 0 22px rgba(245, 217, 142, 0.65),
     0 0 40px rgba(59, 130, 246, 0.55);
+  animation: countdownNumberGlow 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes countdownNumberGlow {
+  0% {
+    text-shadow:
+      0 0 18px rgba(245, 217, 142, 0.55),
+      0 0 34px rgba(59, 130, 246, 0.45),
+      0 0 52px rgba(229, 199, 126, 0.25);
+    color: #ffffff;
+  }
+  100% {
+    text-shadow:
+      0 0 30px rgba(245, 217, 142, 0.95),
+      0 0 56px rgba(59, 130, 246, 0.85),
+      0 0 80px rgba(229, 199, 126, 0.55),
+      0 0 110px rgba(251, 113, 133, 0.4);
+    color: #fff7e0;
+  }
 }
 
 .draw-countdown__label {
@@ -381,7 +400,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .draw-countdown__photo,
-  .draw-countdown__ambient-light {
+  .draw-countdown__ambient-light,
+  .draw-countdown__value {
     animation: none;
   }
 }
