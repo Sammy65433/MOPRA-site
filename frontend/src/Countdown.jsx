@@ -79,7 +79,7 @@ export default function Countdown({ language = "en" }) {
   const currentPhoto = photos[photoIndex];
 
   return (
-    <section className="draw-countdown border-lights" aria-labelledby="draw-countdown-title">
+    <section className="draw-countdown border-lights-bold" aria-labelledby="draw-countdown-title">
       <div className="draw-countdown__ambient-light draw-countdown__ambient-light--one" aria-hidden="true" />
       <div className="draw-countdown__ambient-light draw-countdown__ambient-light--two" aria-hidden="true" />
       <div className="draw-countdown__ambient-light draw-countdown__ambient-light--three" aria-hidden="true" />
