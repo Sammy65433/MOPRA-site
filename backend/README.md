@@ -4,15 +4,21 @@ Express + MongoDB backend for the MOPRA website ticket system: "Reserve your spo
 
 ## Features
 
-- **Reserve a spot:** `POST /api/tickets/reserve` saves a reservation (name, contact, quantity, message) into MongoDB with status `pending`.
-- **Confirm payment:** `PATCH /api/tickets/:id/payment` records the payment (Clover / card / other approved method) and a payment reference, then issues a raffle ticket number (e.g. `MOPRA-AB12CD34`) and moves the reservation to status `paid`.
+- **Reserve a spot:** `POST /api/tickets/reserve` saves a reservation (name, contact, quantity, message) into MongoDB with status `pending`. Max 5 tickets per person; no duplicate reservations by name or contact.
+- **Confirm payment:** `PATCH /api/tickets/:id/payment` records the payment and a payment reference, then issues raffle ticket numbers (one per quantity) and moves the reservation to status `paid`.
 - **Deliver the ticket:**
   - `PATCH /api/tickets/:id/delivery` with `{ "deliveryMethod": "digital" | "in-person" }`.
-  - `digital` sends the ticket by email (ticket number + QR code).
+  - `digital` sends the ticket by email (ticket number + QR code) via SendGrid HTTP API.
   - `in-person` marks the ticket for in-person handoff at the meeting.
 - **Resend:** `POST /api/tickets/:id/resend` re-sends the digital ticket email.
+- **Admin (password-protected):**
+  - `GET /api/admin/tickets` lists confirmed (paid/delivered) purchases with ticket numbers.
+  - `PATCH /api/admin/tickets/:id/cancel` marks a reservation as cancelled.
+  - `DELETE /api/admin/tickets/:id` permanently removes a reservation.
+  - `PATCH /api/admin/winner` sets the raffle winner (shown on the public site).
+- **Public stats:** `GET /api/stats` returns participant count, tickets sold, and winner.
 
-Reservation statuses: `pending` → `paid` → `delivered` (plus `cancelled` / `refunded`).
+Reservation statuses: `pending` → `paid` → `delivered` (plus `cancelled`).
 
 ## Run locally
 
@@ -43,7 +49,7 @@ The API runs on `http://localhost:5050` and a health check is at `http://localho
 | `SMTP_HOST` | SMTP host (local dev fallback only; Render blocks SMTP ports). | - |
 | `SMTP_PORT` | SMTP port | `587` |
 | `SMTP_USER` / `SMTP_PASS` | SMTP credentials | - |
-| `EMAIL_FROM` | From address for tickets | `no-reply@mopra.org` |
+| `ADMIN_PASSWORD` | Staff admin password for `/api/admin` endpoints and the `/admin` page. (`ADMIN_TOKEN` still accepted as fallback.) | - |
 
 ## API reference
 

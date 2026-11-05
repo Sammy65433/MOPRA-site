@@ -6,10 +6,11 @@ A responsive, multilingual React website for the Mouvement Patriotique pour la R
 
 ## Pages and features
 
-- **Home (`/`):** Animated community hero, raffle ticker, countdown to December 31, 2027, official raffle flyer and rules, four prize cards, story introduction, ticket reservation preview, and L’Asile map gallery.
+- **Home (`/`):** Animated community hero, raffle ticker, countdown to December 31, 2027, official raffle flyer and rules, four prize cards, story introduction, ticket reservation preview with QR/Clover payment, participation stats badge, L’Asile map gallery, and an admin link-free navigation.
 - **Our Story (`/about`):** An expanded MOPRA community narrative in all three site languages, community values, official raffle details, and an interactive seven-image L’Asile map gallery.
-- **The Raffle (`/prizes`):** Grand Raffle introduction, real-date countdown, official flyer, drawing information, prize rules, and four illustrated prize cards with cash alternatives.
-- **Tickets (`/tickets`):** Official raffle information, confirmed $100 USD ticket price, Clover donation button and QR code, six-image gallery, and reservation form.
+- **The Raffle (`/prizes`):** Grand Raffle introduction, real-date countdown, official flyer, drawing information, prize rules, four illustrated prize cards with cash alternatives, and step-by-step reservation instructions.
+- **Tickets (`/tickets`):** Official raffle information, confirmed $100 USD ticket price, Clover donation button and QR code, six-image gallery, reservation form, step-by-step instructions, and duplicate/quantity validation.
+- **Admin (`/admin`):** Password-protected staff page listing confirmed purchases, ticket numbers, cancel/delete actions, printable ticket stickers, and winner selection.
 - **Navigation:** Desktop navigation with icons, a mobile dropdown, language controls, and a clickable logo that returns to Home.
 - **Languages:** English, French, and Haitian Creole. The selected language is saved in the browser.
 - **Motion and accessibility:** Scroll reveals, photo transitions, labeled form fields, keyboard-focus styles, image descriptions, and reduced-motion support.
@@ -40,9 +41,13 @@ The countdown targets the local start of December 31, 2027, because an exact dra
 The ticket reservation and raffle ticket flow is backed by an Express + MongoDB API in `backend/`:
 
 - `POST /api/tickets/reserve` saves a reservation to MongoDB with `pending` status. Enforces a maximum of 5 tickets per person and prevents duplicate reservations by name or contact (email/phone).
-- `PATCH /api/tickets/:id/payment` confirms payment and issues a raffle ticket number (one per ticket quantity) when payment is received.
-- `PATCH /api/tickets/:id/delivery` selects digital (email with QR code) or in-person delivery after payment.
+- `PATCH /api/tickets/:id/payment` confirms payment and issues raffle ticket numbers (one per ticket quantity) when payment is received.
+- `PATCH /api/tickets/:id/delivery` selects digital (email with QR code via SendGrid) or in-person delivery after payment.
 - `POST /api/tickets/:id/resend` resends the digital ticket email.
+- `GET /api/admin/tickets` (password-protected) lists confirmed purchases with ticket numbers.
+- `PATCH /api/admin/tickets/:id/cancel` and `DELETE /api/admin/tickets/:id` cancel or remove reservations.
+- `PATCH /api/admin/winner` sets the raffle winner (shown on the public site).
+- `GET /api/stats` (public) returns participant count, tickets sold, and winner.
 
 Email is delivered through the **SendGrid HTTP API** (Render blocks outbound SMTP ports). Each reservation triggers two emails: a confirmation to the customer and a notification to the staff inboxes (`info@gomopra.org` and `Cahctca@gmail.com`). Staff can also set `ORGANIZER_EMAIL` to override the recipient list (comma-separated).
 
